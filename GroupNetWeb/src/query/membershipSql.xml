@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MembershipSql">
+
+<resultMap id="Membership" class="com.iedu.domain.Membership">
+		<result column="ID" property="id" />
+		<result column="USERID" property="userID" />
+		<result column="GROUPID" property="groupID" />
+		<result column="ENROLLDATE" property="enrollDate" />
+ 	</resultMap>
+
+<select id="readMembershipList" resultMap="Membership">
+ 		SELECT ID, USERID, GROUPID, ENROLLDATE 
+ 		FROM membership
+ 	</select>
+
+<insert id="addMembership" parameterClass="com.iedu.domain.Membership">
+ 		INSERT INTO membership ( `userID`, `groupID`, `enrollDate`)
+ 		VALUES (#userID#, #groupID#, now() );
+ 	</insert>
+ 	
+  	<update id="updateMembership" parameterClass="com.iedu.domain.Membership">
+  		UPDATE membership 
+  		SET 
+  			ID=ID
+  			<isNotEmpty property = "enrollDate">
+  			,enrollDate=#enrollDate#
+  			</isNotEmpty>
+  			<isGreaterThan property = "groupID" compareValue="0">
+  			,groupID=#groupID# 
+  			</isGreaterThan>
+  			
+  		WHERE 
+  			userID=#userID#
+  
+ 	</update>
+ 	
+ 	<delete id="deleteMembership" parameterClass= "com.iedu.domain.Membership">
+ 	DELETE FROM membership
+ 	WHERE
+ 		ENROLLDATE = #enrollDate#
+ 		</delete>
+ 		</sqlMap>
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
