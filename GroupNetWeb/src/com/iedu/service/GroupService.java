@@ -21,13 +21,23 @@ public class GroupService{
 	private Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	private GroupDao		groupDao;
+	private GroupDao groupDao;
 	
 	boolean isEncrypt = true;
 
-	public List<Group> readGroupList() {
-		return groupDao.readGroupList();
+	public List<Group> readGroup() {
+		return groupDao.readGroup();
 	}	
 	
+	public void addGroup(Group group) {
+		groupDao.addGroup(group);
+	}
 	
+	public void updateGroup(Group group) {
+		groupDao.updateGroup(group);
+	}
+	
+	public void deleteGroup(Group group) {
+		groupDao.deleteGroup(group);
+	}
 }
