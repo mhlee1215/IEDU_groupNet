@@ -8,14 +8,53 @@
 		<result column="ID" property="id" />
 		<result column="NAME" property="name" />
 		<result column="DESCRIPTION" property="description" />
+		<result column="STATUS" property="status" />
+		<result column="REGISTRATION_DATE" property="registration_date" />
+		<result column="URL" property="url" />
+		
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group">
- 		SELECT ID, NAME, DESCRIPTION
+ 		SELECT ID, NAME, DESCRIPTION 
 		FROM `group`
  	</select>
  	
+ 	<insert id="addGroup" parameterClass = "com.iedu.domain.Group">
+ 		INSERT INTO `group` (`id`, `name`, `description`, `status`, `registration_date`, `url`) 
+ 		VALUES (#id#, #name#, #description#, #status#, #registration_date#, '$url2$');
+ 	</insert>
  	
+ 	<update id="updateGroup" parameterClass = "com.iedu.domain.Group">
+ 		UPDATE `group` 
+ 		SET 
+ 			ID = ID
+ 			<isNotEmpty property="name">
+ 			,name = #name#
+ 			</isNotEmpty>
+ 			<isNotEmpty property="description">
+ 			,description = #description#
+ 			</isNotEmpty>
+ 			<isNotEmpty property="status">
+ 			,status = #status#
+ 			</isNotEmpty>
+ 			<isNotEmpty property="registration_date">
+ 			,registration_date = #registration_date#
+ 			</isNotEmpty>
+ 			<isNotEmpty property="url">
+ 			,url = #url#
+ 			</isNotEmpty>
+ 			 
+ 		WHERE 
+ 			ID = #id#
+ 	</update>
+ 	
+ 	<delete id="deleteGroup" parameterClass = "com.iedu.domain.Group">
+ 		DELETE FROM `group` 
 
-
+ 		WHERE 
+ 			ID = #id#
+ 	</delete>
+ 	
 </sqlMap>
+
+
