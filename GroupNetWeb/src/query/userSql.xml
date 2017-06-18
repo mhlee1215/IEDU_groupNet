@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="UserSql">
+
+	<resultMap id="User" class="com.iedu.domain.User">
+		<result column="ID" property="id" />
+		<result column="NAME" property="name" />
+		<result column="PASSWORD" property="password" />
+		<result column="AGE" property="age" />
+		<result column="EMAIL" property="email" />
+ 	</resultMap>
+ 	
+ 	<select id="readUserList" resultMap="User">
+ 		SELECT ID, NAME, PASSWORD, AGE, EMAIL
+		FROM user_NK
+ 	</select>
+ 	
+ 	<select id="readUser" resultMap="User" parameterClass="com.iedu.domain.User">
+ 		SELECT ID, NAME, PASSWORD, AGE, EMAIL
+		FROM user_NK
+		WHERE NAME=#name#
+ 	</select>
+ 	
+ 	<insert id="addUser" parameterClass="com.iedu.domain.User">
+ 		INSERT INTO user_TG (`name`, `password`, `age`, `email`, `address`, `phoneNumber`) 
+ 		VALUES (#name#, #password#, #age#, #email#, #address#, #phoneNumber#)
+ 	</insert>
+ 	
+ 	<update id="updateUser" parameterClass="com.iedu.domain.User">
+ 		UPDATE user_TG
+ 		SET
+ 			NAME=#name#,
+ 			AGE=#age#
+ 		WHERE
+ 			EMAIL=#email#
+ 	</update>
+ 	
+ 	<delete id="deleteUser" parameterClass="com.iedu.domain.User">
+ 		DELETE FROM user_TG
+ 		WHERE
+ 			EMAIL=#email#
+ 	</delete>
+ 
+</sqlMap>
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ProductsSql">
+
+	<resultMap id="Products" class="com.iedu.domain.Products">
+		<result column="PRODUCTCODE" property="productCode" />
+		<result column="PRODUCTNAME" property="productName" />
+		<result column="PRODUCTLINE" property="productLine" />
+ 	</resultMap>
+ 	
+ 	
+ 	
+ 	<select id="readProductsList" resultMap="Products">
+ 		SELECT PRODUCTCODE, PRODUCTNAME, PRODUCTLINE 
+ 		FROM products
+ 		
+ 	</select>
+ 	
+	<select id="readProducts" resultMap="Products">
+       SELECT PRODUCTCODE, PRODUCTNAME, PRODUCTLINE 
+       FROM products
+       WHERE PRODUCTCODE = #productCode# 
+       <isNotEmpty property="productName">
+       and PRODUCTNAME = #productName#
+       </isNotEmpty>
+	</select>
+
+	<insert id="createProduct" parameterClass="com.iedu.domain.Products">
+		 INSERT INTO
+		 products (PRODUCTCODE, PRODUCTNAME, PRODUCTLINE )
+		 VALUES (#productCode#, #productName#, #productLine#)
+	</insert>
+	
+	<update id="updateProduct" parameterClass="com.iedu.domain.Products">
+		 UPDATE products SET
+		 PRODUCTCODE = #productCode#
+		 <isNotEmpty property="productName">
+		 ,PRODUCTNAME = #productName#
+		 </isNotEmpty>
+		 <isNotEmpty property="productLine">
+		 ,PRODUCTLINE = #productLine#
+		 </isNotEmpty>
+		 WHERE PRODUCTCODE = #productCode# 
+	</update>
+</sqlMap>
+
+

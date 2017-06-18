@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="GroupSql">
+
+	<resultMap id="Group" class="com.iedu.domain.Group">
+		<result column="ID" property="id" />
+		<result column="NAME" property="name" />
+		<result column="DESCRIPTION" property="description" />
+ 	</resultMap>
+
+	<select id="readGroupList" resultMap="Group">
+ 		SELECT ID, NAME, DESCRIPTION
+		FROM `group`
+ 	</select>
+ 	
+ 	
+
+
+</sqlMap>

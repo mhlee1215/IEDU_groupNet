@@ -1,0 +1,106 @@
+package com.iedu.web;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.iedu.domain.Products;
+import com.iedu.domain.User;
+import com.iedu.service.ProductsService;
+import com.iedu.service.UserService;
+
+
+@Controller
+public class MainController {
+
+	private Logger logger = Logger.getLogger(getClass());
+	
+	@Autowired
+	private final ProductsService productsService = null;
+	
+	@Autowired
+	private final UserService userService = null;
+	
+	@RequestMapping("/index.do")
+    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView model = new ModelAndView("index");	
+		
+		List<Products> results = productsService.findAll();
+		System.out.println(results);
+		
+		model.addObject("products", results);
+		return model;
+    }
+	
+	
+	@RequestMapping("/showUsers.do")
+    public ModelAndView showUsers(HttpServletRequest request, HttpServletResponse response) throws Exception {	
+		ModelAndView model = new ModelAndView("show_users");
+		List<User> userList = userService.userList();
+		model.addObject("userList", userList);
+		return model;
+    }
+	@RequestMapping("/loginTest.do")
+    public ModelAndView loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
+		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
+		
+		User user = userService.getUser(pName, pPassword);
+		
+		
+		ModelAndView model = new ModelAndView("login_test");
+		model.addObject("pName", pName);
+		model.addObject("pPassword", pPassword);
+		model.addObject("user", user);
+		return model;
+    }
+	
+	
+	
+	@RequestMapping("/showProducts.do")
+    public ModelAndView showProducts(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView model = new ModelAndView("index");				
+		return model;
+    }
+	
+	@RequestMapping("/addUser.do") //  http://localhost:8080/WebTemplate/addUser.do
+    public ModelAndView adduser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int pId = 			ServletRequestUtils.getIntParameter(request, "id"		, 0);
+		String pName = 			ServletRequestUtils.getStringParameter(request, "name"		, "");
+		String pPassword = 		ServletRequestUtils.getStringParameter(request, "password"	, "");
+		int pAge = 			ServletRequestUtils.getIntParameter(request, "age"		, 0);
+		String pEmail = 		ServletRequestUtils.getStringParameter(request, "email"		, "");
+		String pAddress = 		ServletRequestUtils.getStringParameter(request, "address"	, "");
+		String pPhoneNumber = 	ServletRequestUtils.getStringParameter(request, "phoneNumber", "");
+		
+		User pUser = new User();
+		pUser.setId(pId);
+		pUser.setName(pName);
+		pUser.setPassword(pPassword);
+		pUser.setAge(pAge);
+		pUser.setEmail(pEmail);
+		pUser.setAddress(pAddress);
+		pUser.setPhoneNumber(pPhoneNumber);
+		
+		userService.addUser(pUser);
+		
+		ModelAndView model = new ModelAndView("add_user_test");
+		
+		model.addObject("id", pId);
+		model.addObject("name", pName);
+		model.addObject("password", pPassword);
+		model.addObject("age", pAge);
+		model.addObject("email", pEmail);
+		model.addObject("address", pAddress);
+		model.addObject("phoneNumber", pPhoneNumber);
+		
+		return model;
+    }
+}
