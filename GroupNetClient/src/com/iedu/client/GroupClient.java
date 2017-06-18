@@ -29,12 +29,12 @@ import com.google.gson.stream.JsonReader;
 
 public class GroupClient {
 	
-	public static int clientTest() {
+	public static int addGroup(String name) {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
-				+ "?name=clientTestUser&age=10&password=password123");
+				+ "?name="+name);
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
@@ -65,6 +65,6 @@ public class GroupClient {
 	}
 	
 	public static void main(String[] argv){
-		GroupClient.clientTest();
+		GroupClient.addGroup("new_group_name");
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iedu.domain.Group;
@@ -38,7 +39,7 @@ public class GroupController {
     }
 	
 	@RequestMapping("/addGroup.do")
-    public ModelAndView addGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public @ResponseBody String addGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		String pDescription = ServletRequestUtils.getStringParameter(request, "description", "");
@@ -58,16 +59,16 @@ public class GroupController {
 
 		groupService.addGroup(pGroup);
 		
-		ModelAndView model = new ModelAndView("add_group");	
-		
-		model.addObject("id", pId);
-		model.addObject("name", pName);
-		model.addObject("description", pDescription);
-		model.addObject("status", pStatus);
-		model.addObject("registration_date", pRegistration_date);
-		model.addObject("url", pUrl);
+//		ModelAndView model = new ModelAndView("add_group");	
+//		
+//		model.addObject("id", pId);
+//		model.addObject("name", pName);
+//		model.addObject("description", pDescription);
+//		model.addObject("status", pStatus);
+//		model.addObject("registration_date", pRegistration_date);
+//		model.addObject("url", pUrl);
 
-		return model;
+		return "added!";
     }
 	
 	@RequestMapping("/updateGroup.do")
