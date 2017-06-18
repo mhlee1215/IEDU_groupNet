@@ -4,7 +4,11 @@ public class Group {
 	int id;
 	String name;
 	String description;
-	//..
+	String status;
+	String registration_date;
+	String url;
+	String url2;
+	
 	public int getId() {
 		return id;
 	}
@@ -23,8 +27,36 @@ public class Group {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getRegistration_date() {
+		return registration_date;
+	}
+	public void setRegistration_date(String registration_date) {
+		this.registration_date = registration_date;
+	}
+	public String getUrl() {
+		return status;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+		//this.url = "111";
+	}
+	public String getUrl2() {
+		return url2;
+	}
+	public void setUrl2(String url2) {
+		this.url2 = url2;
+	}
 	@Override
 	public String toString() {
-		return "Group [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "Group [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
+				+ ", registration_date=" + registration_date + ", url=" + url + ", url2=" + url2 + "]";
 	}
+	
+	
 }
