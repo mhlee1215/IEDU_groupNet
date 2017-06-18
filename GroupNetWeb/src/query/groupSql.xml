@@ -15,7 +15,7 @@
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group">
- 		SELECT ID, NAME, DESCRIPTION 
+ 		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL
 		FROM `group`
  	</select>
  	
