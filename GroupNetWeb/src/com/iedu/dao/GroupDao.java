@@ -17,10 +17,22 @@ public class GroupDao extends SqlMapClientDaoSupport{
 		 this.setSqlMapClient(sqlMapClient);
 	 } 
 	
-	
 	@SuppressWarnings("unchecked")
-	public List<Group> readGroupList() {	
+	public List<Group> readGroup() {	
 		List<Group> array = getSqlMapClientTemplate().queryForList("GroupSql.readGroupList");
 		return array;
+	}
+	
+	public void addGroup(Group group) {
+		System.out.println("<<<<"+group);
+		getSqlMapClientTemplate().insert("GroupSql.addGroup", group);
+	}
+	
+	public void updateGroup(Group group){
+		getSqlMapClientTemplate().update("GroupSql.updateGroup", group);
+	}
+	
+	public void deleteGroup(Group group){
+		getSqlMapClientTemplate().delete("GroupSql.deleteGroup", group);
 	}
 }
