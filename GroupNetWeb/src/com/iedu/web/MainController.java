@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iedu.domain.Products;
@@ -71,7 +72,7 @@ public class MainController {
     }
 	
 	@RequestMapping("/addUser.do") //  http://localhost:8080/WebTemplate/addUser.do
-    public ModelAndView adduser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public @ResponseBody String adduser(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int pId = 			ServletRequestUtils.getIntParameter(request, "id"		, 0);
 		String pName = 			ServletRequestUtils.getStringParameter(request, "name"		, "");
 		String pPassword = 		ServletRequestUtils.getStringParameter(request, "password"	, "");
@@ -91,16 +92,16 @@ public class MainController {
 		
 		userService.addUser(pUser);
 		
-		ModelAndView model = new ModelAndView("add_user_test");
+//		ModelAndView model = new ModelAndView("add_user_test");
+//		
+//		model.addObject("id", pId);
+//		model.addObject("name", pName);
+//		model.addObject("password", pPassword);
+//		model.addObject("age", pAge);
+//		model.addObject("email", pEmail);
+//		model.addObject("address", pAddress);
+//		model.addObject("phoneNumber", pPhoneNumber);
 		
-		model.addObject("id", pId);
-		model.addObject("name", pName);
-		model.addObject("password", pPassword);
-		model.addObject("age", pAge);
-		model.addObject("email", pEmail);
-		model.addObject("address", pAddress);
-		model.addObject("phoneNumber", pPhoneNumber);
-		
-		return model;
+		return "added!";
     }
 }
