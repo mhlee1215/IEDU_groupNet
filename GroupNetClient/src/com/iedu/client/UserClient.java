@@ -33,7 +33,7 @@ public class UserClient {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://localhost:8080/WebTemplate/" + "addUser.do"
+		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addUser.do"
 				+ "?name=clientTestUser&age=10&password=password123");
 		
 		System.out.println(httpget.getURI());
