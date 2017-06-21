@@ -4,15 +4,15 @@ import java.util.List;
 public class GroupBin {
 	List<Group> groups;
 
-	public List<Group> getUsers() {
+	public List<Group> getGroups() {
 		return groups;
 	}
 
-	public void setGameResults(List<Group> groups) {
+	public void setGroups(List<Group> groups) {
 		this.groups = groups;
 	}
 
-	@Override
+	@Override 
 	public String toString() {
 		return "{\"Groups\":\"" + groups + "\"}";
 	}
