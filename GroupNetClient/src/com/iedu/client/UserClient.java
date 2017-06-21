@@ -101,33 +101,9 @@ public class UserClient {
 		return 0;
 	}
 	
-	public static List<Group> getGroups() {
-		Group group = null;
-
-		HttpClient httpclient = new DefaultHttpClient();
-		ArrayList<Group> groups = null;
-		
-		try{
-			InputStream in = new URL("http://localhost:8080/GroupNetWeb/" + "readGroup.do")
-					.openStream();
-			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
-			Gson gson = new Gson();
-			GroupBin userBin = gson.fromJson(reader,	GroupBin.class);
-			groups = (ArrayList<Group>) userBin.getUsers();
-
-			
-		}catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			httpclient.getConnectionManager().shutdown();
-		}
-
-		return groups;
-	}
+	
 	
 	public static void main(String[] argv){
-		System.out.println("aa"+UserClient.getGroups());
+		
 	}
 }

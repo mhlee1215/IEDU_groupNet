@@ -26,8 +26,36 @@ import com.google.gson.stream.JsonReader;
 //import edu.iedu.flashcard.dao.domain.User;
 //import edu.iedu.flashcard.dao.domain.UserBin;
 //import edu.iedu.flashcard.var.Env;
+import com.iedu.domain.Group;
+import com.iedu.domain.GroupBin;
 
 public class GroupClient {
+	
+	public static List<Group> readGroups() {
+		Group group = null;
+
+		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<Group> groups = null;
+		
+		try{
+			InputStream in = new URL("http://localhost:8080/GroupNetWeb/" + "readGroup.do")
+					.openStream();
+			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+			Gson gson = new Gson();
+			GroupBin userBin = gson.fromJson(reader,	GroupBin.class);
+			groups = (ArrayList<Group>) userBin.getUsers();
+
+			
+		}catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+
+		return groups;
+	}
 	
 	public static int addGroup(String name) {
 		
@@ -65,6 +93,10 @@ public class GroupClient {
 	}
 	
 	public static void main(String[] argv){
-		GroupClient.addGroup("new_group_name");
+		//GroupClient.addGroup("new_group_name");
+		
+		List<Group> groupList = GroupClient.readGroups();
+		System.out.println("group size:"+groupList.size());
+		
 	}
 }
