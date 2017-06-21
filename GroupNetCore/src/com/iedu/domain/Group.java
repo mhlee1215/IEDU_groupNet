@@ -9,7 +9,7 @@ public class Group {
 	String url;
 	String url2;
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
-	public int getId() {
+	public int getId() { 
 		return id;
 	}
 	public void setId(int id) {

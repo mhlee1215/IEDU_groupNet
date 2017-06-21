@@ -43,7 +43,7 @@ public class GroupClient {
 			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
 			Gson gson = new Gson();
 			GroupBin userBin = gson.fromJson(reader,	GroupBin.class);
-			groups = (ArrayList<Group>) userBin.getUsers();
+			groups = (ArrayList<Group>) userBin.getGroups();
 
 			
 		}catch (ClientProtocolException e) {
