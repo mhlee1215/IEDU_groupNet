@@ -2,13 +2,13 @@ package com.iedu.domain;
 
 public class Group {
 	int id;
-	String name="";
-	String description="";
-	String status="";
-	String registration_date="";
-	String url="";
-	String url2="";
-	
+	String name;
+	String description;
+	String status;
+	String registration_date;
+	String url;
+	String url2;
+	//{"${member.name()}":"${member.value}", "${otherMembers}"}
 	public int getId() {
 		return id;
 	}
@@ -52,10 +52,17 @@ public class Group {
 	public void setUrl2(String url2) {
 		this.url2 = url2;
 	}
+	
 	@Override
 	public String toString() {
-		return "Group [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
-				+ ", registration_date=" + registration_date + ", url=" + url + ", url2=" + url2 + "]";
+		return "{\"id\":\"" + id + "\", \"name\":\"" + name + "\", \"description\":\"" + description
+				+ "\", \"status\":\"" + status + "\", \"registration_date\":\"" + registration_date + "\", \"url\":\""
+				+ url + "\", \"url2\":\"" + url2 + "\"}";
+	}
+	
+	public static void main(String[] argv){
+		Group g = new Group();
+		System.out.println(g);
 	}
 	
 	

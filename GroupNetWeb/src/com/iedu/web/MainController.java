@@ -92,16 +92,6 @@ public class MainController {
 		
 		userService.addUser(pUser);
 		
-//		ModelAndView model = new ModelAndView("add_user_test");
-//		
-//		model.addObject("id", pId);
-//		model.addObject("name", pName);
-//		model.addObject("password", pPassword);
-//		model.addObject("age", pAge);
-//		model.addObject("email", pEmail);
-//		model.addObject("address", pAddress);
-//		model.addObject("phoneNumber", pPhoneNumber);
-		
 		return "added!";
     }
 }
