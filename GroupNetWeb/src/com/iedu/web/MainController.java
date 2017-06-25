@@ -76,7 +76,7 @@ public class MainController {
 		user.setEmail(pEmail);
 		user.setAge(pAge);
 		user.setAddress(pAddress);
-		List<User> result = userService.getUser(user);
+		List<User> result = null;//userService.getUser(user);
 		
 		ModelAndView model = new ModelAndView("show_user");				
 		model.addObject("user", result);
