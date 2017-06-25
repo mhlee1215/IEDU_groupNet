@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MediaSql">
+
+	<resultMap id="Media" class="com.iedu.domain.Media">
+		<result column="ID" property="id" />
+		<result column="PATH" property="path" />
+		<result column="DATE" property="date" />
+		<result column="SIZE" property="size"/>
+		<result column="TYPE" property="type" />
+
+ 	</resultMap>
+ 	
+ 	<select id="readMediaList" resultMap="Media">
+ 		SELECT ID, PATH, DATE, SIZE, TYPE
+ 		FROM media
+ 	</select>
+ 	
+ 	<select id="readMedia" resultMap ="Media" parameterClass="com.iedu.domain.Media">
+ 		SELECT ID, PATH, DATE, SIZE, TYPE
+ 		FROM media
+ 		WHERE ID=#id# and PATH=#path#
+ 		
+ 	</select>
+ 	
+ 	<insert id = "addMedia" parameterClass="com.iedu.domain.Media">
+ 		INSERT INTO media (`id`, `path`, `date`, `size`, `type`) 
+ 		VALUES (#id#, #path#, #date#, #size#, #type#);
+ 	</insert>
+ 	
+ 	<update id="updateMedia" parameterClass = "com.iedu.domain.Media">
+ 		UPDATE media
+ 		SET
+ 			ID=#id#,
+ 			PATH=#path#
+ 		WHERE
+ 			ID=#id#
+ 	</update>
+ 	
+ 	<delete id="deleteMedia" parameterClass = "com.iedu.domain.Media">
+ 	DELETE FROM media
+ 	WHERE
+ 		ID=#id#
+ 	</delete>
+ 	
+</sqlMap>
+
+
