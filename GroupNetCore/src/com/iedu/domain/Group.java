@@ -7,7 +7,7 @@ public class Group {
 	String status;
 	String registration_date;
 	String url;
-	String url2;
+	String url2; 
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
 	public int getId() { 
 		return id;
