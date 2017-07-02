@@ -42,4 +42,20 @@ public class UserService{
 	public void deleteUser(User user){
 		userDao.deleteUser(user);
 	}
+	
+	public int signUpUser(User user) {
+		//
+		User curry = getUser(user.getName(), "");
+		
+		if(curry == null){
+			userDao.addUser(user);
+			return 1;
+			//Return success code
+		}else{
+			//Return unsuccess code
+			return 0;
+		}
+		
+		
+	}
 }

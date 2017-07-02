@@ -2,12 +2,12 @@ package com.iedu.domain;
 
 public class User {
 	int id;
-	String name;
-	String password;
+	String name = "";
+	String password = "";
 	int age;
-	String email;
-	String address;
-	String phoneNumber;
+	String email = "";
+	String address = "";
+	String phoneNumber = "";
 	
 	
 	public String getAddress() {
