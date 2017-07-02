@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iedu.domain.Products;
+import com.iedu.domain.Tag;
 import com.iedu.domain.User;
 import com.iedu.service.ProductsService;
+import com.iedu.service.TagService;
 import com.iedu.service.UserService;
 
 
@@ -27,8 +29,11 @@ public class MainController {
 	private final ProductsService productsService = null;
 	
 	@Autowired
+	private final TagService tagService = null;
+
+	@Autowired
 	private final UserService userService = null;
-	
+
 	@RequestMapping("/index.do")
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView model = new ModelAndView("index");	
@@ -39,59 +44,155 @@ public class MainController {
 		model.addObject("products", results);
 		return model;
     }
-	
-	
 	@RequestMapping("/showUsers.do")
-    public ModelAndView showUsers(HttpServletRequest request, HttpServletResponse response) throws Exception {	
+    public ModelAndView showUsers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String PId = ServletRequestUtils.getStringParameter(request, "id", "");
+		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
 		ModelAndView model = new ModelAndView("show_users");
 		List<User> userList = userService.userList();
 		model.addObject("userList", userList);
 		return model;
     }
+	
 	@RequestMapping("/loginTest.do")
-    public ModelAndView loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ModelAndView showProducts(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
+		ModelAndView model = new ModelAndView("login_test");				
+		model.addObject("pId", pId);
+		model.addObject("pPassword", pPassword);
+		return model;
+    }
+	
+	// ... getUser.do?id=...&email=...& ...
+	@RequestMapping("/getUser.do")
+    public ModelAndView getUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+		String pEmail = ServletRequestUtils.getStringParameter(request, "email", "");
+		int pAge = ServletRequestUtils.getIntParameter(request, "age", 0);
+		String pAddress = ServletRequestUtils.getStringParameter(request, "address", "");
+		
+		User user = new User();
+		user.setEmail(pEmail);
+		user.setAge(pAge);
+		user.setAddress(pAddress);
+		List<User> result = null;//userService.getUser(user);
+		
+		ModelAndView model = new ModelAndView("show_user");				
+		model.addObject("user", result);
+		return model;
+    }
+	
+	@RequestMapping("/addUser.do")
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pId = ServletRequestUtils.getStringParameter(request, "id", "");
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
+		String pPhoneNumber = ServletRequestUtils.getStringParameter(request, "phonenumber", "");
+		String pEmail = ServletRequestUtils.getStringParameter(request, "email", "");
+		int pAge = ServletRequestUtils.getIntParameter(request, "age", 0);
+		String pAddress = ServletRequestUtils.getStringParameter(request, "address", "");
 		
-		User user = userService.getUser(pName, pPassword);
+		User user = new User();
+		user.setName(pName);
+		user.setPassword(pPassword);
+		user.setEmail(pEmail);
+		user.setAge(pAge);
+		user.setAddress(pAddress);
+		user.setPhoneNumber(pPhoneNumber);
+		userService.addUser(user);
 		
-		
-		ModelAndView model = new ModelAndView("login_test");
-		model.addObject("pName", pName);
-		model.addObject("pPassword", pPassword);
+		ModelAndView model = new ModelAndView("show_user");				
 		model.addObject("user", user);
 		return model;
     }
 	
-	
-	
-	@RequestMapping("/showProducts.do")
-    public ModelAndView showProducts(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView model = new ModelAndView("index");				
+	@RequestMapping("/updateUser.do")
+    public ModelAndView updateUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
+		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
+		String pPhoneNumber = ServletRequestUtils.getStringParameter(request, "phonenumber", "");
+		String pEmail = ServletRequestUtils.getStringParameter(request, "email", "");
+		int pAge = ServletRequestUtils.getIntParameter(request, "age", 0);
+		String pAddress = ServletRequestUtils.getStringParameter(request, "address", "");
+		
+		User user = new User();
+		user.setName(pName);
+		user.setPassword(pPassword);
+		user.setEmail(pEmail);
+		user.setAge(pAge);
+		user.setAddress(pAddress);
+		user.setPhoneNumber(pPhoneNumber);
+		userService.updateUser(user);
+		
+		ModelAndView model = new ModelAndView("show_user");				
+		model.addObject("user", user);
 		return model;
-    }
+}
+	@RequestMapping("/delteUser.do")
+    public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
+		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
+		String pPhoneNumber = ServletRequestUtils.getStringParameter(request, "phonenumber", "");
+		String pEmail = ServletRequestUtils.getStringParameter(request, "email", "");
+		int pAge = ServletRequestUtils.getIntParameter(request, "age", 0);
+		String pAddress = ServletRequestUtils.getStringParameter(request, "address", "");
+		
+		User user = new User();
+		user.setName(pName);
+		user.setPassword(pPassword);
+		user.setEmail(pEmail);
+		user.setAge(pAge);
+		user.setAddress(pAddress);
+		user.setPhoneNumber(pPhoneNumber);
+		userService.deleteUser(user);
+		
+		ModelAndView model = new ModelAndView("show_user");				
+		model.addObject("user", user);
+		return model;
+	}
 	
-	@RequestMapping("/addUser.do") //  http://localhost:8080/WebTemplate/addUser.do
-    public @ResponseBody String adduser(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int pId = 			ServletRequestUtils.getIntParameter(request, "id"		, 0);
-		String pName = 			ServletRequestUtils.getStringParameter(request, "name"		, "");
-		String pPassword = 		ServletRequestUtils.getStringParameter(request, "password"	, "");
-		int pAge = 			ServletRequestUtils.getIntParameter(request, "age"		, 0);
-		String pEmail = 		ServletRequestUtils.getStringParameter(request, "email"		, "");
-		String pAddress = 		ServletRequestUtils.getStringParameter(request, "address"	, "");
-		String pPhoneNumber = 	ServletRequestUtils.getStringParameter(request, "phoneNumber", "");
+	// ... getTag.do?id=...&email=...& ...
+		@RequestMapping("/getTag.do")
+	    public @ResponseBody String getTag(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+			String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		
-		User pUser = new User();
-		pUser.setId(pId);
-		pUser.setName(pName);
-		pUser.setPassword(pPassword);
-		pUser.setAge(pAge);
-		pUser.setEmail(pEmail);
-		pUser.setAddress(pAddress);
-		pUser.setPhoneNumber(pPhoneNumber);
-		
-		userService.addUser(pUser);
-		
-		return "added!";
-    }
+			Tag tag = new Tag();
+			tag.setName(pName);
+			List<Tag> result = tagService.getTag(tag);
+			
+			//ModelAndView model = new ModelAndView("show_tag");				
+			//model.addObject("tag", result);
+			return "get tag result";
+	    }
+		@RequestMapping("/addTag.do")
+	    public ModelAndView addTag(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+			String pName = ServletRequestUtils.getStringParameter(request, "name", "");
+			
+			Tag tag = new Tag();
+			tag.setName(pName);
+			tagService.addTag(tag);
+			
+			ModelAndView model = new ModelAndView("show_tag");				
+			model.addObject("tag", tag);
+			return model;
+	    }
+		@RequestMapping("/deleteTag.do")
+	    public ModelAndView deleteTag(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String pId = ServletRequestUtils.getStringParameter(request, "id", "");
+			String pName = ServletRequestUtils.getStringParameter(request, "name", "");
+			
+			Tag tag = new Tag();
+			tag.setName(pName);
+			tagService.deleteTag(tag);
+			
+			ModelAndView model = new ModelAndView("show_tag");				
+			model.addObject("tag", tag);
+			return model;
+		}
+	
 }
