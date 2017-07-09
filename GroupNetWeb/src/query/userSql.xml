@@ -14,22 +14,22 @@
  	
  	<select id="readUserList" resultMap="User">
  		SELECT ID, NAME, PASSWORD, AGE, EMAIL
-		FROM user_NK
+		FROM user
  	</select>
  	
  	<select id="readUser" resultMap="User" parameterClass="com.iedu.domain.User">
  		SELECT ID, NAME, PASSWORD, AGE, EMAIL
-		FROM user_NK
+		FROM user
 		WHERE NAME=#name#
  	</select>
  	
  	<insert id="addUser" parameterClass="com.iedu.domain.User">
- 		INSERT INTO user_TG (`name`, `password`, `age`, `email`, `address`, `phoneNumber`) 
+ 		INSERT INTO user (`name`, `password`, `age`, `email`, `address`, `phoneNumber`) 
  		VALUES (#name#, #password#, #age#, #email#, #address#, #phoneNumber#)
  	</insert>
  	
  	<update id="updateUser" parameterClass="com.iedu.domain.User">
- 		UPDATE user_TG
+ 		UPDATE user
  		SET
  			NAME=#name#,
  			AGE=#age#
@@ -38,7 +38,7 @@
  	</update>
  	
  	<delete id="deleteUser" parameterClass="com.iedu.domain.User">
- 		DELETE FROM user_TG
+ 		DELETE FROM user
  		WHERE
  			EMAIL=#email#
  	</delete>
