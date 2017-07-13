@@ -15,6 +15,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -33,8 +34,9 @@ public class UserClient {
 	
 	public static int clientTest() {
 		
-		HttpClient httpclient = new DefaultHttpClient();
-
+		//HttpClient httpclient = new DefaultHttpClient();
+		HttpClient httpclient = HttpClientBuilder.create().build(); 
+		
 		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addUser.do"
 				+ "?name=clientTestUser&age=10&password=password123");
 		
@@ -54,6 +56,7 @@ public class UserClient {
 			}
 			
 			httpget.abort();
+			
 			httpclient.getConnectionManager().shutdown();
 			
 		} catch (ClientProtocolException e) {
