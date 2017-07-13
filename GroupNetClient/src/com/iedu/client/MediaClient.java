@@ -115,7 +115,7 @@ public class MediaClient {
 	    //HttpPost httppost = new HttpPost("http://localhost:8080/GroupNetWeb/mediaUpload.do");
 	    File file = new File("/home/mhlee/test.pdf");
 	    System.out.println(file);
-	    MediaClient.fileUpload("http://localhost:8080/GroupNetWeb/mediaUpload2.do", file);
+	    MediaClient.fileUpload("http://localhost:8080/GroupNetWeb/mediaUpload.do", file);
 
 //	    MultipartEntity mpEntity = new MultipartEntity();
 //	    ContentBody cbFile = new FileBody(file, "multipart/form-data");

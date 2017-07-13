@@ -143,25 +143,25 @@ public class MediaController {
 		return model;
     }
 	
-	@RequestMapping(value="/mediaUpload.do", method=RequestMethod.POST, consumes = {"multipart/mixed"})
-    public @ResponseBody String handleFileUpload( 
-            @RequestParam("file") MultipartFile file11){
-            String name = "test11";
-        if (!file11.isEmpty()) {
-            try {
-                byte[] bytes = file11.getBytes();
-                BufferedOutputStream stream = 
-                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
-                stream.write(bytes);
-                stream.close();
-                return "You successfully uploaded " + name + " into " + name + "-uploaded !";
-            } catch (Exception e) {
-                return "You failed to upload " + name + " => " + e.getMessage();
-            }
-        } else {
-            return "You failed to upload " + name + " because the file was empty.";
-        }
-    }
+//	@RequestMapping(value="/mediaUpload.do", method=RequestMethod.POST, consumes = {"multipart/mixed"})
+//    public @ResponseBody String handleFileUpload( 
+//            @RequestParam("file") MultipartFile file11){
+//            String name = "test11";
+//        if (!file11.isEmpty()) {
+//            try {
+//                byte[] bytes = file11.getBytes();
+//                BufferedOutputStream stream = 
+//                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
+//                stream.write(bytes);
+//                stream.close();
+//                return "You successfully uploaded " + name + " into " + name + "-uploaded !";
+//            } catch (Exception e) {
+//                return "You failed to upload " + name + " => " + e.getMessage();
+//            }
+//        } else {
+//            return "You failed to upload " + name + " because the file was empty.";
+//        }
+//    }
 	
 	@RequestMapping(value="/mediaUpload2.do", method=RequestMethod.POST, consumes = {"multipart/mixed"})
     public @ResponseBody String handleFileUpload(
@@ -174,15 +174,21 @@ public class MediaController {
 		System.out.println("size:"+file.getSize());
 		System.out.println(request.getContextPath());
 	
+		//Generate unique id
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		UUID uid = UUID.randomUUID();
-		
 		String id = timeStamp+"_"+uid;
+		
+		//Write File
 		File convFile = new File( request.getSession().
 				getServletContext().getRealPath("/assets/"), id);
 		file.transferTo(convFile);
 		
 		System.out.println(convFile.getAbsolutePath());
+		
+		//Need to add to database
+		
+		
 		
 		return "uploaded files :" + id;
     }
