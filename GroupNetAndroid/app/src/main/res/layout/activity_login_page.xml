@@ -78,7 +78,8 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="50dp"
-            android:text="Login"/>
+            android:text="LoginButton"
+            android:onClick = "login"/>
     </LinearLayout>
 
     <LinearLayout
@@ -98,7 +99,8 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:text="Forgot Password? Click Here!"
-            android:textSize = "5pt"/>
+            android:textSize = "5pt"
+            android:onClick = "forgotPasswordButton"/>
     </LinearLayout>
 
     <LinearLayout
@@ -118,7 +120,8 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:text="Not A Member? Sign Up Now"
-            android:textSize = "5pt"/>
+            android:textSize = "5pt"
+            android:onClick="signUpButton"/>
     </LinearLayout>
 
 </LinearLayout>

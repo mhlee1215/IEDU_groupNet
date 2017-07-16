@@ -9,16 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".GroupSearchActivity" />
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".CreateProfile1Activity" />
+        <activity android:name=".LoginPageActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GroupSearchActivity" />
-        <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".CreateProfile1Activity" />
-        <activity android:name=".LoginPageActivity"></activity>
     </application>
 
 </manifest>
