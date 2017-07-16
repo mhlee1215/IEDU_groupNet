@@ -15,12 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".GroupSearchActivity"></activity>
-        <activity android:name=".CreateAccountActivity"></activity>
+        <activity android:name=".GroupSearchActivity" />
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".CreateProfile1Activity" />
+        <activity android:name=".LoginPageActivity"></activity>
     </application>
 
 </manifest>
