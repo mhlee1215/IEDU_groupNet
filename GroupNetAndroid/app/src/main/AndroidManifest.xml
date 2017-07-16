@@ -9,34 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".GroupSearchActivity" />
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".CreateProfile1Activity" />
+        <activity android:name=".LoginPageActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
-        <activity android:name=".GroupSearchActivity">
-
-        </activity>
-
-
-        <!-- SAMPLES -->
-        <activity android:name=".samples.dynamic_list.ListViewDemo" >
-
-        </activity>
-        <activity android:name=".samples.list.MyFragmentActivity" >
-
-        </activity>
-        <activity android:name=".GroupSearchActivity" />
-        <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".CreateProfile1Activity" />
-        <activity android:name=".LoginPageActivity"></activity>
     </application>
 
 </manifest>
