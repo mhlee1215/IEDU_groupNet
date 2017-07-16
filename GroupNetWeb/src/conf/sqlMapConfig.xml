@@ -32,5 +32,7 @@
   <sqlMap resource="query/productsSql.xml"/>
   <sqlMap resource="query/userSql.xml"/>
   <sqlMap resource="query/groupSql.xml"/>
+  <sqlMap resource="query/mediaSql.xml"/>
+  <sqlMap resource="query/membershipSql.xml"/>
    
 </sqlMapConfig>

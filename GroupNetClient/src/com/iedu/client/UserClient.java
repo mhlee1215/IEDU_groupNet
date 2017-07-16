@@ -15,6 +15,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -33,9 +34,10 @@ public class UserClient {
 	
 	public static int clientTest() {
 		
-		HttpClient httpclient = new DefaultHttpClient();
-
-		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addUser.do"
+		//HttpClient httpclient = new DefaultHttpClient();
+		HttpClient httpclient = HttpClientBuilder.create().build(); 
+		
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "addUser.do"
 				+ "?name=clientTestUser&age=10&password=password123");
 		
 		System.out.println(httpget.getURI());
@@ -54,6 +56,7 @@ public class UserClient {
 			}
 			
 			httpget.abort();
+			
 			httpclient.getConnectionManager().shutdown();
 			
 		} catch (ClientProtocolException e) {
@@ -70,8 +73,11 @@ public class UserClient {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "readGroup.do"
-				);
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addUser.do"
+				+ "?name=clientTestUser&age=10&password=password123");
+		//Similar to below. Check Env class
+		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "readGroup.do"
+		//		);
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
