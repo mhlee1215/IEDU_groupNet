@@ -63,6 +63,9 @@ public class GroupClient {
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addGroup.do"
 				+ "?name="+name);
+		//Similar to below. Check Env class
+		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
+		//		+ "?name="+name);
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
