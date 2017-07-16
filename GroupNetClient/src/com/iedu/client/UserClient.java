@@ -28,14 +28,18 @@ import com.iedu.domain.Group;
 //import edu.iedu.flashcard.dao.domain.UserBin;
 //import edu.iedu.flashcard.var.Env;
 import com.iedu.domain.GroupBin;
+import com.iedu.domain.User;
 
 public class UserClient {
+	
+	
+
 	
 	public static int clientTest() {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addUser.do"
+		HttpGet httpget = new HttpGet("http://52.34.169.106:8080/GroupNetWeb/" + "addUser.do"
 				+ "?name=clientTestUser&age=10&password=password123");
 		
 		System.out.println(httpget.getURI());
@@ -102,8 +106,87 @@ public class UserClient {
 	}
 	
 	
+	public static int signup(User user){
+		HttpClient httpclient = new DefaultHttpClient();
+
+		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addUser.do"
+				+ "GOATname=clientTestUser&age=10&password=password123");
+		
+		System.out.println(httpget.getURI());
+		HttpResponse response;
+		try {
+			response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";	
+				while ((line = rd.readLine()) != null) {
+					System.out.println(line);
+				}
+				
+				int errorCode = Integer.parseInt(line);
+				return errorCode;
+			}
+			
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+			
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return 0;
+	}	
+	
+	public static int login(User user){
+		HttpClient httpclient = new DefaultHttpClient();
+
+		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "login.do"
+				+ "?name=" + user.getName() + "&password=" + user.getPassword());
+		
+		System.out.println(httpget.getURI());
+		HttpResponse response;
+		try {
+			response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";	
+				while ((line = rd.readLine()) != null) {
+					System.out.println(line);
+					int errorCode = Integer.parseInt(line);
+					return errorCode;
+				}
+				
+				
+			}
+			
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+			
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return 0;
+	}	
 	
 	public static void main(String[] argv){
-		
+		User user = new User();
+		user.setName("");
+		user.setPassword("");
+//		int errorCode = UserClient.signup(user);
+		int errorCode = UserClient.login(user);
+		System.out.println("errorcode : "+errorCode);
 	}
 }
