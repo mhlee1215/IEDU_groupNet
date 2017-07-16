@@ -38,7 +38,7 @@ public class GroupClient {
 		ArrayList<Group> groups = null;
 		
 		try{
-			InputStream in = new URL("http://localhost:8080/GroupNetWeb/" + "readGroup.do")
+			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroup.do")
 					.openStream();
 			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
 			Gson gson = new Gson();
@@ -61,7 +61,7 @@ public class GroupClient {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addGroup.do"
 				+ "?name="+name);
 		
 		System.out.println(httpget.getURI());
