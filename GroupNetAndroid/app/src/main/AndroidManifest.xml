@@ -24,5 +24,14 @@
         <activity android:name=".GroupSearchActivity">
 
         </activity>
+
+
+        <!-- SAMPLES -->
+        <activity android:name=".samples.dynamic_list.ListViewDemo" >
+
+        </activity>
+        <activity android:name=".samples.list.MyFragmentActivity" >
+
+        </activity>
     </application>
 </manifest>
