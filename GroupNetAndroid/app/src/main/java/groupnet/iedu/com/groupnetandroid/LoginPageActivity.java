@@ -13,8 +13,8 @@ public class LoginPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
     }
-    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
-    public void login (View view) {
+    //public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
+    public void loginButton (View view) {
         Intent intent = new Intent(this, MainActivity .class);
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
