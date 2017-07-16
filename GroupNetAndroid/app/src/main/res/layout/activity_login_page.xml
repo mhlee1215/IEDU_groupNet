@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="102dp"
+            android:layout_height="50dp"></LinearLayout>
+
+        <AutoCompleteTextView
+            android:layout_width="185dp"
+            android:layout_height="50dp"
+            android:text="Welcome to Groupnet"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="50dp">
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:hint="  Username/ID"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="50dp">
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:hint="    Password"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="50dp">
+        </LinearLayout>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Login"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="50dp">
+        </LinearLayout>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="Forgot Password? Click Here!"
+            android:textSize = "5pt"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="50dp">
+        </LinearLayout>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="Not A Member? Sign Up Now"
+            android:textSize = "5pt"/>
+    </LinearLayout>
+
+</LinearLayout>

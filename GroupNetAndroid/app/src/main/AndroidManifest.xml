@@ -33,5 +33,10 @@
         <activity android:name=".samples.list.MyFragmentActivity" >
 
         </activity>
+        <activity android:name=".GroupSearchActivity" />
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".CreateProfile1Activity" />
+        <activity android:name=".LoginPageActivity"></activity>
     </application>
+
 </manifest>
