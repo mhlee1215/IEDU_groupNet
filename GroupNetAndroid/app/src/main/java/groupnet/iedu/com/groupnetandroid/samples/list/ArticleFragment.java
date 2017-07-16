@@ -22,7 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.flashcard.iedu.flashcard.R;
+import groupnet.iedu.com.groupnetandroid.R;
+
 
 public class ArticleFragment extends Fragment {
     final static String ARG_POSITION = "position";

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation = "horizontal">
+
+        <AutoCompleteTextView
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="UserName*:"
+            android:textSize="8pt"/>
+
+        <EditText
+            android:id="@+id/FirstNameText"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+             />
+
+
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Password*:"
+            android:textSize="8pt"/>
+
+        <EditText
+            android:id="@+id/lastNameText"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+            android:id="@+id/email"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password*:"
+            android:textSize="8pt"/>
+
+        <EditText
+            android:id="@+id/emailText"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

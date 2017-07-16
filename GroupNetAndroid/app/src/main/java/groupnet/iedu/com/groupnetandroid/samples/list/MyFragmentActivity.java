@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
-import com.flashcard.iedu.flashcard.R;
+import groupnet.iedu.com.groupnetandroid.R;
+
 
 /**
  * Created by mhlee on 1/31/16.
@@ -56,36 +57,36 @@ public class MyFragmentActivity extends FragmentActivity implements HeadlinesFra
         // The user selected the headline of an article from the HeadlinesFragment
         // Do something here to display that article
 
-        ArticleFragment articleFrag = (ArticleFragment)
-                getSupportFragmentManager().findFragmentById(R.id.article_fragment);
+//        ArticleFragment articleFrag = (ArticleFragment)
+//                getSupportFragmentManager().findFragmentById(R.id.article_fragment);
+//
+//        if (articleFrag != null) {
+//            // If article frag is available, we're in two-pane layout...
+//
+//            // Call a method in the ArticleFragment to update its content
+//            articleFrag.updateArticleView(position);
 
-        if (articleFrag != null) {
-            // If article frag is available, we're in two-pane layout...
+        // Otherwise, we're in the one-pane layout and must swap frags...
 
-            // Call a method in the ArticleFragment to update its content
-            articleFrag.updateArticleView(position);
-        } else {
-            // Otherwise, we're in the one-pane layout and must swap frags...
+        // Create fragment and give it an argument for the selected article
+        ArticleFragment newFragment = new ArticleFragment();
+        Bundle args = new Bundle();
+        args.putInt(ArticleFragment.ARG_POSITION, position);
+        newFragment.setArguments(args);
 
-            // Create fragment and give it an argument for the selected article
-            ArticleFragment newFragment = new ArticleFragment();
-            Bundle args = new Bundle();
-            args.putInt(ArticleFragment.ARG_POSITION, position);
-            newFragment.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        // Replace whatever is in the fragment_container view with this fragment,
+        // and add the transaction to the back stack so the user can navigate back
+        if(container == 1)
+            transaction.replace(R.id.fragment_container, newFragment);
+        else if(container == 2)
+            transaction.replace(R.id.fragment_container2, newFragment);
 
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            if(container == 1)
-                transaction.replace(R.id.fragment_container, newFragment);
-            else if(container == 2)
-                transaction.replace(R.id.fragment_container2, newFragment);
+        transaction.addToBackStack(null);
 
-            transaction.addToBackStack(null);
+        // Commit the transaction
+        transaction.commit();
 
-            // Commit the transaction
-            transaction.commit();
-        }
     }
 }
