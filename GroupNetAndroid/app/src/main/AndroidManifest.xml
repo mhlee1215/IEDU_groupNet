@@ -18,11 +18,9 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
-        <activity android:name=".GroupSearchActivity">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".GroupSearchActivity"></activity>
+        <activity android:name=".CreateAccountActivity"></activity>
     </application>
+
 </manifest>
