@@ -21,6 +21,9 @@
  		SELECT ID, NAME, PASSWORD, AGE, EMAIL
 		FROM user
 		WHERE NAME=#name#
+		<isNotEmpty property="password">
+			and PASSWORD=#password#
+		</isNotEmpty>
  	</select>
  	
  	<insert id="addUser" parameterClass="com.iedu.domain.User">

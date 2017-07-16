@@ -1,4 +1,33 @@
 <resources>
     <string name="app_name">GroupNetAndroid</string>
     <string name="title_activity_login">LoginActivity</string>
+
+    <string name="first_name">John</string>
+    <string name="first_name_indicate">First Name*:</string>
+
+    <string name="last_name">Smith</string>
+    <string name="last_name_indicate">Last Name*:</string>
+
+    <string name="email_indicate">Email Address*:</string>
+
+    <string name="phone_number_indicate">Phone Number:</string>
+
+    <string name="required">Required*</string>
+
+    <string name="date_of_birth_indicate">Date of Birth*:</string>
+    <string name="date">  \Date</string>
+    <string name="month">  Month</string>
+    <string name="year">  Year</string>
+
+    <string name="street_indicate">Street:</string>
+
+    <string name="city_indicate">City:</string>
+
+    <string name="state_indicate">State:</string>
+
+    <string name="country_indicate">Country:</string>
+
+    <string name="school_indicate">School*:</string>
+
+    <string name="next">NEXT</string>
 </resources>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iedu.domain.Products;
+import com.iedu.domain.Signal;
 import com.iedu.domain.User;
 import com.iedu.service.ProductsService;
 import com.iedu.service.UserService;
@@ -46,19 +47,17 @@ public class UserController {
 		return model;
     }
 	
-	@RequestMapping("/loginTest.do")
-    public ModelAndView loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("/login.do")
+    public @ResponseBody String loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
 		
 		User user = userService.getUser(pName, pPassword);
 		
-		
-		ModelAndView model = new ModelAndView("login_test");
-		model.addObject("pName", pName);
-		model.addObject("pPassword", pPassword);
-		model.addObject("user", user);
-		return model;
+		if(user != null)
+			return Integer.toString(Signal.LOGIN_SUCCESS);
+		else
+			return Integer.toString(Signal.LOGIN_FAIL);
     }
 //	
 //	
