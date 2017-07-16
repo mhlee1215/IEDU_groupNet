@@ -55,7 +55,18 @@ public class UserService{
 			//Return unsuccess code
 			return 0;
 		}
+	}
+	
+	public int logInUser(User user) {
+		//
+		User goat = getUser(user.getName(), user.getPassword());
 		
-		
+		if(goat != null){
+			return 1;
+			//Return success code
+		}else{
+			//Return unsuccess code
+			return 0;
+		}
 	}
 }
