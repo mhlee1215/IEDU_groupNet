@@ -78,8 +78,8 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="50dp"
-            android:text="LoginButton"
-            android:onClick = "login"/>
+            android:text="Login"
+            android:onClick = "loginButton"/>
     </LinearLayout>
 
     <LinearLayout
