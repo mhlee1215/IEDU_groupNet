@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import com.iedu.client.*;
 import com.iedu.domain.Group;
 
+import java.util.List;
+
 import groupnet.iedu.com.groupnetandroid.R;
 import groupnet.iedu.com.groupnetandroid.samples.connection.ConnectionSample;
 
@@ -34,9 +36,14 @@ public class SampleActivity extends AppCompatActivity {
 
     public void readGroupInfo(View view){
         System.out.println("Run Connection!");
-        ConnectionSample cs = new ConnectionSample();
+        ConnectionSample cs = new ConnectionSample(this);
         //This will call doInBackground() function
         cs.execute("param1", "param2", "param3");
+        //System.out.println("ggggg"+groupList);
+    }
+
+    public void onLoadGroup(List<Group> groupList){
+        System.out.println("ggggg"+groupList);
     }
 
 }
