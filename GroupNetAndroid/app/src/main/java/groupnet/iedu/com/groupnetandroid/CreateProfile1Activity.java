@@ -1,5 +1,6 @@
 package groupnet.iedu.com.groupnetandroid;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -10,4 +11,5 @@ public class CreateProfile1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile1);
     }
+    Intent intent = getIntent();
 }

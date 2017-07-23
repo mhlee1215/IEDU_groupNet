@@ -231,7 +231,8 @@
             android:layout_width="80dp"
             android:layout_height="60dp"
             android:text = "@string/next"
-            android:textSize = "10pt"/>
+            android:textSize = "10pt"
+            />
 
     </LinearLayout>
 </LinearLayout>
