@@ -12,16 +12,32 @@
 
         <AutoCompleteTextView
             android:id="@+id/FirstName"
-            android:layout_width="140dp"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:text="@string/first_name_indicate"
+            android:textSize="8pt"
+            android:paddingRight="0dp"/>
+        <AutoCompleteTextView
+            android:layout_width="9dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/asterix"
+            android:textColor="#FF0000"
             android:textSize="8pt"/>
-
+        <AutoCompleteTextView
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
+            android:textSize="8pt"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"/>
         <EditText
             android:id="@+id/FirstNameText"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:hint="@string/first_name"
+            android:background="@drawable/border"
             android:singleLine="true" />
 
 
@@ -35,16 +51,34 @@
 
         <AutoCompleteTextView
             android:id="@+id/LastName"
-            android:layout_width="140dp"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:text="@string/last_name_indicate"
+            android:paddingRight="0dp"
             android:textSize="8pt"/>
+
+        <AutoCompleteTextView
+            android:layout_width="9dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/asterix"
+            android:textColor="#FF0000"
+            android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
+            android:textSize="8pt"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"/>
 
         <EditText
             android:id="@+id/lastNameText"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:hint="@string/last_name"/>
+            android:hint="@string/last_name"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -55,15 +89,32 @@
 
         <AutoCompleteTextView
             android:id="@+id/email"
-            android:layout_width="140dp"
+            android:layout_width="123dp"
             android:layout_height="wrap_content"
             android:text="@string/email_indicate"
+            android:paddingRight="0dp"
             android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="9dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/asterix"
+            android:textColor="#FF0000"
+            android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="8dp"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
+            android:textSize="8pt"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"/>
 
         <EditText
             android:id="@+id/emailText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -82,7 +133,8 @@
         <EditText
             android:id="@+id/phoneNumText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -93,28 +145,47 @@
 
         <AutoCompleteTextView
             android:id="@+id/DateOfBirth"
-            android:layout_width="140dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:text="@string/date_of_birth_indicate"
+            android:paddingRight="0dp"
             android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="9dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/asterix"
+            android:textColor="#FF0000"
+            android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="23dp"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
+            android:textSize="8pt"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"/>
 
         <EditText
             android:id="@+id/Date"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/date"/>
+            android:text="@string/date"
+            android:background="@drawable/border"/>
 
         <EditText
             android:id="@+id/Month"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/month"/>
+            android:text="@string/month"
+            android:background="@drawable/border"/>
 
         <EditText
             android:id="@+id/Year"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/year"/>
+            android:text="@string/year"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -133,7 +204,8 @@
         <EditText
             android:id="@+id/streetText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -152,7 +224,8 @@
         <EditText
             android:id="@+id/cityText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -171,7 +244,8 @@
         <EditText
             android:id="@+id/stateText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -190,7 +264,8 @@
         <EditText
             android:id="@+id/countryText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -201,15 +276,32 @@
 
         <AutoCompleteTextView
             android:id="@+id/School"
-            android:layout_width="140dp"
+            android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:text="@string/school_indicate"
+            android:paddingRight="0dp"
             android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="9dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/asterix"
+            android:textColor="#FF0000"
+            android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
+            android:textSize="8pt"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"/>
 
         <EditText
             android:id="@+id/SchoolText"
             android:layout_width="240dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"/>
 
     </LinearLayout>
 
@@ -220,10 +312,26 @@
 
         <AutoCompleteTextView
             android:id="@+id/text"
-            android:layout_width="140dp"
+            android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:text="@string/required"
-            android:textSize="9pt"/>
+            android:textSize="9pt"
+            android:paddingRight="0dp"/>
+        <AutoCompleteTextView
+            android:layout_width="9dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/asterix"
+            android:textColor="#FF0000"
+            android:textSize="8pt"/>
+        <AutoCompleteTextView
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
+            android:textSize="8pt"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"/>
         <LinearLayout
             android:layout_width="160dp"
             android:layout_height="60dp"></LinearLayout>
