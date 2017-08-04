@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="textLabelColor">#000000</color>
+
+    <color name="blue">#00abea</color>
+    <color name="white">#ffffff</color>
 </resources>
