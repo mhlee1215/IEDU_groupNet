@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import groupnet.iedu.com.groupnetandroid.Connections.ConnectionLogin;
 import groupnet.iedu.com.groupnetandroid.samples.components.SampleActivity;
@@ -27,9 +28,14 @@ public class LoginPageActivity extends AppCompatActivity {
 
         ConnectionLogin cl = new ConnectionLogin(this);
 
-        cl.execute("user", "password");
+        cl.execute(userId.getText().toString(), userPassword.getText().toString());
 
 
+
+    }
+
+    public void loginSuccess(){
+        System.out.println("success");
         Intent intent = new Intent(this, SampleActivity.class);
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
@@ -37,11 +43,8 @@ public class LoginPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void loginSuccess(){
-        System.out.println("success");
-    }
-
     public void loginFail(){
         System.out.println("fail");
+        Toast.makeText(this, "login failed", Toast.LENGTH_LONG).show();
     }
 }
