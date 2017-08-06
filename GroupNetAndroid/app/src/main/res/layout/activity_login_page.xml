@@ -38,6 +38,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/user_id"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:hint="  Username/ID"/>
@@ -57,6 +58,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/user_password"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:hint="    Password"/>
