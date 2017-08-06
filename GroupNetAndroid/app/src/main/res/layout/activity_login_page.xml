@@ -62,7 +62,8 @@
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:inputType="textPassword"
-            android:hint="    Password"/>
+            android:paddingLeft="11dp"
+            android:hint=" Password"/>
     </LinearLayout>
 
     <LinearLayout
