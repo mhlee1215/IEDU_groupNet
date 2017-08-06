@@ -14,18 +14,20 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".samples.components.SampleActivity"
             android:theme="@style/AppTheme.NoActionBar"            />
-        <activity android:name=".GroupSearchActivity" />
-        <activity android:name=".CreateAccountActivity" >
+        <activity android:name=".samples.gridview.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".samples.gridview.DetailsActivity"/>
+        <activity android:name=".GroupSearchActivity" />
+        <activity android:name=".CreateAccountActivity" >
+
+        </activity>
         <activity android:name=".CreateProfile1Activity" />
         <activity android:name=".LoginPageActivity">
-
-
         </activity>
     </application>
 
