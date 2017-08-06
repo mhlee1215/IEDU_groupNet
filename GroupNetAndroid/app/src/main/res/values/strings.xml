@@ -31,11 +31,9 @@
 
     <string name="next">NEXT</string>
 
-<<<<<<< HEAD
     <string name="asterix">*</string>
 
     <string name="colon">:</string>
-=======
     <string-array name="image_ids">
         <item>@drawable/image_1</item>
         <item>@drawable/image_2</item>
@@ -49,6 +47,4 @@
         <item>@drawable/add_new</item>
     </string-array>
 
-
->>>>>>> 89a4ec5a65648435e5810fbd1ceea2cd00ed9885
 </resources>
