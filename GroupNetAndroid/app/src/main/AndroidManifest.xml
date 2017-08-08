@@ -32,7 +32,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginPageActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
         <activity
             android:name=".GroupDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -46,7 +48,7 @@
 
         </activity>
         <activity android:name=".samples.tab.BottomNav2Activity"
-
+            android:theme="@style/AppTheme.NoActionBar"
             >
 
             <intent-filter>

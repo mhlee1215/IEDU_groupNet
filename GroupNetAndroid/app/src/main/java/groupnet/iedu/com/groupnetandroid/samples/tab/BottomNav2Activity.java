@@ -1,6 +1,7 @@
 package groupnet.iedu.com.groupnetandroid.samples.tab;
 
 import android.animation.Animator;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,9 +12,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.ImageView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter;
@@ -49,23 +55,67 @@ public class BottomNav2Activity extends AppCompatActivity {
         //setTheme(enabledTranslucentNavigation ? R.style.AppTheme_TranslucentNavigation : R.style.AppTheme);
         //setTheme(R.style.AppTheme);
         //getSupportActionBar().hide();
-
+        setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.menu_toolbar);
+        System.out.println("toolbar: "+toolbar);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
-        toolbar.setTitle("Nav title!!!!");
-        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("Nav title!!!!");
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        //getSupportActionBar().setDisplayUseLogoEnabled(true);
-//        //getSupportActionBar().setLogo(R.drawable.ic_logo);
-//        getSupportActionBar().setIcon(R.drawable.add_new); //shoudlbe 24 or 32 dp
+//        toolbar.setTitle("Nav title!!!!");
 
-        setContentView(R.layout.activity_home);
+        setSupportActionBar(toolbar);
+
+
+        toolbar.setTitle("Nav title!!!!");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setLogo(R.drawable.ic_logo);
+        //getSupportActionBar().setIcon(R.drawable.add_new); //shoudlbe 24 or 32 dp
+        //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+
         initUI();
+    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+//        return true;
+//    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.toolbar_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchManager searchManager = (SearchManager) BottomNav2Activity.this.getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView searchView = null;
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(BottomNav2Activity.this.getComponentName()));
+        }
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                System.out.println(query);
+
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                System.out.println(s);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

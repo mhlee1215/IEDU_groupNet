@@ -23,7 +23,7 @@
             android:layout_width="102dp"
             android:layout_height="50dp"></LinearLayout>
 
-        <AutoCompleteTextView
+        <TextView
             android:layout_width="185dp"
             android:layout_height="50dp"
             android:text="Welcome to Groupnet"/>
@@ -43,11 +43,15 @@
             android:layout_height="50dp">
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/user_id"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:hint="  Username/ID"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/user_id"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:hint="  Username/ID"/>
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -63,13 +67,17 @@
             android:layout_height="50dp">
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/user_password"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:inputType="textPassword"
-            android:paddingLeft="11dp"
-            android:hint=" Password"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/user_password"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:paddingLeft="11dp"
+                android:hint=" Password"/>
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout

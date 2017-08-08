@@ -5,24 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/menu_toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:maxHeight="?attr/actionBarSize"
-        android:theme="@style/ToolbarTheme"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:titleTextColor="@android:color/white"
-        android:background="?attr/colorPrimary"
-        app:titleTextAppearance="@style/Toolbar.TitleText"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        >
-    </android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/menu_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                >
+
+            </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floating_action_button"
