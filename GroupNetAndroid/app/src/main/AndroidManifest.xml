@@ -15,27 +15,45 @@
         <activity
             android:name=".samples.components.SampleActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".samples.gridview.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".samples.gridview.DetailsActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".GroupSearchActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CreateAccountActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CreateProfile1Activity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".LoginPageActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".samples.gridview.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".samples.gridview.DetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GroupSearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateProfile1Activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginPageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GroupDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".samples.SideNav.NavActivity"
+            android:label="@string/title_activity_nav"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".samples.tab.BottomNavActivity"
+            android:label="@string/title_activity_bottom_nav">
+
+        </activity>
+        <activity android:name=".samples.tab.BottomNav2Activity"
+
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-
-        <activity android:name=".GroupDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
     </application>
