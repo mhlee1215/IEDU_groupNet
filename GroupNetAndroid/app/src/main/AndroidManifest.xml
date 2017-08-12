@@ -11,14 +11,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".samples.components.SampleActivity"
@@ -40,28 +36,43 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginPageActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".GroupDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".samples.SideNav.NavActivity"
             android:label="@string/title_activity_nav"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".samples.tab.BottomNavActivity"
-            android:label="@string/title_activity_bottom_nav">
+            android:label="@string/title_activity_bottom_nav"></activity>
+        <activity
+            android:name=".samples.tab.BottomNav2Activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".samples.push.PushTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
-        <activity android:name=".samples.tab.BottomNav2Activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
 
+        <service
+            android:name=".samples.push.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 
+        <service
+            android:name=".samples.push.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
 
-        </activity>
     </application>
 
 </manifest>

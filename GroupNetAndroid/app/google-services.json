@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "630877512200",
+    "firebase_url": "https://groupnet-84fb3.firebaseio.com",
+    "project_id": "groupnet-84fb3",
+    "storage_bucket": "groupnet-84fb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630877512200:android:727df8215921201b",
+        "android_client_info": {
+          "package_name": "groupnet.iedu.com.groupnetandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630877512200-03s97puh13ipev3a6qq3b3cv54fph8au.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgOUDZx0AQgY8KhYViUs0LBnQZ-L29pOI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
