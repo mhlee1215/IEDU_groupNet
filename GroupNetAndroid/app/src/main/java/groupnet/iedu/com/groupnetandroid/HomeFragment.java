@@ -19,8 +19,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 
-import java.util.ArrayList;
+import com.iedu.domain.Group;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroup;
+import groupnet.iedu.com.groupnetandroid.Connections.ConnectionLogin;
 import groupnet.iedu.com.groupnetandroid.Domain.GroupItem;
 import groupnet.iedu.com.groupnetandroid.samples.gridview.ImageItem;
 import groupnet.iedu.com.groupnetandroid.samples.tab.BottomNav2Activity;
@@ -51,7 +56,10 @@ public class HomeFragment extends Fragment implements MainFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_demo_list, container, false);
-		initDemoList(view);
+		//initDemoList(view);
+		ConnectionGroup cl = new ConnectionGroup(view, this);
+		cl.execute();
+
 		return view;
 
 	}
@@ -69,7 +77,7 @@ public class HomeFragment extends Fragment implements MainFragment {
 	/**
 	 * Init the fragment
 	 */
-	private void initDemoList(View view) {
+	public void initDemoList(View view, List<Group> groupData) {
 
 		fragmentContainer = (FrameLayout) view.findViewById(R.id.fragment_container);
 		recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
@@ -82,7 +90,7 @@ public class HomeFragment extends Fragment implements MainFragment {
 //			itemsData.add("Fragment " + getArguments().getInt("index", -1) + " / Item " + i);
 //		}
 
-		HomeFragmentAdapter adapter = new HomeFragmentAdapter(getData());
+		HomeFragmentAdapter adapter = new HomeFragmentAdapter(groupData);
 		recyclerView.setAdapter(adapter);
 	}
 

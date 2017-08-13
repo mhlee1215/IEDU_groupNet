@@ -12,10 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.iedu.domain.Group;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import groupnet.iedu.com.groupnetandroid.Domain.GroupItem;
 
@@ -24,7 +27,7 @@ import groupnet.iedu.com.groupnetandroid.Domain.GroupItem;
  */
 public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapter.ViewHolder> {
 
-	private ArrayList<GroupItem> mDataset = new ArrayList<>();
+	private ArrayList<Group> mDataset = new ArrayList<>();
 
 	private HashMap<String, Bitmap> imageMap = new HashMap<String, Bitmap>();
 
@@ -38,7 +41,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		}
 	}
 
-	public HomeFragmentAdapter(ArrayList<GroupItem> dataset) {
+	public HomeFragmentAdapter(List<Group> dataset) {
 		mDataset.clear();
 		mDataset.addAll(dataset);
 	}
@@ -52,8 +55,8 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
-		holder.mTitleView.setText(mDataset.get(position).getTitle());
-		holder.mImageView.setImageBitmap(mDataset.get(position).getImage());
+		holder.mTitleView.setText(mDataset.get(position).getName());
+		//holder.mImageView.setImageBitmap(mDataset.get(position).getImage());
 
 //		Bitmap image = imageMap.get(position+"");
 //		if( image != null)
