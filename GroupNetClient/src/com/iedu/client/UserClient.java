@@ -149,6 +149,17 @@ public class UserClient {
 	}	
 	
 	public static int login(User user){
+		
+		try {
+			user.setName(URLEncoder.encode(user.getName(), "UTF-8"));
+			user.setEmail(URLEncoder.encode(user.getEmail(), "UTF-8"));
+			user.setPassword(URLEncoder.encode(user.getPassword(), "UTF-8"));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
 		HttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "login.do"

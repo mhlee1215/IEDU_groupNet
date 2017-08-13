@@ -1,5 +1,6 @@
 package com.iedu.web;
 
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +52,9 @@ public class UserController {
     public @ResponseBody String loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
+		
+		pName = URLDecoder.decode(pName, "UTF-8");
+		pPassword = URLDecoder.decode(pPassword, "UTF-8");
 		
 		User user = userService.getUser(pName, pPassword);
 		
