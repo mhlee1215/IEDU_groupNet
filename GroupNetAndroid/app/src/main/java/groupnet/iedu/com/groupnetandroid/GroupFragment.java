@@ -39,36 +39,10 @@ public class GroupFragment extends Fragment implements MainFragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//		if (getArguments().getInt("index", 0) == 0) {
-//			View view = inflater.inflate(R.layout.fragment_demo_settings, container, false);
-//			initDemoSettings(view);
-//			return view;
-//		} else {
-			View view = inflater.inflate(R.layout.fragment_demo_list, container, false);
-			initDemoList(view);
-			return view;
-//		}
+		View view = inflater.inflate(R.layout.fragment_group, container, false);
+		return view;
 	}
 
-	/**
-	 * Init the fragment
-	 */
-	private void initDemoList(View view) {
-
-		fragmentContainer = (FrameLayout) view.findViewById(R.id.fragment_container);
-		recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
-		recyclerView.setHasFixedSize(true);
-		layoutManager = new LinearLayoutManager(getActivity());
-		recyclerView.setLayoutManager(layoutManager);
-
-		ArrayList<String> itemsData = new ArrayList<>();
-		for (int i = 0; i < 50; i++) {
-			itemsData.add("Fragment " + getArguments().getInt("index", -1) + " / Item " + i);
-		}
-
-		DemoAdapter adapter = new DemoAdapter(itemsData);
-		recyclerView.setAdapter(adapter);
-	}
 
 	/**
 	 * Refresh

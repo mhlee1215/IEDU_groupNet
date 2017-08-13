@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.addItems(bottomNavigationItems);
 
 
-        bottomNavigation.setColored(true);
+        bottomNavigation.setColored(false);
 
         bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
         bottomNavigation.setTranslucentNavigationEnabled(true);
