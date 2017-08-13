@@ -36,7 +36,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
     public void loginSuccess(){
         System.out.println("success");
-        Intent intent = new Intent(this, SampleActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);

@@ -36,7 +36,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginPageActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".GroupDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -51,11 +59,7 @@
             android:name=".samples.tab.BottomNav2Activity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".samples.push.PushTestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
