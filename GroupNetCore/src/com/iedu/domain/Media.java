@@ -3,10 +3,19 @@ package com.iedu.domain;
 public class Media {
 	int id;
 	String path;
+	String name;
 	String date;
 	String size;
 	String type; 
 	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getPath() {
 		return path;
 	}
@@ -40,6 +49,7 @@ public class Media {
 	
 	@Override
 	public String toString() {
-		return "Media [id=" + id + ", path=" + path + ", date=" + date + ", size=" + size + ", type=" + type + "]";
+		return "{\"id\":\"" + id + "\", \"path\":\"" + path + "\", \"name\":\"" + name + "\", \"date\":\"" + date
+				+ "\", \"size\":\"" + size + "\", \"type\":\"" + type + "\"}";
 	}
 }

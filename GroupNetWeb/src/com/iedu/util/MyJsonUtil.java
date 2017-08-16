@@ -1,15 +1,20 @@
 package com.iedu.util;
-import java.util.List;
 
 public class MyJsonUtil{
 
 	public static String toString(Object data, String id) {
+		return toString(data, id, true);
+	}
+	
+	public static String toString(Object data, String id, boolean hasBrace) {
 		String json = "";
 		// TODO Auto-generated method stub
-		json += "{";
+		if(hasBrace)
+			json += "{";
 		json += "\""+id+"\":";
 		json += data.toString();
-		json += "}";
+		if(hasBrace)
+			json += "}";
 		return json;
 	}
 }

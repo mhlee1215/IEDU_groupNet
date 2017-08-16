@@ -9,27 +9,21 @@ import java.io.InputStreamReader;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.ContentBody;
-import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.util.EntityUtils;
 
 
 public class MediaClient {
 	
-	public static void fileUpload(String url, File file) {
-		CloseableHttpClient httpclient = null;
+	public static void fileUpload(String url, File file, String text) {
+		System.out.println("11file...MediClient:"+file+", "+text);
+		HttpClient httpclient = null;
 		try {
 			//Enter your host and port number...
 			HttpPost post = new HttpPost(url);
@@ -98,12 +92,7 @@ public class MediaClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			try {
-				httpclient.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//httpclient.getConnectionManager().shutdown();
 		}
 		return;
 	}	
@@ -115,7 +104,7 @@ public class MediaClient {
 	    //HttpPost httppost = new HttpPost("http://localhost:8080/GroupNetWeb/mediaUpload.do");
 	    File file = new File("/home/mhlee/test.pdf");
 	    System.out.println(file);
-	    MediaClient.fileUpload("http://localhost:8080/GroupNetWeb/mediaUpload.do", file);
+	    MediaClient.fileUpload("http://localhost:8080/GroupNetWeb/mediaUpload2.do", file, "text...");
 
 //	    MultipartEntity mpEntity = new MultipartEntity();
 //	    ContentBody cbFile = new FileBody(file, "multipart/form-data");
