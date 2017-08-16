@@ -123,5 +123,14 @@
 			<version>1.7.5</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<dependency>
+		  <groupId>GroupNet-Core</groupId>
+		  <artifactId>GroupNet-Core</artifactId>
+		  <version>1.0.0</version>
+		  <scope>system</scope>
+		  <systemPath>${basedir}/WebContent/WEB-INF/lib/iedu_groupnet_core.jar</systemPath>
+		</dependency>
+		
 	</dependencies>
 </project>
