@@ -64,7 +64,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		else
 			new DownloadImageTask((ImageView)holder.mImageView)
 					//.execute("http://52.52.168.137/think-forum-web/mediaDownloadWeb.do?path=20170810_023626_ad05c2dd-e5a9-40cd-a664-27f116a23164", position+"");
-					.execute("http://mhlee-pc.ics.uci.edu:8080/GroupNetWeb/mediaDownloadWeb.do?path=20170816_125158_c2506427-4324-47db-b9da-e36c4cb07d2e", position+"");
+					.execute("http://52.34.169.106:8080/GroupNetWeb/mediaDownloadWeb.do?path=20170816_200822_075c99ad-d1b2-4981-9e1b-69e35844f20d", position+"");
 	}
 
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

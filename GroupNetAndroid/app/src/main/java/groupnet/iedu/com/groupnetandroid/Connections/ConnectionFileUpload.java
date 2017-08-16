@@ -50,7 +50,7 @@ public class ConnectionFileUpload extends AsyncTask {
 
             File file = (File)arg0[0];
             System.out.println(">>>>>"+file);
-            MediaClient.fileUpload("http://mhlee-pc.ics.uci.edu:8080/GroupNetWeb/mediaUpload2.do", file, "text...");
+            MediaClient.fileUpload("http://52.34.169.106:8080/GroupNetWeb/mediaUpload2.do", file, "text...");
 
 //            CloseableHttpClient httpclient = null;
 //            httpclient = HttpClientBuilder.create().build();
