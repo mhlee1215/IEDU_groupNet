@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap      
-    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="MediaSql">
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MediaSql">
 
-	<resultMap id="Media" class="com.iedu.domain.Media">
+	<resultMap id="Media" type="com.iedu.domain.Media">
 		<result column="ID" property="id" />
 		<result column="PATH" property="path" />
 		<result column="DATE" property="date" />
@@ -18,19 +18,19 @@
  		FROM media
  	</select>
  	
- 	<select id="readMedia" resultMap ="Media" parameterClass="com.iedu.domain.Media">
+ 	<select id="readMedia" resultMap ="Media" parameterType="com.iedu.domain.Media">
  		SELECT ID, PATH, DATE, SIZE, TYPE
  		FROM media
  		WHERE ID=#id# and PATH=#path#
  		
  	</select>
  	
- 	<insert id = "addMedia" parameterClass="com.iedu.domain.Media">
+ 	<insert id = "addMedia" parameterType="com.iedu.domain.Media">
  		INSERT INTO media (`id`, `path`, `date`, `size`, `type`) 
  		VALUES (#id#, #path#, #date#, #size#, #type#);
  	</insert>
  	
- 	<update id="updateMedia" parameterClass = "com.iedu.domain.Media">
+ 	<update id="updateMedia" parameterType = "com.iedu.domain.Media">
  		UPDATE media
  		SET
  			ID=#id#,
@@ -39,12 +39,12 @@
  			ID=#id#
  	</update>
  	
- 	<delete id="deleteMedia" parameterClass = "com.iedu.domain.Media">
+ 	<delete id="deleteMedia" parameterType = "com.iedu.domain.Media">
  	DELETE FROM media
  	WHERE
  		ID=#id#
  	</delete>
  	
-</sqlMap>
+</mapper>
 
 

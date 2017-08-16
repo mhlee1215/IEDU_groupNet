@@ -39,21 +39,35 @@
   	</bean> 
 
 	
-	<bean id="multipartResolver"
-    	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    	<property name="maxUploadSize" value="10000000"/>
-    	<property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
-    </bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath*:query/**/*.xml" />
+	</bean>
+
+	<bean id="groupDao" class="com.iedu.dao.GroupDao">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
-	<!-- transaction manager -->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+	<bean id="mediaDao" class="com.iedu.dao.MediaDao">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
-	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-        <property name="configLocation" value="classpath:/conf/sqlMapConfig.xml" />
-        <!--  <property name="dataSource" ref="dataSource" /> -->
-    </bean>
+	<bean id="membershipDao" class="com.iedu.dao.MembershipDao">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="productsDao" class="com.iedu.dao.ProductsDao">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="tagDao" class="com.iedu.dao.TagDao">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="userDao" class="com.iedu.dao.UserDao">
+	   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 	
 	<!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
 

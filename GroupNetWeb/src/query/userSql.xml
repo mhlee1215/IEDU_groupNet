@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap      
-    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="UserSql">
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserSql">
 
-	<resultMap id="User" class="com.iedu.domain.User">
+	<resultMap id="User" type="com.iedu.domain.User">
 		<result column="ID" property="id" />
 		<result column="NAME" property="name" />
 		<result column="PASSWORD" property="password" />
@@ -17,21 +17,21 @@
 		FROM user
  	</select>
  	
- 	<select id="readUser" resultMap="User" parameterClass="com.iedu.domain.User">
+ 	<select id="readUser" resultMap="User" parameterType="com.iedu.domain.User">
  		SELECT ID, NAME, PASSWORD, AGE, EMAIL
 		FROM user
 		WHERE NAME=#name#
-		<isNotEmpty property="password">
+		<if test="password != '' and password != null">
 			and PASSWORD=#password#
-		</isNotEmpty>
+		</if>
  	</select>
  	
- 	<insert id="addUser" parameterClass="com.iedu.domain.User">
+ 	<insert id="addUser" parameterType="com.iedu.domain.User">
  		INSERT INTO user (`name`, `password`, `age`, `email`, `address`, `phoneNumber`) 
  		VALUES (#name#, #password#, #age#, #email#, #address#, #phoneNumber#)
  	</insert>
  	
- 	<update id="updateUser" parameterClass="com.iedu.domain.User">
+ 	<update id="updateUser" parameterType="com.iedu.domain.User">
  		UPDATE user
  		SET
  			NAME=#name#,
@@ -40,12 +40,12 @@
  			EMAIL=#email#
  	</update>
  	
- 	<delete id="deleteUser" parameterClass="com.iedu.domain.User">
+ 	<delete id="deleteUser" parameterType="com.iedu.domain.User">
  		DELETE FROM user
  		WHERE
  			EMAIL=#email#
  	</delete>
  
-</sqlMap>
+</mapper>
 
 

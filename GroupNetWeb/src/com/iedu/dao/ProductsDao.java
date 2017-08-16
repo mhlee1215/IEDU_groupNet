@@ -1,47 +1,51 @@
 package com.iedu.dao;
 
 import java.util.List;
+
 import javax.annotation.Resource;
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
-import com.ibatis.sqlmap.client.SqlMapClient;
+
 import com.iedu.domain.Products;
 
 @Repository
-public class ProductsDao extends SqlMapClientDaoSupport{
+public class ProductsDao extends SqlSessionDaoSupport{
 	
-	 @Resource(name="sqlMapClient")
-	 protected void initDAO(SqlMapClient sqlMapClient) {        
-		 this.setSqlMapClient(sqlMapClient);
+	@Resource
+	  public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory){
+	    super.setSqlSessionFactory(sqlSessionFactory);
 	 } 
 	
 	
 	@SuppressWarnings("unchecked")
 	public List<Products> findAll() {	
-		List<Products> array = getSqlMapClientTemplate().queryForList("ProductsSql.readProductsList");
+		List<Products> array = getSqlSession().selectList("ProductsSql.readProductsList");
 		return array;
 	}
 
 
 	public Products readUser(Products products) {
-		Products result = (Products)getSqlMapClientTemplate().queryForObject("ProductsSql.readProducts", products);
+		Products result = (Products)getSqlSession().selectOne("ProductsSql.readProducts", products);
 		return result;
 	}
 
 
 	public void createUser(Products products) {
-		getSqlMapClientTemplate().insert("ProductsSql.createProducts", products);
+		getSqlSession().insert("ProductsSql.createProducts", products);
 	}
 
 
 	public void deleteUser(Products products) {
-		getSqlMapClientTemplate().delete("ProductsSql.deleteProducts", products);
+		getSqlSession().delete("ProductsSql.deleteProducts", products);
 		
 	}
 
 
 	public void updateUser(Products products) {
-		getSqlMapClientTemplate().update("ProductsSql.updateProducts", products);
+		getSqlSession().update("ProductsSql.updateProducts", products);
 	}
 
 }

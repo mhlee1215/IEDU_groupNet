@@ -1,2 +1,8 @@
 .classpath
-WebConetent/WEB-INF/lib/iedu_groupnet_core.jar
+/WebConetent/WEB-INF/lib/iedu_groupnet_core.jar
+/target/
+/build/
+/autoGen/
+/.classpath
+/home/
+/src/.DS_Store

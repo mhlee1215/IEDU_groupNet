@@ -1,25 +1,28 @@
 package com.iedu.dao;
 
 import java.util.List;
+
 import javax.annotation.Resource;
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
-import com.ibatis.sqlmap.client.SqlMapClient;
-import com.iedu.domain.Products;
+
 import com.iedu.domain.User;
 
 @Repository
-public class UserDao extends SqlMapClientDaoSupport{
+public class UserDao extends SqlSessionDaoSupport{
 	
-	 @Resource(name="sqlMapClient")
-	 protected void initDAO(SqlMapClient sqlMapClient) {        
-		 this.setSqlMapClient(sqlMapClient);
-	 } 
+	@Resource
+	  public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory){
+	    super.setSqlSessionFactory(sqlSessionFactory);
+	 }
 	
 	
 	@SuppressWarnings("unchecked")
 	public List<User> userList() {	
-		List<User> array = getSqlMapClientTemplate().queryForList("UserSql.readUserList");
+		List<User> array = getSqlSession().selectList("UserSql.readUserList");
 		return array;
 	}
 	
@@ -30,19 +33,19 @@ public class UserDao extends SqlMapClientDaoSupport{
 		pUser.setName(name);
 		pUser.setPassword(password);
 		
-		User user = (User) getSqlMapClientTemplate().queryForObject("UserSql.readUser", pUser);
+		User user = (User) getSqlSession().selectOne("UserSql.readUser", pUser);
 		return user;
 	}
 	
 	public void addUser(User user){
-		getSqlMapClientTemplate().insert("UserSql.addUser", user);
+		getSqlSession().insert("UserSql.addUser", user);
 	}
 	
 	public void updateUser(User user){
-		getSqlMapClientTemplate().update("UserSql.updateUser", user);
+		getSqlSession().update("UserSql.updateUser", user);
 	}
 	
 	public void deleteUser(User user){
-		getSqlMapClientTemplate().delete("UserSql.deleteUser", user);
+		getSqlSession().delete("UserSql.deleteUser", user);
 	}
 }

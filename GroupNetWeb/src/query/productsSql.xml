@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap      
-    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="ProductsSql">
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductsSql">
 
-	<resultMap id="Products" class="com.iedu.domain.Products">
+	<resultMap id="Products" type="com.iedu.domain.Products">
 		<result column="PRODUCTCODE" property="productCode" />
 		<result column="PRODUCTNAME" property="productName" />
 		<result column="PRODUCTLINE" property="productLine" />
@@ -22,28 +22,28 @@
        SELECT PRODUCTCODE, PRODUCTNAME, PRODUCTLINE 
        FROM products
        WHERE PRODUCTCODE = #productCode# 
-       <isNotEmpty property="productName">
+       <if test="productName != '' and productName != null">
        and PRODUCTNAME = #productName#
-       </isNotEmpty>
+       </if>
 	</select>
 
-	<insert id="createProduct" parameterClass="com.iedu.domain.Products">
+	<insert id="createProduct" parameterType="com.iedu.domain.Products">
 		 INSERT INTO
 		 products (PRODUCTCODE, PRODUCTNAME, PRODUCTLINE )
 		 VALUES (#productCode#, #productName#, #productLine#)
 	</insert>
 	
-	<update id="updateProduct" parameterClass="com.iedu.domain.Products">
+	<update id="updateProduct" parameterType="com.iedu.domain.Products">
 		 UPDATE products SET
 		 PRODUCTCODE = #productCode#
-		 <isNotEmpty property="productName">
+		 <if test="productName != '' and productName != null">
 		 ,PRODUCTNAME = #productName#
-		 </isNotEmpty>
-		 <isNotEmpty property="productLine">
+		 </if>
+		 <if test="productLine != '' and productLine != null">
 		 ,PRODUCTLINE = #productLine#
-		 </isNotEmpty>
+		 </if>
 		 WHERE PRODUCTCODE = #productCode# 
 	</update>
-</sqlMap>
+</mapper>
 
 
