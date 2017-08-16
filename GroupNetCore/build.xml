@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Configuration of the Ant build system to generate a Jar file --> 
 <project name="TestMain" default="CreateJar">
+  <javac
+          srcdir="src"
+          destdir="bin"> 
+        <compilerarg 
+           compiler="org.eclipse.jdt.core.JDTCompilerAdapter" 
+           line="-warn:+unused -Xemacs"/>
+        <classpath refid="compile.classpath" />
+  </javac>
+
   <target name="CreateJar" description="Create Jar file">
         <jar destfile="../GroupNetWeb/WebContent/WEB-INF/lib/iedu_groupnet_core.jar" basedir="./bin" includes="**/*.class" />
         <jar destfile="../GroupNetClient/libs/iedu_groupnet_core.jar" basedir="./bin" includes="**/*.class" />
