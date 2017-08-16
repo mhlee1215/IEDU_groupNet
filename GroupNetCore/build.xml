@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Configuration of the Ant build system to generate a Jar file --> 
 <project name="TestMain" default="CreateJar">
-  <javac
+  <javac target="1.7" includeantruntime="false" 
           srcdir="src"
-          destdir="bin"> 
-        <compilerarg 
-           compiler="org.eclipse.jdt.core.JDTCompilerAdapter" 
-           line="-warn:+unused -Xemacs"/>
-        <classpath refid="compile.classpath" />
+          destdir="bin">  
   </javac>
 
   <target name="CreateJar" description="Create Jar file">
