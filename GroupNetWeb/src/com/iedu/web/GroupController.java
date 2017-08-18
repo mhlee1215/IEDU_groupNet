@@ -1,5 +1,8 @@
 package com.iedu.web;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +61,15 @@ public class GroupController {
 		//String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
 		String pUrl = ServletRequestUtils.getStringParameter(request, "url", "");
 
+		try {
+			pName = URLDecoder.decode(pName, "UTF-8");
+			pDescription = URLDecoder.decode(pDescription, "UTF-8");
+			pUrl = URLDecoder.decode(pUrl, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		Group pGroup = new Group();
 		//pGroup.setId(pId);
 		pGroup.setName(pName);

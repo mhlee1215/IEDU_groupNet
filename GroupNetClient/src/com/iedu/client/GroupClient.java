@@ -60,6 +60,16 @@ public class GroupClient {
 	public static int addGroup(String name, String desc, String url) {
 		
 		HttpClient httpclient = new DefaultHttpClient();
+		
+		try {
+			name = URLEncoder.encode(name, "UTF-8");
+			desc = URLEncoder.encode(desc, "UTF-8");
+			url = URLEncoder.encode(url, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addGroup.do"
 				+ "?name="+name+"&description="+desc+"&url="+url);

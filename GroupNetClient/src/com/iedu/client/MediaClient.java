@@ -71,15 +71,15 @@ public class MediaClient {
                     if (responseStream != null){
                         BufferedReader br = new BufferedReader (new InputStreamReader (responseStream)) ;
                         responseLine = br.readLine() ;
-                        String tempResponseString = "" ;
-                        while (responseLine != null){
-                            tempResponseString = tempResponseString + responseLine + System.getProperty("line.separator") ;
-                            responseLine = br.readLine() ;
-                        }
-                        br.close() ;
-                        if (tempResponseString.length() > 0){
-                            System.out.println(tempResponseString);
-                        }
+//                        String tempResponseString = "" ;
+//                        while (responseLine != null){
+//                            tempResponseString = tempResponseString + responseLine + System.getProperty("line.separator") ;
+//                            responseLine = br.readLine() ;
+//                        }
+//                        br.close() ;
+//                        if (tempResponseString.length() > 0){
+//                            System.out.println(tempResponseString);
+//                        }
                     }
                     responseStream.close();
 				}
@@ -106,8 +106,8 @@ public class MediaClient {
 	    //HttpPost httppost = new HttpPost("http://localhost:8080/GroupNetWeb/mediaUpload.do");
 	    File file = new File("/home/mhlee/test.pdf");
 	    System.out.println(file);
-	    MediaClient.fileUpload("http://localhost:8080/GroupNetWeb/mediaUpload2.do", file, "text...");
-
+	    String id = MediaClient.fileUpload("http://"+Env.host_url+":8080/GroupNetWeb/mediaUpload2.do", file, "text...");
+	    System.out.println("id="+id);
 //	    MultipartEntity mpEntity = new MultipartEntity();
 //	    ContentBody cbFile = new FileBody(file, "multipart/form-data");
 //	    mpEntity.addPart("file", cbFile);
