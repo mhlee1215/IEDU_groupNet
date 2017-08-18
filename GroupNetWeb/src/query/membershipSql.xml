@@ -18,7 +18,7 @@
 
 	<insert id="addMembership" parameterType="com.iedu.domain.Membership">
  		INSERT INTO membership ( `userID`, `groupID`, `enrollDate`)
- 		VALUES (#userID#, #groupID#, now() );
+ 		VALUES (#{userID}, #{groupID}, now() );
  	</insert>
  	
   	<update id="updateMembership" parameterType="com.iedu.domain.Membership">
@@ -26,21 +26,21 @@
   		SET 
   			ID=ID
   			<if test="enrollDate != '' and enrollDate != null">
-  			,enrollDate=#enrollDate#
+  			,enrollDate=#{enrollDate}
   			</if>
   			<if test="groupID > 0">
-  			,groupID=#groupID# 
+  			,groupID=#{groupID}
   			</if>
   			
   		WHERE 
-  			userID=#userID#
+  			userID=#{userID}
   
  	</update>
  	
  	<delete id="deleteMembership" parameterType= "com.iedu.domain.Membership">
  	DELETE FROM membership
  	WHERE
- 		ENROLLDATE = #enrollDate#
+ 		ENROLLDATE = #{enrollDate}
  	</delete>
  </mapper>
  		

@@ -2,12 +2,12 @@ package com.iedu.domain;
 
 public class Group {
 	int id;
-	String name;
-	String description;
-	String status;
-	String registration_date;
-	String url;
-	String url2; 
+	String name = "";
+	String description = "";
+	String status = "";
+	String registration_date = "";
+	String url = "";
+	String url2 = ""; 
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
 	public int getId() { 
 		return id;
