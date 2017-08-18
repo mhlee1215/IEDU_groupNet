@@ -21,28 +21,28 @@
  	<select id="readMedia" resultMap ="Media" parameterType="com.iedu.domain.Media">
  		SELECT ID, PATH, DATE, SIZE, TYPE
  		FROM media
- 		WHERE ID=#id# and PATH=#path#
+ 		WHERE ID=#{id} and PATH=#{path}
  		
  	</select>
  	
  	<insert id = "addMedia" parameterType="com.iedu.domain.Media">
  		INSERT INTO media (`id`, `path`, `date`, `size`, `type`) 
- 		VALUES (#id#, #path#, #date#, #size#, #type#);
+ 		VALUES (#{id}, #{path}, #{date}, #{size}, #{type});
  	</insert>
  	
  	<update id="updateMedia" parameterType = "com.iedu.domain.Media">
  		UPDATE media
  		SET
- 			ID=#id#,
- 			PATH=#path#
+ 			ID=#{id},
+ 			PATH=#{path}
  		WHERE
- 			ID=#id#
+ 			ID=#{id}
  	</update>
  	
  	<delete id="deleteMedia" parameterType = "com.iedu.domain.Media">
  	DELETE FROM media
  	WHERE
- 		ID=#id#
+ 		ID=#{id}
  	</delete>
  	
 </mapper>

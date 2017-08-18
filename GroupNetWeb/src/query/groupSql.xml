@@ -20,8 +20,8 @@
  	</select>
  	
  	<insert id="addGroup" parameterType = "com.iedu.domain.Group">
- 		INSERT INTO `group` (`id`, `name`, `description`, `status`, `registration_date`, `url`) 
- 		VALUES (#id#, #name#, #description#, #status#, #registration_date#, '$url2$');
+ 		INSERT INTO `group` (`name`, `description`, `status`, `registration_date`, `url`) 
+ 		VALUES (#{name}, #{description}, #{status}, now(), '${url2}');
  	</insert>
  	
  	<update id="updateGroup" parameterType="com.iedu.domain.Group">
@@ -29,19 +29,19 @@
  		SET 
  			ID = ID
  			<if test="name != '' and name != null">
- 			,name = #name#
+ 			,name = #{name}
  			</if>
  			<if test="description != '' and description != null">
- 			,description = #description#
+ 			,description = #{description}
  			</if>
  			<if test="status != '' and status != null">
- 			,status = #status#
+ 			,status = #{status}
  			</if>
  			<if test="registration_date != '' and registration_date != null">
- 			,registration_date = #registration_date#
+ 			,registration_date = #{registration_date}
  			</if>
  			<if test="url != '' and url != null">
- 			,url = #url#
+ 			,url = '${url}'
  			</if>
  			 
  		WHERE 
@@ -52,7 +52,7 @@
  		DELETE FROM `group` 
 
  		WHERE 
- 			ID = #id#
+ 			ID = #{id}
  	</delete>
  	
 </mapper>

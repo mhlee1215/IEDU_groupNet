@@ -20,30 +20,30 @@
  	<select id="readUser" resultMap="User" parameterType="com.iedu.domain.User">
  		SELECT ID, NAME, PASSWORD, AGE, EMAIL
 		FROM user
-		WHERE NAME=#name#
+		WHERE NAME=#{name}
 		<if test="password != '' and password != null">
-			and PASSWORD=#password#
+			and PASSWORD=#{password}
 		</if>
  	</select>
  	
  	<insert id="addUser" parameterType="com.iedu.domain.User">
  		INSERT INTO user (`name`, `password`, `age`, `email`, `address`, `phoneNumber`) 
- 		VALUES (#name#, #password#, #age#, #email#, #address#, #phoneNumber#)
+ 		VALUES (#{name}, #{password}, #{age}, #{email}, #{address}, #{phoneNumber})
  	</insert>
  	
  	<update id="updateUser" parameterType="com.iedu.domain.User">
  		UPDATE user
  		SET
- 			NAME=#name#,
- 			AGE=#age#
+ 			NAME=#{name},
+ 			AGE=#{age}
  		WHERE
- 			EMAIL=#email#
+ 			EMAIL=#{email}
  	</update>
  	
  	<delete id="deleteUser" parameterType="com.iedu.domain.User">
  		DELETE FROM user
  		WHERE
- 			EMAIL=#email#
+ 			EMAIL=#{email}
  	</delete>
  
 </mapper>

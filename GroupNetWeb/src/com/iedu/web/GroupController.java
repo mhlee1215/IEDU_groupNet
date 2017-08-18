@@ -51,19 +51,19 @@ public class GroupController {
 	
 	@RequestMapping("/addGroup.do")
     public @ResponseBody String addGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
+		//int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		String pDescription = ServletRequestUtils.getStringParameter(request, "description", "");
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
-		String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
+		//String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
 		String pUrl = ServletRequestUtils.getStringParameter(request, "url", "");
 
 		Group pGroup = new Group();
-		pGroup.setId(pId);
+		//pGroup.setId(pId);
 		pGroup.setName(pName);
 		pGroup.setDescription(pDescription);
 		pGroup.setStatus(pStatus);
-		pGroup.setRegistration_date(pRegistration_date);
+		//pGroup.setRegistration_date(pRegistration_date);
 		pGroup.setUrl2(pUrl);
 		
 		System.out.println(">>>"+pGroup);
