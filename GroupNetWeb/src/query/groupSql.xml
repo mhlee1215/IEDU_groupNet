@@ -17,6 +17,7 @@
 	<select id="readGroupList" resultMap="Group">
  		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL
 		FROM `group`
+		order by registration_date desc
  	</select>
  	
  	<insert id="addGroup" parameterType = "com.iedu.domain.Group">

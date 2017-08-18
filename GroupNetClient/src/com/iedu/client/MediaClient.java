@@ -21,7 +21,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class MediaClient {
 	
-	public static void fileUpload(String url, File file, String text) {
+	public static String fileUpload(String url, File file, String text) {
+		String responseLine = "";
 		System.out.println("11file...MediClient:"+file+", "+text);
 		HttpClient httpclient = null;
 		try {
@@ -61,6 +62,7 @@ public class MediaClient {
 			// execute the post request
 			HttpResponse response = httpclient.execute(post);
 			// Read the response HTML
+			
 			if (response != null) {
 				HttpEntity responseEntity = response.getEntity();
 				if (responseEntity != null) {
@@ -68,7 +70,7 @@ public class MediaClient {
 					InputStream responseStream = responseEntity.getContent() ;
                     if (responseStream != null){
                         BufferedReader br = new BufferedReader (new InputStreamReader (responseStream)) ;
-                        String responseLine = br.readLine() ;
+                        responseLine = br.readLine() ;
                         String tempResponseString = "" ;
                         while (responseLine != null){
                             tempResponseString = tempResponseString + responseLine + System.getProperty("line.separator") ;
@@ -94,7 +96,7 @@ public class MediaClient {
 		} finally {
 			//httpclient.getConnectionManager().shutdown();
 		}
-		return;
+		return responseLine;
 	}	
 	
 	public static void main(String[] args) throws Exception {
