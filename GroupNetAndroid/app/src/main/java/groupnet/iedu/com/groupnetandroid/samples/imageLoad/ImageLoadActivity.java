@@ -80,6 +80,4 @@ public class ImageLoadActivity extends AppCompatActivity {
     public void uploadFinished(){
         Toast.makeText(this, "Upload Finished", Toast.LENGTH_LONG).show();
     }
-
-
 }

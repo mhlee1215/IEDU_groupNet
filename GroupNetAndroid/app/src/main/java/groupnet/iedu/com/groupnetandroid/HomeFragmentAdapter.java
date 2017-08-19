@@ -61,10 +61,22 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		Bitmap image = imageMap.get(position+"");
 		if( image != null)
 			holder.mImageView.setImageBitmap(image);
-		else
-			new DownloadImageTask((ImageView)holder.mImageView)
+		else {
+
+			String id = "";
+			String defaultId = "20170816_200822_075c99ad-d1b2-4981-9e1b-69e35844f20d";
+			String url = mDataset.get(position).getUrl();
+			System.out.println("group?:"+mDataset.get(position));
+			System.out.println("url?:"+url);
+			if(mDataset.get(position).getUrl() != null && !mDataset.get(position).getUrl().isEmpty())
+				id = mDataset.get(position).getUrl();
+			else
+				id = defaultId;
+
+			new DownloadImageTask((ImageView) holder.mImageView)
 					//.execute("http://52.52.168.137/think-forum-web/mediaDownloadWeb.do?path=20170810_023626_ad05c2dd-e5a9-40cd-a664-27f116a23164", position+"");
-					.execute("http://52.34.169.106:8080/GroupNetWeb/mediaDownloadWeb.do?path=20170816_200822_075c99ad-d1b2-4981-9e1b-69e35844f20d", position+"");
+					.execute("http://52.34.169.106:8080/GroupNetWeb/mediaDownloadWeb.do?path="+id, position + "");
+		}
 	}
 
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
