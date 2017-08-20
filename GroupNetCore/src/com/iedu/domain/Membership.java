@@ -4,8 +4,8 @@ public class Membership {
 	
 	
 	int id;
-	int userID;
-	int groupID;
+	int userID = 0;
+	int groupID  = 0;
 	String enrollDate;
 	
 	
