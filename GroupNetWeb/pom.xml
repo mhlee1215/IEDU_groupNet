@@ -15,6 +15,13 @@
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
+			<resource>
+            <directory>/WEB-INF/conf/</directory>
+            <targetPath>${project.build.directory}</targetPath>
+            <includes>
+                <include>log4j.properties</include>
+            </includes>
+        </resource>
 		</resources>
 		<plugins>
 			<plugin>
