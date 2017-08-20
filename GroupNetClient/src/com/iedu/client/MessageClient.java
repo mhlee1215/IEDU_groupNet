@@ -115,12 +115,12 @@ public class MessageClient {
 //			message.setPassword(URLEncoder.encode(user.getPassword(), "UTF-8"));
 //		} catch (UnsupportedEncodingException e1) {
 //			e1.printStackTrace();
-//		}
-
+//		} 
+  
 		
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "send.do"
+	 	HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "send.do"
 				+ "?name=" + message.getId() + "&password=" + message.getSendID());
 		
 		System.out.println(httpget.getURI());
