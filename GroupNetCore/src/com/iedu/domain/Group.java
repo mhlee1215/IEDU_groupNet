@@ -4,7 +4,7 @@ public class Group {
 	int id;
 	String name = "";
 	String description = "";
-	String status = "";
+	String status = ""; 
 	String registration_date = "";
 	String url = "";
 	String url2 = ""; 

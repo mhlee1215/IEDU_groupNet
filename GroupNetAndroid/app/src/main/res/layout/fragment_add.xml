@@ -39,7 +39,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/add_group_label1">
             <EditText
                 android:id="@+id/group_name"
                 android:layout_width="250dp"
@@ -68,13 +69,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/add_group_label1">
             <EditText
                 android:id="@+id/group_desc"
                 android:layout_width="250dp"
                 android:layout_height="150dp"
                 android:inputType="textMultiLine"
-                android:paddingLeft="11dp" />
+                 />
         </android.support.design.widget.TextInputLayout>
 
         <Button
