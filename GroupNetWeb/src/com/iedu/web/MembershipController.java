@@ -84,7 +84,7 @@ public class MembershipController {
 
 
 	@RequestMapping("/addMembership.do")
-    public ModelAndView loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public @ResponseBody String loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//localhost:8080/WebTemplate/addMembership.do?id=10&name=abc&password...
 		
 		int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
@@ -103,14 +103,14 @@ public class MembershipController {
 		membershipService.addMembership(pMembership);
 		membershipService.updateMembership(pMembership);
 		
-		ModelAndView model = new ModelAndView("add_membership_test");
-		 model.addObject("id", pId);
-		 model.addObject("userID", pUserID);
-		 model.addObject("groupID", pGroupID);
-		 model.addObject("enrollDate", pEnrollDate);
+//		ModelAndView model = new ModelAndView("add_membership_test");
+//		 model.addObject("id", pId);
+//		 model.addObject("userID", pUserID);
+//		 model.addObject("groupID", pGroupID);
+//		 model.addObject("enrollDate", pEnrollDate);
 
 	
-		return model;
+		return "success";
     }
 	
 	@RequestMapping("/updateMembership.do")
