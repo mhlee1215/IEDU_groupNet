@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MessageSql">
+
+	<resultMap id="Message" class="com.iedu.domain.Message">
+		<result column="ID" property="id" />
+		<result column="SENDID" property="sendID" />
+		<result column="RECIEVEID" property="recieveID" />
+		<result column="TEXT" property="text" />
+		<result column="TIME" property="time" />	
+		
+ 	</resultMap>
+ 	
+ 	<select id="readMessageList" resultMap="Message">
+ 		SELECT ID, SENDERID, RECIEVEID, TEXT, TIME
+		FROM message
+		WHERE	
+			1==1
+			<isNotEmpty property="sendID">
+ 			and SENDID = #sendID#
+ 			</isNotEmpty>
+ 			
+ 			<isNotEmpty property="recieveID">
+ 			and RECIEVEID = #recieveID#
+ 			</isNotEmpty>
+ 	</select>
+ 	
+ 	<insert id="addMessage" parameterClass="com.iedu.domain.Message">
+ 		INSERT INTO message (`id`, `sendID`, `recieveID`, `text`, `time`) 
+ 		VALUES (#id#, #sendID#, #recieveID#, #text#, #time#)
+ 	</insert>
+ 	
+ 	<delete id="deleteMessage" parameterClass="com.iedu.domain.Message">
+ 		DELETE FROM message
+ 		WHERE
+ 			SENDID=#sendID#
+ 	</delete>
+ 
+</sqlMap>
+
+
