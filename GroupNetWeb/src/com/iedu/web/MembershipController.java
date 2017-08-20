@@ -140,7 +140,7 @@ public class MembershipController {
 		return model;
     }
 	@RequestMapping("/deleteMembership.do")
-    public ModelAndView deleteMembership(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public @ResponseBody String deleteMembership(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//localhost:8080/WebTemplate/deleteMembership.do?id=10&name=abc&password...
 		
 		int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
@@ -156,13 +156,13 @@ public class MembershipController {
 		
 		membershipService.deleteMembership(pMembership);
 		
-		ModelAndView model = new ModelAndView("add_membership_test");
-		 model.addObject("id", pId);
-		 model.addObject("userID", pUserID);
-		 model.addObject("groupID", pGroupID);
-		 model.addObject("enrollDate", pEnrollDate);
+//		ModelAndView model = new ModelAndView("add_membership_test");
+//		 model.addObject("id", pId);
+//		 model.addObject("userID", pUserID);
+//		 model.addObject("groupID", pGroupID);
+//		 model.addObject("enrollDate", pEnrollDate);
 		
-		return model;
+		return "success";
     }
 	
 }

@@ -40,7 +40,8 @@
  	<delete id="deleteMembership" parameterType= "com.iedu.domain.Membership">
  	DELETE FROM membership
  	WHERE
- 		ENROLLDATE = #{enrollDate}
+ 		userID=#{userID} and groupID=#{groupID}
+ 		<!--ENROLLDATE = #{enrollDate}-->
  	</delete>
  </mapper>
  		

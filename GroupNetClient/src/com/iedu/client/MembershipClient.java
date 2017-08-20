@@ -126,7 +126,7 @@ public class MembershipClient {
 
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "deleteMembership.do" + "?userid="+userid + "&groupid="+groupid);
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "deleteMembership.do" + "?userID="+userid + "&groupID="+groupid);
 
 		System.out.println(httpget.getURI());
 		HttpResponse response;
@@ -157,7 +157,7 @@ public class MembershipClient {
 	}
 
 	public static void main(String[] argv){
-		MembershipClient.Groupjoin("777" , "80");
+		//MembershipClient.Groupjoin("777" , "80");
 
 		//List<Membership> groupList = MembershipClient.readMyMemberships(123);
 		//System.out.println("group size:"+groupList.size());
@@ -165,7 +165,7 @@ public class MembershipClient {
 		//List<Membership> groupList = MembershipClient.readGroupMemberships();
 		//System.out.println("group size:"+groupList.size());
 
-		//GroupClient.Groupleave("123", "90");
+		MembershipClient.Groupleave("777", "80");
 
 
 	}
