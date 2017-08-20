@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap      
-    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="MessageSql">
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MessageSql">
 
-	<resultMap id="Message" class="com.iedu.domain.Message">
+	<resultMap id="Message" type="com.iedu.domain.Message">
 		<result column="ID" property="id" />
 		<result column="SENDID" property="sendID" />
 		<result column="RECIEVEID" property="recieveID" />
@@ -18,26 +18,27 @@
 		FROM message
 		WHERE	
 			1==1
-			<isNotEmpty property="sendID">
- 			and SENDID = #sendID#
- 			</isNotEmpty>
+			
+			<if test="sendID != '' and sendID != null">
+ 			and SENDID = #{sendID}
+ 			</if>
  			
- 			<isNotEmpty property="recieveID">
- 			and RECIEVEID = #recieveID#
- 			</isNotEmpty>
+ 			<if test="recieveID != '' and recieveID != null">
+ 			and RECIEVEID = #{recieveID}
+ 			</if>
  	</select>
  	
- 	<insert id="addMessage" parameterClass="com.iedu.domain.Message">
+ 	<insert id="addMessage" parameterType="com.iedu.domain.Message">
  		INSERT INTO message (`id`, `sendID`, `recieveID`, `text`, `time`) 
- 		VALUES (#id#, #sendID#, #recieveID#, #text#, #time#)
+ 		VALUES (#{id}, #{sendID}, #{recieveID}, #{text}, #{time})
  	</insert>
  	
- 	<delete id="deleteMessage" parameterClass="com.iedu.domain.Message">
+ 	<delete id="deleteMessage" parameterType="com.iedu.domain.Message">
  		DELETE FROM message
  		WHERE
  			SENDID=#sendID#
  	</delete>
  
-</sqlMap>
+</mapper>
 
 
