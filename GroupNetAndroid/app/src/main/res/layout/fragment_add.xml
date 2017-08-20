@@ -13,39 +13,70 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add New Group"
+            android:textSize="17pt"
+            android:textColor="#000000"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            />
+
+
+        <TextView
+            android:id="@+id/add_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_group_label1"
+            android:text="Group Name:"
+            android:textSize="10pt"
+            android:textColor="#000000"
+            android:layout_centerHorizontal="false"
+            android:paddingLeft="7dp"
+            android:layout_alignLeft="@id/add_group_label1"
             />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/group_name_layout"
-            android:layout_below="@id/add_group_label1"
+            android:layout_below="@id/add_group_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/add_group_label1">
             <EditText
                 android:id="@+id/group_name"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:inputType="text"
                 android:paddingLeft="11dp"
-                android:hint=" GroupName"/>
+                />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/add_group_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group_name_layout"
+            android:text="Group Description:"
+            android:textSize="10pt"
+            android:textColor="#000000"
+            android:layout_centerHorizontal="false"
+            android:paddingLeft="7dp"
+            android:layout_alignLeft="@id/add_group_label1"
+            />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/group_desc_layout"
-            android:layout_below="@id/group_name_layout"
+            android:layout_below="@id/add_group_desc"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/add_group_label1">
             <EditText
                 android:id="@+id/group_desc"
                 android:layout_width="250dp"
                 android:layout_height="150dp"
                 android:inputType="textMultiLine"
-                android:paddingLeft="11dp"
-                android:hint=" Group desc"/>
+                 />
         </android.support.design.widget.TextInputLayout>
 
         <Button
