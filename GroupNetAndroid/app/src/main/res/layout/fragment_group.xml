@@ -34,12 +34,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.26"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:weightSum="1">
 
                     <TextView
                         android:id="@+id/textView8"
-                        android:layout_width="57dp"
+                        android:layout_width="91dp"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
                         android:text="10"
                         android:textColor="@color/textLabelColor"
                         android:textSize="15pt" />
@@ -48,6 +50,7 @@
                         android:id="@+id/textView7"
                         android:layout_width="264dp"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="14dp"
                         android:text="Groups"
                         android:textColor="@color/textLabelColor"
                         android:textSize="10pt" />
