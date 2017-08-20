@@ -29,6 +29,15 @@ public class MembershipService{
 		return membershipDao.readMembership();
 	}
 	
+	public List<Membership> readMyMembership(Membership m) {
+		return membershipDao.readMyMembership(m);
+	}
+	
+	public List<Membership> readGroupMembership(Membership m) {
+		return membershipDao.readGroupMembership(m);
+	}
+
+	
 	public void addMembership (Membership member){
 		membershipDao.addMembership(member);
 	}
