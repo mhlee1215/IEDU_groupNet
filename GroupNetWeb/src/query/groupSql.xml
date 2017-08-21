@@ -14,10 +14,11 @@
 		
  	</resultMap>
 
-	<select id="readGroupList" resultMap="Group">
+	<select id="readGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
  		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL
 		FROM `group`
 		order by registration_date desc
+		limit #{qSize}
  	</select>
  	
  	<insert id="addGroup" parameterType = "com.iedu.domain.Group">

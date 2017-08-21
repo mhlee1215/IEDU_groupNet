@@ -12,7 +12,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import com.iedu.domain.Message;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import groupnet.iedu.com.groupnetandroid.samples.tab.DemoAdapter;
 
@@ -24,6 +27,10 @@ public class ChatFragment extends Fragment implements MainFragment {
 	private FrameLayout fragmentContainer;
 	private RecyclerView recyclerView;
 	private RecyclerView.LayoutManager layoutManager;
+
+	private RecyclerView mMessageRecycler;
+	private ChatListAdapter mMessageAdapter;
+
 
 	/**
 	 * Create a new instance of the fragment
@@ -40,6 +47,35 @@ public class ChatFragment extends Fragment implements MainFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_chat, container, false);
+
+		List<Message> messageList = new ArrayList<Message>();
+
+		{
+			Message m = new Message();
+			m.setSendID(123);
+			m.setRecieveID(234);
+			m.setText("Heihi");
+			m.setCreatedAt(123123);
+			messageList.add(m);
+		}
+
+		{
+			Message m = new Message();
+			m.setSendID(123);
+			m.setRecieveID(234);
+			m.setText("Heihi1231");
+			m.setCreatedAt(123123);
+			messageList.add(m);
+		}
+
+		mMessageRecycler = (RecyclerView) view.findViewById(R.id.reyclerview_message_list);
+		mMessageAdapter = new ChatListAdapter(getActivity(), messageList);
+		mMessageRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+		mMessageRecycler.setAdapter(mMessageAdapter);
+
+
 		return view;
 	}
 

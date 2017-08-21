@@ -8,6 +8,7 @@ public class Group {
 	String registration_date = "";
 	String url = "";
 	String url2 = ""; 
+	int qSize = 10;
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
 	
 	
@@ -78,6 +79,14 @@ public class Group {
 	public static void main(String[] argv){
 		Group g = new Group();
 		System.out.println(g);
+	}
+
+	public int getqSize() {
+		return qSize;
+	}
+
+	public void setqSize(int qSize) {
+		this.qSize = qSize;
 	}
 	
 	
