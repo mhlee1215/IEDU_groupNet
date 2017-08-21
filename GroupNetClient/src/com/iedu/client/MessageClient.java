@@ -30,81 +30,59 @@ import com.iedu.domain.Group;
 //import edu.iedu.flashcard.var.Env;
 import com.iedu.domain.GroupBin;
 import com.iedu.domain.Message;
+import com.iedu.domain.MessageBin;
 import com.iedu.domain.User;
 
 public class MessageClient {
 	
-	public static int clientTest() {
-		
-		HttpClient httpclient = HttpClientBuilder.create().build(); 
-		
-		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "addUser.do"
-				+ "?name=clientTestUser&age=10&password=password123");
-		
-		System.out.println(httpget.getURI());
-		HttpResponse response;
-		try {
-			response = httpclient.execute(httpget);
-			HttpEntity entity = response.getEntity();
-			if (entity != null) {
-				BufferedReader rd = new BufferedReader(new InputStreamReader(
-						response.getEntity().getContent()));
-
-				String line = "";
-				while ((line = rd.readLine()) != null) {
-					System.out.println(line);
-				}
-			}
-			
-			httpget.abort();
-			
-			httpclient.getConnectionManager().shutdown();
-			
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			httpclient.getConnectionManager().shutdown();
-		}
-		return 0;
-	}
-	
-	public static int showMessage(Message message){
+	public static List<Message> showMyMessage(int recieveID){
 		HttpClient httpclient = new DefaultHttpClient();
-
-		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "showMessage.do"
-				+ "GOATname=clientTestUser&age=10&password=password123");
+		ArrayList<Message> messages = null;
 		
-		System.out.println(httpget.getURI());
-		HttpResponse response;
-		try {
-			response = httpclient.execute(httpget);
-			HttpEntity entity = response.getEntity();
-			if (entity != null) {
-				BufferedReader rd = new BufferedReader(new InputStreamReader(
-						response.getEntity().getContent()));
+		try{
+			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "showMessage.do"
+									+"?receiveID="+recieveID)
+					.openStream();
+			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+			Gson gson = new Gson();
+			MessageBin messageBin = gson.fromJson(reader,	MessageBin.class);
+			messages = (ArrayList<Message>) messageBin.getMessages();
 
-				String line = "";	
-				while ((line = rd.readLine()) != null) {
-					System.out.println(line);
-				}
-				
-				int errorCode = Integer.parseInt(line);
-				return errorCode;
-			}
 			
-			httpget.abort();
-			httpclient.getConnectionManager().shutdown();
-			
-		} catch (ClientProtocolException e) {
+		}catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
-		return 0;
+		
+		return messages;
+	}	
+
+	public static List<Message> showMessage(int receiveID, int sendID){
+		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<Message> messages = null;
+		
+		try{
+			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "showMessage.do"
+									+"?sendID="+sendID+"&receiveID="+receiveID)
+					.openStream();
+			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+			Gson gson = new Gson();
+			MessageBin messageBin = gson.fromJson(reader,	GroupBin.class);
+			messages = (ArrayList<Message>) messageBin.getMessages();
+
+			
+		}catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		
+		return messages;
 	}	
 	
 	public static int send(Message message){
@@ -156,11 +134,6 @@ public class MessageClient {
 	}	
 	
 	public static void main(String[] argv){
-		User user = new User();
-		user.setName("sam");
-		user.setPassword("4321");
-//		int errorCode = UserClient.signup(user);
-//		int errorCode = MessageClient.send(message);
-//		System.out.println("errorcode : "+errorCode);
+		System.out.println(MessageClient.showMyMessage(10));
 	}
 }

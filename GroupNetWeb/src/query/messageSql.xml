@@ -10,14 +10,13 @@
 		<result column="RECIEVEID" property="recieveID" />
 		<result column="TEXT" property="text" />
 		<result column="TIME" property="time" />	
-		
  	</resultMap>
  	
- 	<select id="readMessageList" resultMap="Message">
- 		SELECT ID, SENDERID, RECIEVEID, TEXT, TIME
+ 	<select id="readMessageList" resultMap="Message" parameterType="com.iedu.domain.Message">
+ 		SELECT ID, SENDID, RECIEVEID, TEXT, TIME
 		FROM message
 		WHERE	
-			1==1
+			1=1
 			
 			<if test="sendID != '' and sendID != null">
  			and SENDID = #{sendID}
@@ -29,8 +28,8 @@
  	</select>
  	
  	<insert id="addMessage" parameterType="com.iedu.domain.Message">
- 		INSERT INTO message (`id`, `sendID`, `recieveID`, `text`, `time`) 
- 		VALUES (#{id}, #{sendID}, #{recieveID}, #{text}, #{time})
+ 		INSERT INTO message (`sendID`, `recieveID`, `text`, `time`) 
+ 		VALUES (#{sendID}, #{recieveID}, #{text}, now())
  	</insert>
  	
  	<delete id="deleteMessage" parameterType="com.iedu.domain.Message">

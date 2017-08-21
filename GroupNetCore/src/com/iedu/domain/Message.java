@@ -39,8 +39,8 @@ public class Message {
 	}
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", sendID=" + sendID + ", recieveID=" + recieveID + ", text=" + text + ", time="
-				+ time + "]";
+		return "{\"id\":\"" + id + "\", \"sendID\":\"" + sendID + "\", \"recieveID\":\"" + recieveID + "\", \"text\":\""
+				+ text + "\", \"time\":\"" + time + "\"}";
 	}
 
 }

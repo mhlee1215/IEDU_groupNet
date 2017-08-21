@@ -47,18 +47,18 @@ public class MessageController {
 	
 	@RequestMapping("/send.do") //  http://localhost:8080/WebTemplate/addUser.do
     public @ResponseBody String addMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int pId = 			ServletRequestUtils.getIntParameter(request, "id"		, 0);
+		//int pId = 			ServletRequestUtils.getIntParameter(request, "id"		, 0);
 		int pSendID = 			ServletRequestUtils.getIntParameter(request, "sendID"		, 0);
 		int pRecieveID = 		ServletRequestUtils.getIntParameter(request, "recieveID"	, 0);
 		String pText = 			ServletRequestUtils.getStringParameter(request, "text"		, "");
-		String pTime = 		ServletRequestUtils.getStringParameter(request, "time"		, "");
+		//String pTime = 		ServletRequestUtils.getStringParameter(request, "time"		, "");
 		
 		Message pMessage = new Message();
-		pMessage.setId(pId);
+		//pMessage.setId(pId);
 		pMessage.setSendID(pSendID);
 		pMessage.setRecieveID(pRecieveID);
 		pMessage.setText(pText);
-		pMessage.setTime(pTime);
+		//pMessage.setTime(pTime);
 		
 		
 		messageService.addMessage(pMessage);
