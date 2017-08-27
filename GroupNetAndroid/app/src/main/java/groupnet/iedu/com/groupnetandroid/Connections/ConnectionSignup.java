@@ -17,7 +17,7 @@ import groupnet.iedu.com.groupnetandroid.LoginPageActivity;
 public class ConnectionSignup extends AsyncTask {
 
     private CreateAccountActivity context;
-    int returnCode;
+    String returnCode;
 
     public ConnectionSignup(Context context){
         this.context = (CreateAccountActivity)context;
@@ -45,7 +45,7 @@ public class ConnectionSignup extends AsyncTask {
         super.onPostExecute(o);
         context.showLoading(false);
         //If login success
-        if( returnCode == Signal.LOGIN_FAIL) {
+        if("fail".equals(returnCode)) {
             context.signupFail();
         }
         else{

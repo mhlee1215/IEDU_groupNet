@@ -31,7 +31,6 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="2dp"
-                    android:layout_marginDown="2dp"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="20dp"
                     android:src="@drawable/image_1"
@@ -49,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="UserID112"
-                        android:textColor="#/00000"
+                        android:textColor="#000000"
                         android:textSize="8pt" />
                     <TextView
                         android:id="@+id/location"
@@ -87,7 +86,7 @@
                     android:layout_alignParentLeft="true"
                     android:textSize="10pt"
                     android:textStyle="bold"
-                    android:textColor="#/00000"/>
+                    android:textColor="#000000"/>
 
                 <ImageButton
                     android:id="@+id/button_group_favorite"

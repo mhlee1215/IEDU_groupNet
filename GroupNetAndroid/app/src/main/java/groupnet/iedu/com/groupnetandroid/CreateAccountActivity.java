@@ -49,7 +49,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         Toast.makeText(this, "signup failed", Toast.LENGTH_LONG).show();
     }
 
-    public void signupSuccess(int returnCode){
+    public void signupSuccess(String returnCode){
         Intent intent = new Intent(this, CreateProfile1Activity.class);
         startActivity(intent);
     }

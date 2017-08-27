@@ -40,7 +40,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		public ViewHolder(View v) {
 			super(v);
 			mTitleView = (TextView) v.findViewById(R.id.GroupName);
-			mOwnerView = (TextView) v.findViewById(R.id.layout_item_home_title);
+			mOwnerView = (TextView) v.findViewById(R.id.userName);
 			mDescView = (TextView) v.findViewById(R.id.editGroupDescription);
 
 			mImageView = (ImageView) v.findViewById(R.id.layout_item_home_image);
