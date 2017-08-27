@@ -50,7 +50,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     public void signupSuccess(String returnCode){
-        Intent intent = new Intent(this, CreateProfile1Activity.class);
+        Toast.makeText(this, "signup success", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, LoginPageActivity.class);
         startActivity(intent);
     }
 }
