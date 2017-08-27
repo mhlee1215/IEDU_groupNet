@@ -34,7 +34,6 @@ public class FileFromBitmapFragment extends AsyncTask<Void, Integer, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-
         System.out.println("bitmap??? : "+bitmap);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -47,7 +46,7 @@ public class FileFromBitmapFragment extends AsyncTask<Void, Integer, String> {
             //Bitmap bitmap = your bitmap;
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             //bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 30 /*ignored for PNG*/, bos);
             byte[] bitmapdata = bos.toByteArray();
 
 //write the bytes in file

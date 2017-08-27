@@ -20,8 +20,8 @@ public class GroupDao extends SqlSessionDaoSupport{
 	 }
 	
 	@SuppressWarnings("unchecked")
-	public List<Group> readGroup() {	
-		List<Group> array = getSqlSession().selectList("GroupSql.readGroupList");
+	public List<Group> readGroup(Group group) {	
+		List<Group> array = getSqlSession().selectList("GroupSql.readGroupList", group);
 		return array;
 	}
 	

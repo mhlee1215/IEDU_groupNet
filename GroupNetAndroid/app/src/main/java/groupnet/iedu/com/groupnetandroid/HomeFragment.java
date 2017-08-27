@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
@@ -39,6 +40,9 @@ public class HomeFragment extends Fragment implements MainFragment {
 	private FrameLayout fragmentContainer;
 	private RecyclerView recyclerView;
 	private RecyclerView.LayoutManager layoutManager;
+	private SwipeRefreshLayout swipeRefreshLayout;
+	private HomeFragmentAdapter adapter;
+	private HomeFragment homeFragment;
 
 	/**
 	 * Create a new instance of the fragment
@@ -54,8 +58,27 @@ public class HomeFragment extends Fragment implements MainFragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+		homeFragment = this;
 		View view = inflater.inflate(R.layout.fragment_demo_list, container, false);
+
+		swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swiperefresh);
+		swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+//				System.out.println("refresh!!");
+//				swipeRefreshLayout.setRefreshing(false);
+				ConnectionGroup cl = new ConnectionGroup(view, homeFragment);
+				cl.execute();
+			}
+		});
+
+		fragmentContainer = (FrameLayout) view.findViewById(R.id.fragment_container);
+		recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
+		recyclerView.setHasFixedSize(true);
+		layoutManager = new LinearLayoutManager(getActivity());
+		recyclerView.setLayoutManager(layoutManager);
+
+
 		//initDemoList(view);
 		ConnectionGroup cl = new ConnectionGroup(view, this);
 		cl.execute();
@@ -78,20 +101,15 @@ public class HomeFragment extends Fragment implements MainFragment {
 	 * Init the fragment
 	 */
 	public void initDemoList(View view, List<Group> groupData) {
-
-		fragmentContainer = (FrameLayout) view.findViewById(R.id.fragment_container);
-		recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
-		recyclerView.setHasFixedSize(true);
-		layoutManager = new LinearLayoutManager(getActivity());
-		recyclerView.setLayoutManager(layoutManager);
-
-//		ArrayList<String> itemsData = new ArrayList<>();
-//		for (int i = 0; i < 50; i++) {
-//			itemsData.add("Fragment " + getArguments().getInt("index", -1) + " / Item " + i);
-//		}
-
-		HomeFragmentAdapter adapter = new HomeFragmentAdapter(groupData);
-		recyclerView.setAdapter(adapter);
+		if(adapter == null) {
+			adapter = new HomeFragmentAdapter(groupData);
+			recyclerView.setAdapter(adapter);
+		}else{
+			adapter = new HomeFragmentAdapter(groupData);
+			recyclerView.setAdapter(adapter);
+			adapter.notifyDataSetChanged();
+			swipeRefreshLayout.setRefreshing(false);
+		}
 	}
 
 	/**

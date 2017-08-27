@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <ImageView
@@ -66,6 +67,7 @@
             android:layout_height="50dp"
             android:inputType="textPassword"
             android:paddingLeft="11dp"
+            android:text="4321"
             android:hint=" Password"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -79,95 +81,25 @@
             android:id="@+id/user_id"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:hint="  Username/ID"/>
+            android:hint="  Username/ID"
+            android:text="sam"
+            />
     </android.support.design.widget.TextInputLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        >
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp">-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="130dp"-->
-            <!--android:layout_height="50dp">-->
-        <!--</LinearLayout>-->
-
-
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp">-->
-    <!--</LinearLayout>-->
-
-
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp">-->
-        <!--<LinearLayout-->
-            <!--android:layout_width="130dp"-->
-            <!--android:layout_height="50dp">-->
-        <!--</LinearLayout>-->
-
-        <!---->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp">-->
-    <!--</LinearLayout>-->
-
-
-
-
-
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp">-->
-        <!--<LinearLayout-->
-            <!--android:layout_width="160dp"-->
-            <!--android:layout_height="50dp">-->
-        <!--</LinearLayout>-->
-
-        <!--<Button-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:text="Login"-->
-            <!--android:onClick = "loginButton"/>-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp">-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp">-->
-        <!--<LinearLayout-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="50dp">-->
-        <!--</LinearLayout>-->
-
-       <!---->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="5dp">-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp">-->
-        <!--<LinearLayout-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="50dp">-->
-        <!--</LinearLayout>-->
-
-        <!---->
-    <!--</LinearLayout>-->
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avloadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:indicator="BallGridPulse"
+            app:indicator_color="@color/colorPrimaryDark"
+            />
+    </RelativeLayout>
 
 </RelativeLayout>

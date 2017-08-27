@@ -15,6 +15,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,28 +23,30 @@ import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import com.iedu.domain.Group;
 //
 //import edu.iedu.flashcard.dao.domain.User;
 //import edu.iedu.flashcard.dao.domain.UserBin;
 //import edu.iedu.flashcard.var.Env;
-import com.iedu.domain.Group;
 import com.iedu.domain.GroupBin;
+import com.iedu.domain.Message;
+import com.iedu.domain.MessageBin;
+import com.iedu.domain.User;
 
-public class GroupClient {
+public class MessageClient {
 	
-	public static List<Group> readGroups() {
-		Group group = null;
-
+	public static List<Message> showMyMessage(int recieveID){
 		HttpClient httpclient = new DefaultHttpClient();
-		ArrayList<Group> groups = null;
+		ArrayList<Message> messages = null;
 		
 		try{
-			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroup.do")
+			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "showMessage.do"
+									+"?receiveID="+recieveID)
 					.openStream();
 			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
 			Gson gson = new Gson();
-			GroupBin userBin = gson.fromJson(reader,	GroupBin.class);
-			groups = (ArrayList<Group>) userBin.getGroups();
+			MessageBin messageBin = gson.fromJson(reader,	MessageBin.class);
+			messages = (ArrayList<Message>) messageBin.getMessages();
 
 			
 		}catch (ClientProtocolException e) {
@@ -53,29 +56,50 @@ public class GroupClient {
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
+		
+		return messages;
+	}	
 
-		return groups;
-	}
-	
-	public static int addGroup(String name, String desc, String url, int ownerId) {
-		
+	public static List<Message> showMessage(int receiveID, int sendID){
 		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<Message> messages = null;
 		
-		try {
-			name = URLEncoder.encode(name, "UTF-8");
-			desc = URLEncoder.encode(desc, "UTF-8");
-			url = URLEncoder.encode(url, "UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		try{
+			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "showMessage.do"
+									+"?sendID="+sendID+"&receiveID="+receiveID)
+					.openStream();
+			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+			Gson gson = new Gson();
+			MessageBin messageBin = gson.fromJson(reader,	GroupBin.class);
+			messages = (ArrayList<Message>) messageBin.getMessages();
+
+			
+		}catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
 		}
 		
+		return messages;
+	}	
+	
+	public static int send(Message message){
+		
+//		try {
+//			message.setName(URLEncoder.encode(message.getName(), "UTF-8"));
+//			message.setEmail(URLEncoder.encode(user.getEmail(), "UTF-8"));
+//			message.setPassword(URLEncoder.encode(user.getPassword(), "UTF-8"));
+//		} catch (UnsupportedEncodingException e1) {
+//			e1.printStackTrace();
+//		} 
+  
+		
+		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addGroup.do"
-				+ "?name="+name+"&description="+desc+"&url="+url+"&ownerId="+ownerId);
-		//Similar to below. Check Env class
-		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
-		//		+ "?name="+name);
+	 	HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "send.do"
+				+ "?name=" + message.getId() + "&password=" + message.getSendID());
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
@@ -86,10 +110,14 @@ public class GroupClient {
 				BufferedReader rd = new BufferedReader(new InputStreamReader(
 						response.getEntity().getContent()));
 
-				String line = "";
+				String line = "";	
 				while ((line = rd.readLine()) != null) {
 					System.out.println(line);
+					int errorCode = Integer.parseInt(line);
+					return errorCode;
 				}
+				
+				
 			}
 			
 			httpget.abort();
@@ -103,13 +131,9 @@ public class GroupClient {
 			httpclient.getConnectionManager().shutdown();
 		}
 		return 0;
-	}
+	}	
 	
 	public static void main(String[] argv){
-		GroupClient.addGroup("new_group_name123123", "deeddddd", "http://////.........", 10);
-		
-//		List<Group> groupList = GroupClient.readGroups();
-//		System.out.println("group size:"+groupList.size());
-		
+		System.out.println(MessageClient.showMyMessage(10));
 	}
 }

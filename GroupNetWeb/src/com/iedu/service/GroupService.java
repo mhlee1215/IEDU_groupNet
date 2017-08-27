@@ -25,8 +25,8 @@ public class GroupService{
 	
 	boolean isEncrypt = true;
 
-	public List<Group> readGroup() {
-		return groupDao.readGroup();
+	public List<Group> readGroup(Group group) {
+		return groupDao.readGroup(group);
 	}	
 	
 	public void addGroup(Group group) {

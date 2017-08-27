@@ -1,10 +1,12 @@
 package groupnet.iedu.com.groupnetandroid;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,11 @@ public class GroupFragment extends Fragment implements MainFragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
+        int userId = pref.getInt("USER_ID", -1);
+        Log.e("GroupNet", "GROUP_FRAGMENT_USERID:"+userId);
+
 		View view = inflater.inflate(R.layout.fragment_group, container, false);
 		return view;
 	}

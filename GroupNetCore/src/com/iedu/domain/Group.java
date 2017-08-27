@@ -7,18 +7,33 @@ public class Group {
 	String status = ""; 
 	String registration_date = "";
 	String url = "";
-	String url2 = ""; 
+	String url2 = "";
+	int ownerId = 0;
+	
+	int qSize = 10;
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
 	
 	
-	
+	 
 	@Override
 	public String toString() {
 		return "{\"id\":\"" + id + "\", \"name\":\"" + name + "\", \"description\":\"" + description
 				+ "\", \"status\":\"" + status + "\", \"registration_date\":\"" + registration_date + "\", \"url\":\""
-				+ url + "\", \"url2\":\"" + url2 + "\"}";
+				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerId\":\"" + ownerId + "\", \"qSize\":\"" + qSize + "\"}";
 	}
 	
+	public int getOwnerId() {
+		return ownerId;
+	}
+
+
+
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -78,6 +93,14 @@ public class Group {
 	public static void main(String[] argv){
 		Group g = new Group();
 		System.out.println(g);
+	}
+
+	public int getqSize() {
+		return qSize;
+	}
+
+	public void setqSize(int qSize) {
+		this.qSize = qSize;
 	}
 	
 	

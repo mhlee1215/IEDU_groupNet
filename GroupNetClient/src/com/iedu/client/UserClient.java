@@ -177,8 +177,8 @@ public class UserClient {
 				String line = "";	
 				while ((line = rd.readLine()) != null) {
 					System.out.println(line);
-					int errorCode = Integer.parseInt(line);
-					return errorCode;
+					int returnCode = Integer.parseInt(line);
+					return returnCode;
 				}
 				
 				
@@ -194,7 +194,7 @@ public class UserClient {
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
-		return 0;
+		return -100;
 	}	
 	
 	public static void main(String[] argv){

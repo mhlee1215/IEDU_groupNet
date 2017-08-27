@@ -6,6 +6,7 @@ public class Message {
 	int recieveID;
 	String text = "";
 	String time = "";
+	long createdAt = 0;
 	
 	public int getId() {
 		return id;
@@ -37,10 +38,17 @@ public class Message {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	
+	public long getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
+	}
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", sendID=" + sendID + ", recieveID=" + recieveID + ", text=" + text + ", time="
-				+ time + "]";
+		return "{\"id\":\"" + id + "\", \"sendID\":\"" + sendID + "\", \"recieveID\":\"" + recieveID + "\", \"text\":\""
+				+ text + "\", \"time\":\"" + time + "\", \"createdAt\":\"" + createdAt + "\"}";
 	}
 
 }

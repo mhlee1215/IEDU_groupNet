@@ -41,10 +41,18 @@ public class GroupController {
 		
 	@RequestMapping("/readGroup.do")
     public ResponseEntity<String> readGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView model = new ModelAndView("group_list");
+		//ModelAndView model = new ModelAndView("group_list");
 		
-		List<Group> groupList = groupService.readGroup();
-		model.addObject("groupList", groupList);
+		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
+		//int qSize = 10;
+		
+		
+		Group qGroup = new Group();
+		qGroup.setOwnerId(ownerId);
+		
+		
+		List<Group> groupList = groupService.readGroup(qGroup);
+		//model.addObject("groupList", groupList);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
@@ -60,6 +68,7 @@ public class GroupController {
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
 		//String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
 		String pUrl = ServletRequestUtils.getStringParameter(request, "url", "");
+		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
 
 		try {
 			pName = URLDecoder.decode(pName, "UTF-8");
@@ -77,6 +86,7 @@ public class GroupController {
 		pGroup.setStatus(pStatus);
 		//pGroup.setRegistration_date(pRegistration_date);
 		pGroup.setUrl2(pUrl);
+		pGroup.setOwnerId(ownerId);
 		
 		System.out.println(">>>"+pGroup);
 

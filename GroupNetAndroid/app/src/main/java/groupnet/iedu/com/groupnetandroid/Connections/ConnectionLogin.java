@@ -47,13 +47,14 @@ public class ConnectionLogin extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-
+        context.showLoading(false);
         //If login success
-        if( returnCode == Signal.LOGIN_SUCCESS) {
-            context.loginSuccess();
+        if( returnCode == Signal.LOGIN_FAIL) {
+            context.loginFail();
         }
         else{
-            context.loginFail();
+            context.loginSuccess(returnCode);
+
         }
 
 

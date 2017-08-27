@@ -59,7 +59,7 @@ public class UserController {
 		User user = userService.getUser(pName, pPassword);
 		
 		if(user != null)
-			return Integer.toString(Signal.LOGIN_SUCCESS);
+			return user.getId()+"";//  Integer.toString(Signal.LOGIN_SUCCESS);
 		else
 			return Integer.toString(Signal.LOGIN_FAIL);
     }

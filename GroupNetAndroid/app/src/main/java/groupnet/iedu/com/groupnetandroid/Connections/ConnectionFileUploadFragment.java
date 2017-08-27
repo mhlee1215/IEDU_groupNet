@@ -43,7 +43,6 @@ public class ConnectionFileUploadFragment extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-
         context.uploadFinished(returnID);
 
     }

@@ -30,13 +30,13 @@ import com.iedu.domain.Membership;
 import com.iedu.domain.MembershipBin;
 
 public class MembershipClient {
-	
+
 	public static List<Membership> readMyMemberships(int userID) {
 		Membership membership = null;
 
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<Membership> memberships = null;
-		
+
 		try{
 			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readMyMembership.do" + "?userID="+userID)
 					.openStream();
@@ -45,7 +45,7 @@ public class MembershipClient {
 			MembershipBin userBin = gson.fromJson(reader,	MembershipBin.class);
 			memberships = (ArrayList<Membership>) userBin.getMemberships();
 
-			
+
 		}catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -56,13 +56,13 @@ public class MembershipClient {
 
 		return memberships;
 	}
-	
+
 	public static List<Membership> readGroupMemberships(int groupID) {
 		Membership membership = null;
 
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<Membership> memberships = null;
-		
+
 		try{
 			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroupMembership.do" + "?groupID="+groupID)
 					.openStream();
@@ -71,7 +71,7 @@ public class MembershipClient {
 			MembershipBin userBin = gson.fromJson(reader,	MembershipBin.class);
 			memberships = (ArrayList<Membership>) userBin.getMemberships();
 
-			
+
 		}catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -82,18 +82,18 @@ public class MembershipClient {
 
 		return memberships;
 	}
-	
-	
+
+
 	public static int Groupjoin(String userid, String groupid) {
-		
+
 		HttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addMembership.do"
-				+ "?userid="+userid + "&groupid="+groupid);
+				+ "?userID="+userid + "&groupID="+groupid);
 		//Similar to below. Check Env class
 		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
 		//		+ "?name="+name);
-		
+
 		System.out.println(httpget.getURI());
 		HttpResponse response;
 		try {
@@ -108,10 +108,10 @@ public class MembershipClient {
 					System.out.println(line);
 				}
 			}
-			
+
 			httpget.abort();
 			httpclient.getConnectionManager().shutdown();
-			
+
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -121,13 +121,13 @@ public class MembershipClient {
 		}
 		return 0;
 	}
-		
-public static int Groupleave(String userid, String groupid) {
-		
+
+	public static int Groupleave(String userid, String groupid) {
+
 		HttpClient httpclient = new DefaultHttpClient();
 
-		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "deleteMembership.do" + "?userid="+userid + "&groupid="+groupid);
-		
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "deleteMembership.do" + "?userID="+userid + "&groupID="+groupid);
+
 		System.out.println(httpget.getURI());
 		HttpResponse response;
 		try {
@@ -142,10 +142,10 @@ public static int Groupleave(String userid, String groupid) {
 					System.out.println(line);
 				}
 			}
-			
+
 			httpget.abort();
 			httpclient.getConnectionManager().shutdown();
-			
+
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -157,16 +157,16 @@ public static int Groupleave(String userid, String groupid) {
 	}
 
 	public static void main(String[] argv){
-		//GroupClient.Groupjoin("777" , "80");
-		
+		//MembershipClient.Groupjoin("777" , "80");
+
 		//List<Membership> groupList = MembershipClient.readMyMemberships(123);
 		//System.out.println("group size:"+groupList.size());
-		
+
 		//List<Membership> groupList = MembershipClient.readGroupMemberships();
 		//System.out.println("group size:"+groupList.size());
 
-		//GroupClient.Groupleave("123", "90");
+		MembershipClient.Groupleave("777", "80");
 
-		
+
 	}
 }
