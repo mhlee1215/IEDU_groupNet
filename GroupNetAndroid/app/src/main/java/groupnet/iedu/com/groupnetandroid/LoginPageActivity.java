@@ -23,9 +23,14 @@ public class LoginPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
         loadingMark = (AVLoadingIndicatorView)findViewById(R.id.avloadingIndicatorView);
     }
+
+    public void signUpButton(View view){
+        Intent intent = new Intent(this, CreateAccountActivity.class);
+        startActivity(intent);
+    }
+
     //public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
     public void loginButton (View view) {
-
         EditText userId = (EditText)findViewById(R.id.user_id);
         System.out.println(userId.getText());
 

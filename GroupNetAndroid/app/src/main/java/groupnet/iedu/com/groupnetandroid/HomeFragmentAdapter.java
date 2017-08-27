@@ -33,10 +33,16 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		public TextView mTitleView;
+		public TextView mOwnerView;
+		public TextView mDescView;
+
 		public ImageView mImageView;
 		public ViewHolder(View v) {
 			super(v);
-			mTitleView = (TextView) v.findViewById(R.id.layout_item_home_title);
+			mTitleView = (TextView) v.findViewById(R.id.GroupName);
+			mOwnerView = (TextView) v.findViewById(R.id.layout_item_home_title);
+			mDescView = (TextView) v.findViewById(R.id.editGroupDescription);
+
 			mImageView = (ImageView) v.findViewById(R.id.layout_item_home_image);
 		}
 	}
@@ -55,7 +61,9 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
+		holder.mOwnerView.setText(mDataset.get(position).getName());
 		holder.mTitleView.setText(mDataset.get(position).getName());
+		holder.mDescView.setText(mDataset.get(position).getDescription());
 		//holder.mImageView.setImageBitmap(mDataset.get(position).getImage());
 
 		Bitmap image = imageMap.get(position+"");
