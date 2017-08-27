@@ -41,10 +41,18 @@ public class GroupController {
 		
 	@RequestMapping("/readGroup.do")
     public ResponseEntity<String> readGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView model = new ModelAndView("group_list");
+		//ModelAndView model = new ModelAndView("group_list");
 		
-		List<Group> groupList = groupService.readGroup();
-		model.addObject("groupList", groupList);
+		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
+		//int qSize = 10;
+		
+		
+		Group qGroup = new Group();
+		qGroup.setOwnerId(ownerId);
+		
+		
+		List<Group> groupList = groupService.readGroup(qGroup);
+		//model.addObject("groupList", groupList);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
