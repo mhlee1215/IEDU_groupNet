@@ -1,13 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@+id/fragment_container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <EditText
+        android:id="@+id/FirstNameText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is search fragment"
-        />
+        android:hint="Search:"
+        android:background="@drawable/border"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView2"
+            android:layout_width="68dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/image_1"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp"
+            android:layout_weight="0.52" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageView2"
+            android:layout_width="77dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/image_1"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp"
+            android:layout_weight="0.27" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageView2"
+            android:layout_width="83dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/image_1"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp"
+            android:layout_weight="0.25" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView2"
+            android:layout_width="93dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/image_1"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp" />
+    </LinearLayout>
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:columnWidth="100dp"
+        android:drawSelectorOnTop="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:numColumns="1"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dp" />
+
+</LinearLayout>
