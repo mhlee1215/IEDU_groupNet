@@ -42,7 +42,7 @@ public class GroupFragment extends Fragment implements MainFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("IEDUPref", 0); // 0 - for private mode
+        SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
         int userId = pref.getInt("USER_ID", -1);
         Log.e("GroupNet", "GROUP_FRAGMENT_USERID:"+userId);
 

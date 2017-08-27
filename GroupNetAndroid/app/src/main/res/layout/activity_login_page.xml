@@ -67,6 +67,7 @@
             android:layout_height="50dp"
             android:inputType="textPassword"
             android:paddingLeft="11dp"
+            android:text="4321"
             android:hint=" Password"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -80,7 +81,9 @@
             android:id="@+id/user_id"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:hint="  Username/ID"/>
+            android:hint="  Username/ID"
+            android:text="sam"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <RelativeLayout

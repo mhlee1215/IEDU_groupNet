@@ -28,6 +28,14 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
 		fragments.add(ChatFragment.newInstance(4));
 	}
 
+	public void resetItem(int i){
+		if(i==1){
+			fragments.add(AddFragment.newInstance(1));
+		}
+
+		this.notifyDataSetChanged();
+	}
+
 	@Override
 	public Fragment getItem(int position) {
 		return (Fragment)fragments.get(position);

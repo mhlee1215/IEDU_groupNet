@@ -2,6 +2,7 @@ package groupnet.iedu.com.groupnetandroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class AddFragment extends Fragment implements MainFragment {
 
+    int userId = -1;
 	private FrameLayout fragmentContainer;
 	private RecyclerView recyclerView;
 	private RecyclerView.LayoutManager layoutManager;
@@ -70,6 +73,12 @@ public class AddFragment extends Fragment implements MainFragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
+        userId = pref.getInt("USER_ID", -1);
+        Log.e("GroupNet", "ADD_FRAGMENT_USERID:"+userId);
+
+
 		View view = inflater.inflate(R.layout.fragment_add, container, false);
 
 		addFragment = this;
@@ -97,10 +106,10 @@ public class AddFragment extends Fragment implements MainFragment {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				ConnectionGroupAdd cl = new ConnectionGroupAdd(view, addFragment);
-				cl.execute(groupName.getText().toString(), groupDesc.getText().toString(), uploadedImageId);
-//				Intent intent = new Intent(Intent.ACTION_PICK,
-//						android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//				startActivityForResult(intent, 0);
+				cl.execute(groupName.getText().toString(), groupDesc.getText().toString(), uploadedImageId, userId);
+
+				((MainActivity)getActivity()).setTab(3);
+				
 			}});
 
 		return view;
@@ -146,6 +155,9 @@ public class AddFragment extends Fragment implements MainFragment {
 
 	public void postAddGroup(){
 		Toast.makeText(getActivity(), "Group Added..", Toast.LENGTH_LONG).show();
+
+
+
 	}
 
 	public void showLoading(boolean visible){

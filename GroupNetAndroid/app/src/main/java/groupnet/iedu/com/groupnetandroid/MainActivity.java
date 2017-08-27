@@ -53,12 +53,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("IEDUPref", 0); // 0 - for private mode
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
         int userId = pref.getInt("USER_ID", -1);
         Log.e("GroupNet", "MAIN_ACTIVITY_USERID:"+userId);
         //System.out.println("MAIN_ACTIVITY_USERID:"+userId);
 
         initUI();
+    }
+
+    public void setTab(int i){
+        bottomNavigation.setCurrentItem(i);
     }
 
     private void initUI() {
@@ -87,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
         bottomNavigation.setTranslucentNavigationEnabled(true);
+
+
+
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
@@ -197,6 +204,10 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         currentFragment = adapter.getCurrentFragment();
+
+
+
+
 
 //        handler.postDelayed(new Runnable() {
 //            @Override

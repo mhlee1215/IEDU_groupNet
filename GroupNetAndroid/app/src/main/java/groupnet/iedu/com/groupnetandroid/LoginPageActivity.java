@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class LoginPageActivity extends AppCompatActivity {
     }
 
     public void loginSuccess(int returnCode){
-        System.out.println("success");
+        Log.e("GroupNet", "success, id="+returnCode);
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
