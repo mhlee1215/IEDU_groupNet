@@ -91,6 +91,7 @@ public class UserController {
 		pUser.setAddress(pAddress);
 		pUser.setPhoneNumber(pPhoneNumber);
 		
+		System.out.println("user to be added?"+pUser);
 		userService.addUser(pUser);
 		
 		return "added!";
