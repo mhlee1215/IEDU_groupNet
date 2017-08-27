@@ -57,7 +57,7 @@ public class GroupClient {
 		return groups;
 	}
 	
-	public static int addGroup(String name, String desc, String url) {
+	public static int addGroup(String name, String desc, String url, int ownerId) {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 		
@@ -72,7 +72,7 @@ public class GroupClient {
 		
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addGroup.do"
-				+ "?name="+name+"&description="+desc+"&url="+url);
+				+ "?name="+name+"&description="+desc+"&url="+url+"&ownerId="+ownerId);
 		//Similar to below. Check Env class
 		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
 		//		+ "?name="+name);
@@ -106,7 +106,7 @@ public class GroupClient {
 	}
 	
 	public static void main(String[] argv){
-		GroupClient.addGroup("new_group_name123123", "deeddddd", "http://////.........");
+		GroupClient.addGroup("new_group_name123123", "deeddddd", "http://////.........", 10);
 		
 //		List<Group> groupList = GroupClient.readGroups();
 //		System.out.println("group size:"+groupList.size());

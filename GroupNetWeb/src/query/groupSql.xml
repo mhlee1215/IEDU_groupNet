@@ -11,19 +11,20 @@
 		<result column="STATUS" property="status" />
 		<result column="REGISTRATION_DATE" property="registration_date" />
 		<result column="URL" property="url" />
+		<result column="OWNERID" property="ownerId" />
 		
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
- 		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL
+ 		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID
 		FROM `group`
 		order by registration_date desc
 		limit #{qSize}
  	</select>
  	
  	<insert id="addGroup" parameterType = "com.iedu.domain.Group">
- 		INSERT INTO `group` (`name`, `description`, `status`, `registration_date`, `url`) 
- 		VALUES (#{name}, #{description}, #{status}, now(), '${url2}');
+ 		INSERT INTO `group` (`name`, `description`, `status`, `registration_date`, `url`, `ownerid`) 
+ 		VALUES (#{name}, #{description}, #{status}, now(), '${url2}', #{ownerId});
  	</insert>
  	
  	<update id="updateGroup" parameterType="com.iedu.domain.Group">
@@ -44,6 +45,9 @@
  			</if>
  			<if test="url != '' and url != null">
  			,url = '${url}'
+ 			</if>
+ 			<if test="ownerId != '' and ownerId != null">
+ 			,ownerid = #{ownerId}
  			</if>
  			 
  		WHERE 

@@ -2,6 +2,7 @@ package groupnet.iedu.com.groupnetandroid;
 
 import android.animation.Animator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
@@ -50,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.menu_toolbar);
         setSupportActionBar(toolbar);
 
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("IEDUPref", 0); // 0 - for private mode
+        int userId = pref.getInt("USER_ID", -1);
+        Log.e("GroupNet", "MAIN_ACTIVITY_USERID:"+userId);
+        //System.out.println("MAIN_ACTIVITY_USERID:"+userId);
 
         initUI();
     }

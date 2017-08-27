@@ -1,6 +1,7 @@
 package groupnet.iedu.com.groupnetandroid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,8 +43,15 @@ public class LoginPageActivity extends AppCompatActivity {
             loadingMark.setVisibility(View.GONE);
     }
 
-    public void loginSuccess(){
+    public void loginSuccess(int returnCode){
         System.out.println("success");
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("USER_ID", returnCode);
+        editor.commit();
+
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

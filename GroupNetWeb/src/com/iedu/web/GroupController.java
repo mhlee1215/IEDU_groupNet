@@ -60,6 +60,7 @@ public class GroupController {
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
 		//String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
 		String pUrl = ServletRequestUtils.getStringParameter(request, "url", "");
+		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
 
 		try {
 			pName = URLDecoder.decode(pName, "UTF-8");
@@ -77,6 +78,7 @@ public class GroupController {
 		pGroup.setStatus(pStatus);
 		//pGroup.setRegistration_date(pRegistration_date);
 		pGroup.setUrl2(pUrl);
+		pGroup.setOwnerId(ownerId);
 		
 		System.out.println(">>>"+pGroup);
 
