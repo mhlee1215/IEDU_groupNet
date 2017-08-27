@@ -115,7 +115,7 @@ public class UserClient {
 		HttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "addUser.do"
-				+ "GOATname=clientTestUser&age=10&password=password123");
+				+ "?name=" + user.getName() + "&age=" + user.getAge() + "&password=" + user.getPassword());
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
@@ -199,10 +199,11 @@ public class UserClient {
 	
 	public static void main(String[] argv){
 		User user = new User();
-		user.setName("sam");
-		user.setPassword("4321");
-//		int errorCode = UserClient.signup(user);
-		int errorCode = UserClient.login(user);
+		user.setName("bob");
+		user.setAge(1);
+		user.setPassword("6547");
+		int errorCode = UserClient.signup(user);
+		//int errorCode = UserClient.login(user);
 		System.out.println("errorcode : "+errorCode);
 	}
 }
