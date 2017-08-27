@@ -111,7 +111,7 @@ public class UserClient {
 	}
 	
 	
-	public static int signup(User user){
+	public static String signup(User user){
 		HttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "addUser.do"
@@ -126,13 +126,15 @@ public class UserClient {
 				BufferedReader rd = new BufferedReader(new InputStreamReader(
 						response.getEntity().getContent()));
 
+				String tmp = "";
 				String line = "";	
-				while ((line = rd.readLine()) != null) {
-					System.out.println(line);
+				while ((tmp = rd.readLine()) != null) {
+					line+=tmp;
+					System.out.println("aaa"+line);
 				}
 				
-				int errorCode = Integer.parseInt(line);
-				return errorCode;
+				//int errorCode = Integer.parseInt(line);
+				return line;
 			}
 			
 			httpget.abort();
@@ -145,7 +147,7 @@ public class UserClient {
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
-		return 0;
+		return null;
 	}	
 	
 	public static int login(User user){
@@ -202,7 +204,7 @@ public class UserClient {
 		user.setName("bob");
 		user.setAge(1);
 		user.setPassword("6547");
-		int errorCode = UserClient.signup(user);
+		String errorCode = UserClient.signup(user);
 		//int errorCode = UserClient.login(user);
 		System.out.println("errorcode : "+errorCode);
 	}
