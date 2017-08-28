@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.iedu.domain.Group;
 
@@ -86,6 +87,8 @@ public class HomeFragment extends Fragment implements MainFragment {
 		return view;
 
 	}
+
+
 
 	private ArrayList<GroupItem> getData() {
 		final ArrayList<GroupItem> imageItems = new ArrayList<>();

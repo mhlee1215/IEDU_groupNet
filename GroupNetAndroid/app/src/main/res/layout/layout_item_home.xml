@@ -97,7 +97,7 @@
                     />
 
                 <ImageButton
-                    android:id="@+id/button_add_favorite"
+                    android:id="@+id/button_group_add"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:onClick="join"

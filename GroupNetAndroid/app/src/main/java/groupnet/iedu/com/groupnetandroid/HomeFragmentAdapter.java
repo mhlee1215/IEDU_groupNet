@@ -9,8 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iedu.domain.Group;
 
@@ -36,6 +39,9 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		public TextView mOwnerView;
 		public TextView mDescView;
 
+		public ImageButton mBtnFavorite;
+		public ImageButton mBtnAdd;
+
 		public ImageView mImageView;
 		public ViewHolder(View v) {
 			super(v);
@@ -44,7 +50,14 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 			mDescView = (TextView) v.findViewById(R.id.editGroupDescription);
 
 			mImageView = (ImageView) v.findViewById(R.id.layout_item_home_image);
+
+			mBtnFavorite = (ImageButton) v.findViewById(R.id.button_group_favorite);
+			mBtnAdd = (ImageButton) v.findViewById(R.id.button_group_add);
 		}
+	}
+
+	public void postGroupJoin(){
+		//Toast.makeText(this, "post group join?", Toast.LENGTH_LONG).show();
 	}
 
 	public HomeFragmentAdapter(List<Group> dataset) {
@@ -64,6 +77,21 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		holder.mOwnerView.setText(mDataset.get(position).getName());
 		holder.mTitleView.setText(mDataset.get(position).getName());
 		holder.mDescView.setText(mDataset.get(position).getDescription());
+
+		holder.mBtnFavorite.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Log.e("GroupNet", "favorite selected");
+			}
+		});
+
+		holder.mBtnAdd.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
+			}
+		});
+
 		//holder.mImageView.setImageBitmap(mDataset.get(position).getImage());
 
 		Bitmap image = imageMap.get(position+"");
