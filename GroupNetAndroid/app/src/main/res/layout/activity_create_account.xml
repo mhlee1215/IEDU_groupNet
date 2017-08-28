@@ -97,11 +97,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_create_account"
         android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:text="Confirm"
-        android:onClick="nextButton" />
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"

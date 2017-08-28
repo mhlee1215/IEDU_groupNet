@@ -228,18 +228,25 @@ public class MainActivity extends AppCompatActivity {
         //bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
     }
 
-//    public void login(View view) {
-//        System.out.print("logged in");
-//    }
-//
-//    public void createAccount(View view) {
-//        System.out.print("creating account");
-//    }
-//
-//    public void profileOne(View view) {
-//        System.out.print("profile page 1");
-//    }
-//
-//    Intent intent = getIntent();
-//    //String message = intent.getStringExtra(LoginPageActivity.EXTRA_MESSAGE);
+    @Override
+    public void onBackPressed() {
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("GroupNet", "restart!");
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        Log.e("GroupNet", "onResumeFragments!");
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        Log.e("GroupNet", "onPostResume!");
+    }
 }

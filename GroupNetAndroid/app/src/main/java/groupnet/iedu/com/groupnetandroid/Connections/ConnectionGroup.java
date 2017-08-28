@@ -37,8 +37,10 @@ public class ConnectionGroup extends AsyncTask {
     protected Object doInBackground(Object... arg0) {
 
         try {
-            groupList = GroupClient.readGroups();
-
+            Group g = new Group();
+            g.setViewerId((int)arg0[0]);
+            g.setStatus("active");
+            groupList = GroupClient.readGroups(g);
 
         }catch(Exception e){
             e.printStackTrace();

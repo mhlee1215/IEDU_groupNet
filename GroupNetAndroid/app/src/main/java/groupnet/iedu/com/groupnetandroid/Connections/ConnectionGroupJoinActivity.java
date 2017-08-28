@@ -1,30 +1,26 @@
 package groupnet.iedu.com.groupnetandroid.Connections;
 
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.iedu.client.GroupClient;
 import com.iedu.client.MembershipClient;
-import com.iedu.domain.Group;
 
-import java.util.List;
-
+import groupnet.iedu.com.groupnetandroid.GroupDetailActivity;
 import groupnet.iedu.com.groupnetandroid.HomeFragment;
 
 /**
  * Created by mhlee on 7/21/17.
  */
 
-public class ConnectionGroupJoin extends AsyncTask {
+public class ConnectionGroupJoinActivity extends AsyncTask {
 
-    private HomeFragment context;
+    private GroupDetailActivity context;
     //int returnCode;
     //List<Group> groupList = null;
     View view;
 
-    public ConnectionGroupJoin(View view, HomeFragment fragment){
-        this.context = (HomeFragment)fragment;
+    public ConnectionGroupJoinActivity(View view, GroupDetailActivity fragment){
+        this.context = (GroupDetailActivity)fragment;
         this.view = view;
     }
 

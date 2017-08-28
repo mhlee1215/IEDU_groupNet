@@ -38,7 +38,9 @@ public class ConnectionSample extends AsyncTask {
 
             //ClientCall example
             System.out.println("Call read group now!");
-            groupList = GroupClient.readGroups();
+            Group g = new Group();
+            g.setViewerId(67);
+            groupList = GroupClient.readGroups(g);
             System.out.println("Group Number:"+groupList);
 
 

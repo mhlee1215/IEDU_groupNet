@@ -5,26 +5,26 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.iedu.client.GroupClient;
-import com.iedu.client.MembershipClient;
 import com.iedu.domain.Group;
 
 import java.util.List;
 
-import groupnet.iedu.com.groupnetandroid.HomeFragment;
+import groupnet.iedu.com.groupnetandroid.AddFragment;
+import groupnet.iedu.com.groupnetandroid.GroupDetailActivity;
 
 /**
  * Created by mhlee on 7/21/17.
  */
 
-public class ConnectionGroupJoin extends AsyncTask {
+public class ConnectionGroupDelete extends AsyncTask {
 
-    private HomeFragment context;
+    private GroupDetailActivity context;
     //int returnCode;
-    //List<Group> groupList = null;
+    List<Group> groupList = null;
     View view;
 
-    public ConnectionGroupJoin(View view, HomeFragment fragment){
-        this.context = (HomeFragment)fragment;
+    public ConnectionGroupDelete(View view, GroupDetailActivity context){
+        this.context = (GroupDetailActivity)context;
         this.view = view;
     }
 
@@ -33,10 +33,9 @@ public class ConnectionGroupJoin extends AsyncTask {
     protected Object doInBackground(Object... arg0) {
 
         try {
-            if("join".equalsIgnoreCase((String)arg0[2]))
-                MembershipClient.Groupjoin(arg0[0]+"", arg0[1]+"");
-            else if("leave".equalsIgnoreCase((String)arg0[2]))
-                MembershipClient.Groupleave(arg0[0]+"", arg0[1]+"");
+            System.out.println(" delete group called with "+arg0[0]);
+            GroupClient.deleteGroup((int)arg0[0]);
+
 
         }catch(Exception e){
             e.printStackTrace();
@@ -48,7 +47,8 @@ public class ConnectionGroupJoin extends AsyncTask {
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
 
-        //context.postGroupJoin();
+        context.postDeleteGroup();
+
         //If login success
 //        if( groupList != null) {
 //            context.initDemoList(view, groupList);

@@ -28,6 +28,8 @@ public class Group {
 				+ "\", \"qSize\":\"" + qSize + "\"}";
 	}
 	
+	
+	
 	public String getOwnerName() {
 		return ownerName;
 	}
