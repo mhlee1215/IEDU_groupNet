@@ -31,6 +31,10 @@ public class UserService{
 		return userDao.getUser(name, password);
 	}
 	
+	public User getUser(User user){
+		return userDao.getUser(user);
+	}
+	
 	public void addUser(User user){
 		userDao.addUser(user);
 	}
