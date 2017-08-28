@@ -25,13 +25,13 @@ public class MembershipService{
 	
 	boolean isEncrypt = true;
 
-	public List<Membership> readMembership() {
-		return membershipDao.readMembership();
+	public List<Membership> readMembership(Membership m) {
+		return membershipDao.readMembership(m);
 	}
 	
-	public List<Membership> readMyMembership(Membership m) {
-		return membershipDao.readMyMembership(m);
-	}
+//	public List<Membership> readMyMembership(Membership m) {
+//		return membershipDao.readMyMembership(m);
+//	}
 	
 	public List<Membership> readGroupMembership(Membership m) {
 		return membershipDao.readGroupMembership(m);
