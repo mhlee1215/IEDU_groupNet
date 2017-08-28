@@ -85,7 +85,7 @@
  			</if>
  			 
  		WHERE 
- 			ID = #id#
+ 			ID = #{id}
  	</update>
  	
  	<delete id="deleteGroup" parameterType = "com.iedu.domain.Group">
