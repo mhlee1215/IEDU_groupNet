@@ -8,6 +8,7 @@ public class Group {
 	String registration_date = "";
 	String url = "";
 	String url2 = "";
+	String ownerName = "";
 	int ownerId = 0;
 	int viewerId = 0;
 	String isJoin = "N";
@@ -22,11 +23,19 @@ public class Group {
 	public String toString() {
 		return "{\"id\":\"" + id + "\", \"name\":\"" + name + "\", \"description\":\"" + description
 				+ "\", \"status\":\"" + status + "\", \"registration_date\":\"" + registration_date + "\", \"url\":\""
-				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerId\":\"" + ownerId + "\", \"viewerId\":\"" + viewerId
-				+ "\", \"isJoin\":\"" + isJoin + "\", \"isFavorite\":\"" + isFavorite + "\", \"qSize\":\"" + qSize
-				+ "\"}";
+				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerName\":\"" + ownerName + "\", \"ownerId\":\"" + ownerId
+				+ "\", \"viewerId\":\"" + viewerId + "\", \"isJoin\":\"" + isJoin + "\", \"isFavorite\":\"" + isFavorite
+				+ "\", \"qSize\":\"" + qSize + "\"}";
 	}
 	
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
 	public int getViewerId() {
 		return viewerId;
 	}

@@ -12,18 +12,20 @@
 		<result column="REGISTRATION_DATE" property="registration_date" />
 		<result column="URL" property="url" />
 		<result column="OWNERID" property="ownerId" />
+		<result column="OWNERNAME" property="ownerName" />
 		<result column="ISJOIN" property="isJoin" />
 		
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
- 		SELECT g.ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID, IF(m.userId is not null, 'Y', 'N') as ISJOIN
+ 		SELECT g.ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
 		FROM `group` g left outer join (
 		select userid, groupid from membership
 		 	<if test="viewerId > 0">
  			where userid = #{viewerId}
  			</if>
 		) m on g.ID = m.groupId
+		inner join `user` u on u.id = g.ownerid
 		WHERE 1=1
 			<if test="id > 0">
  			and id = #{id}
