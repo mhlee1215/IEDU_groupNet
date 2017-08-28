@@ -18,7 +18,7 @@
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
- 		SELECT g.ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
+ 		SELECT g.ID, g.NAME, g.DESCRIPTION, g.STATUS, g.REGISTRATION_DATE, g.URL, g.OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
 		FROM `group` g left outer join (
 		select userid, groupid from membership
 		 	<if test="viewerId > 0">
