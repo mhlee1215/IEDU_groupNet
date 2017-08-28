@@ -1,5 +1,6 @@
 package groupnet.iedu.com.groupnetandroid;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -23,12 +24,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroupJoin;
+import groupnet.iedu.com.groupnetandroid.Connections.ConnectionLogin;
 import groupnet.iedu.com.groupnetandroid.Domain.GroupItem;
 
 /**
  *
  */
 public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapter.ViewHolder> {
+
+	HomeFragment fragment;
+	int userId;
 
 	private ArrayList<Group> mDataset = new ArrayList<>();
 
@@ -60,7 +66,13 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		//Toast.makeText(this, "post group join?", Toast.LENGTH_LONG).show();
 	}
 
-	public HomeFragmentAdapter(List<Group> dataset) {
+	public HomeFragmentAdapter(List<Group> dataset, HomeFragment fragment) {
+		this.fragment = fragment;
+
+		SharedPreferences pref = fragment.getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
+		userId = pref.getInt("USER_ID", -1);
+		Log.e("GroupNet", "MAIN_ACTIVITY_USERID:"+userId);
+
 		mDataset.clear();
 		mDataset.addAll(dataset);
 	}
@@ -89,6 +101,9 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 			@Override
 			public void onClick(View view) {
 				Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
+				//showLoading(true);
+				ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
+				cl.execute(userId, mDataset.get(position).getId());
 			}
 		});
 

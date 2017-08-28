@@ -23,7 +23,7 @@ public class ConnectionGroupJoin extends AsyncTask {
     //List<Group> groupList = null;
     View view;
 
-    public ConnectionGroupJoin(View view, Fragment fragment){
+    public ConnectionGroupJoin(View view, HomeFragment fragment){
         this.context = (HomeFragment)fragment;
         this.view = view;
     }
@@ -34,7 +34,7 @@ public class ConnectionGroupJoin extends AsyncTask {
 
         try {
             //groupList = GroupClient.readGroups();
-            MembershipClient.Groupjoin(123+"", 456+"");
+            MembershipClient.Groupjoin(arg0[0]+"", arg0[1]+"");
 
         }catch(Exception e){
             e.printStackTrace();

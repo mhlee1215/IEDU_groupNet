@@ -100,7 +100,6 @@
                     android:id="@+id/button_group_add"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:onClick="join"
                     android:layout_toLeftOf="@id/button_group_favorite"
                     android:background="@drawable/ic_add_circle_outline_black_24dp"
 

@@ -12,10 +12,28 @@
 		<result column="REGISTRATION_DATE" property="registration_date" />
 		<result column="URL" property="url" />
 		<result column="OWNERID" property="ownerId" />
+		<result column="ISJOIN" property="isJoin" />
 		
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
+ 		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID, IF(m.userId is not null, 'Y', 'N') as ISJOIN
+		FROM `group` g left outer join membership m on g.ID = m.groupId
+		WHERE 1=1
+			<if test="id > 0">
+ 			and id = #{id}
+ 			</if>
+ 			<if test="viewerId > 0">
+ 			and m.userid = #{viewerId}
+ 			</if>
+ 			<if test="ownerId > 0">
+ 			and ownerid = #{ownerId}
+ 			</if>
+		order by registration_date desc
+		limit #{qSize}
+ 	</select>
+ 	
+ 	<!-- <select id="readGroupListViewer" resultMap="Group" parameterType = "com.iedu.domain.Group">
  		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID
 		FROM `group`
 		WHERE 1=1
@@ -27,7 +45,8 @@
  			</if>
 		order by registration_date desc
 		limit #{qSize}
- 	</select>
+ 	</select> -->
+ 	
  	
  	<insert id="addGroup" parameterType = "com.iedu.domain.Group">
  		INSERT INTO `group` (`name`, `description`, `status`, `registration_date`, `url`, `ownerid`) 

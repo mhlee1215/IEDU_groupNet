@@ -44,11 +44,13 @@ public class GroupController {
 		//ModelAndView model = new ModelAndView("group_list");
 		
 		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
+		int viewerId = ServletRequestUtils.getIntParameter(request, "viewerId", 0);
 		//int qSize = 10;
 		
 		
 		Group qGroup = new Group();
 		qGroup.setOwnerId(ownerId);
+		qGroup.setViewerId(viewerId);
 		
 		
 		List<Group> groupList = groupService.readGroup(qGroup);

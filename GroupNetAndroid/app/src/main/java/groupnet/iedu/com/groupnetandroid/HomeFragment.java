@@ -105,10 +105,10 @@ public class HomeFragment extends Fragment implements MainFragment {
 	 */
 	public void initDemoList(View view, List<Group> groupData) {
 		if(adapter == null) {
-			adapter = new HomeFragmentAdapter(groupData);
+			adapter = new HomeFragmentAdapter(groupData, this);
 			recyclerView.setAdapter(adapter);
 		}else{
-			adapter = new HomeFragmentAdapter(groupData);
+			adapter = new HomeFragmentAdapter(groupData, this);
 			recyclerView.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			swipeRefreshLayout.setRefreshing(false);
