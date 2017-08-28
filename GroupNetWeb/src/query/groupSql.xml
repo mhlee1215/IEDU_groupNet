@@ -34,6 +34,9 @@
  			<if test="ownerId > 0">
  			and ownerid = #{ownerId}
  			</if>
+ 			<if test="status != '' and status != null">
+ 			and g.STATUS = #{status}
+ 			</if>
 		order by registration_date desc
 		limit #{qSize}
  	</select>
