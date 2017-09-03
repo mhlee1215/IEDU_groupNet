@@ -39,7 +39,7 @@ public class GroupClient {
 		
 		try{
 			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroup.do"
-									+ "?ownerId="+group.getOwnerId()+"&viewerId="+group.getViewerId()+"&status="+group.getStatus())
+									+ "?ownerId="+group.getOwnerId()+"&viewerId="+group.getViewerId()+"&status="+group.getStatus()+"&keyword="+group.getKeyword())
 					.openStream();
 			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
 			Gson gson = new Gson();
