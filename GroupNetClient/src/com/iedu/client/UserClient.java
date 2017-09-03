@@ -115,7 +115,7 @@ public class UserClient {
 		HttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "addUser.do"
-				+ "?name=" + user.getName() + "&age=" + user.getAge() + "&password=" + user.getPassword());
+				+ "?name=" + user.getName() + "&age=" + user.getAge() + "&password=" + user.getPassword() + "&email=" + user.getEmail());
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
