@@ -4,90 +4,58 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <TextView
         android:layout_width="wrap_content"
-        android:textColor="@color/textLabelColor"
         android:layout_height="wrap_content"
-        android:text="UserName"
-        android:textSize="8pt"
-        android:id="@+id/createUsername"
-        android:layout_marginTop="50dp"
+        android:id="@+id/intro"
+        android:text="Welcome!"
+        android:textSize="15pt"
+        android:textColor="#/00000"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/asterix"
-        android:textColor="#FF0000"
-        android:textSize="8pt"
-        android:id="@+id/redAsterix1"
-        android:layout_toRightOf="@id/createUsername"
-        android:layout_marginTop="50dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/colon"
-        android:textSize="8pt"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:layout_toRightOf="@id/redAsterix1"
-        android:layout_marginTop="50dp"/>
-
-    <EditText
-        android:id="@+id/user_id"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:background="@drawable/border"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="45dp"
-        android:layout_marginRight="10dp"/>
 
     <TextView
-        android:id="@+id/createPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textLabelColor"
-        android:text="Password"
+        android:id="@+id/intro2"
+        android:text="Let's get started by entering your information."
         android:textSize="8pt"
-        android:layout_below="@id/createUsername"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        />
+        android:layout_below="@id/intro"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/asterix"
-        android:textColor="#FF0000"
-        android:textSize="8pt"
-        android:id="@+id/redAsterix2"
-        android:layout_toRightOf="@id/createPassword"
-        android:layout_below="@id/redAsterix1"
-        android:layout_marginTop="50dp"/>
-
-    <TextView
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/createUsername"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/colon"
-        android:textSize="8pt"
-        android:layout_toRightOf="@id/redAsterix2"
-        android:layout_below="@id/redAsterix1"
-        android:layout_marginTop="50dp"/>
+        android:layout_below="@id/intro2"
+        >
+        <EditText
+            android:id="@+id/userNameText"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:hint=" UserName"
+            android:textSize="8pt" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/user_password"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:background="@drawable/border"
-        android:layout_below="@id/user_id"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="10dp"
-        />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/createPassword"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createUsername">
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:hint=" Password"
+            android:textSize="8pt" />
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -95,8 +63,7 @@
         android:layout_height="wrap_content"
         android:text="- At least one capital letter"
         android:layout_below="@id/createPassword"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -114,98 +81,44 @@
         android:layout_below="@id/textView2"
         android:layout_marginLeft="10dp"/>
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/confirmPass"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textLabelColor"
-        android:text="Confirm Password"
-        android:textSize="8pt"
-        android:layout_below="@id/textView3"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_below="@id/textView3">
+        <EditText
+            android:id="@+id/confirmPassText"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:hint="Confirm Password"
+            android:textSize="8pt" />
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/asterix"
-        android:textColor="#FF0000"
-        android:textSize="8pt"
-        android:id="@+id/redAsterix3"
-        android:layout_toRightOf="@id/confirmPass"
-        android:layout_below="@id/textView3"
-        android:layout_marginTop="25dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/colon"
-        android:textSize="8pt"
-        android:layout_toRightOf="@id/redAsterix3"
-        android:layout_below="@id/textView3"
-        android:layout_marginTop="25dp"/>
-
-    <EditText
-        android:id="@+id/confirmPassText"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:background="@drawable/border"
-        android:layout_below="@id/user_password"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="73dp"
-        android:layout_marginRight="10dp"
-        />
-
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/profileEmail"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textLabelColor"
-        android:text="Email"
-        android:textSize="8pt"
-        android:layout_below="@id/confirmPass"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/asterix"
-        android:textColor="#FF0000"
-        android:textSize="8pt"
-        android:id="@+id/redAsterix4"
-        android:layout_toRightOf="@id/profileEmail"
-        android:layout_below="@id/confirmPass"
-        android:layout_marginTop="50dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/colon"
-        android:textSize="8pt"
-        android:layout_toRightOf="@id/redAsterix4"
-        android:layout_below="@id/confirmPass"
-        android:layout_marginTop="50dp"/>
-
-    <EditText
-        android:id="@+id/addProfileEmail"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:background="@drawable/border"
-        android:layout_below="@id/confirmPassText"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="10dp"
-        />
+        android:layout_below="@id/confirmPass">
+        <EditText
+            android:id="@+id/emailText"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:textSize="8pt" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/button_create_account"
-        android:layout_width="177dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:text="Confirm"
         android:layout_below="@id/profileEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="25dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -213,13 +126,5 @@
         android:gravity="center"
         >
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avloadingIndicatorView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:indicator="BallGridPulse"
-            app:indicator_color="@color/colorPrimaryDark"
-            />
     </RelativeLayout>
 </RelativeLayout>
