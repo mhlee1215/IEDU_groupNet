@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroupDelete;
 import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroupJoin;
 import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroupJoinActivity;
@@ -47,8 +48,8 @@ public class GroupDetailActivity extends AppCompatActivity {
         TextView groupNameTextView = (TextView) findViewById(R.id.group_name);
         groupNameTextView.setText(groupName);
 
-        TextView ownerNameTextView = (TextView) findViewById(R.id.owner_name);
-        ownerNameTextView.setText(ownerName);
+        //TextView ownerNameTextView = (TextView) findViewById(R.id.owner_name);
+        //ownerNameTextView.setText(ownerName);
 
         TextView descriptorTextView = (TextView) findViewById(R.id.group_desc);
         descriptorTextView.setText(descriptor);
@@ -58,7 +59,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         //Convert from byte to bitmap
         if(byteArray != null){
             Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            ImageView imageView = (ImageView) findViewById(R.id.image_viewer);
+            CircleImageView imageView = (CircleImageView) findViewById(R.id.circle_image_view);
             imageView.setImageBitmap(bitmap);
         }
 
