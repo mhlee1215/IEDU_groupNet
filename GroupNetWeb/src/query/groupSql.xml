@@ -37,6 +37,11 @@
  			<if test="status != '' and status != null">
  			and g.STATUS = #{status}
  			</if>
+ 			
+ 			<if test="keyword != '' and keyword != null">
+ 			and (g.NAME like '%${keyword}%' or g.DESCRIPTION like '%${keyword}%')
+ 			</if>
+ 			
 		order by registration_date desc
 		limit #{qSize}
  	</select>
