@@ -46,6 +46,8 @@ public class GroupController {
 		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
 		int viewerId = ServletRequestUtils.getIntParameter(request, "viewerId", 0);
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
+		String pKeyword = ServletRequestUtils.getStringParameter(request, "keyword", "");
+
 		//int qSize = 10;
 		
 		
@@ -53,7 +55,8 @@ public class GroupController {
 		qGroup.setOwnerId(ownerId);
 		qGroup.setViewerId(viewerId);
 		qGroup.setStatus(pStatus);
-		
+		qGroup.setKeyword(pKeyword);
+
 		List<Group> groupList = groupService.readGroup(qGroup);
 		//model.addObject("groupList", groupList);
 		
