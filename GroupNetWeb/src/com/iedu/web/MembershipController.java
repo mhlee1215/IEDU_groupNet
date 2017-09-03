@@ -54,7 +54,7 @@ public class MembershipController {
 		Membership pMembership = new Membership();
 		pMembership.setUserID(pUserID);
 	
-		List<Membership> membershipList = membershipService.readMyMembership(pMembership);
+		List<Membership> membershipList = membershipService.readMembership(pMembership);
 		//model.addObject("membershipList", membershipList);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -100,8 +100,16 @@ public class MembershipController {
 		pMembership.setEnrollDate(pEnrollDate);
 		
 		
-		membershipService.addMembership(pMembership);
-		membershipService.updateMembership(pMembership);
+		List<Membership> m = membershipService.readMembership(pMembership);
+		if(m.size() > 0){
+			return "exist";
+		}else{
+			membershipService.addMembership(pMembership);
+			return "success";
+		}
+		
+		
+		//membershipService.updateMembership(pMembership);
 		
 //		ModelAndView model = new ModelAndView("add_membership_test");
 //		 model.addObject("id", pId);
@@ -110,7 +118,7 @@ public class MembershipController {
 //		 model.addObject("enrollDate", pEnrollDate);
 
 	
-		return "success";
+		
     }
 	
 	@RequestMapping("/updateMembership.do")

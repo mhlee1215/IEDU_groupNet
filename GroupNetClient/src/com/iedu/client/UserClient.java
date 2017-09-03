@@ -199,13 +199,64 @@ public class UserClient {
 		return -100;
 	}	
 	
+	public static int userNameLookup(User user){
+		
+		try {
+			user.setName(URLEncoder.encode(user.getName(), "UTF-8"));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
+		HttpClient httpclient = new DefaultHttpClient();
+
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":8080/GroupNetWeb/" + "nameLookUp.do"
+				+ "?name=" + user.getName());
+		
+		System.out.println(httpget.getURI());
+		HttpResponse response;
+		try {
+			response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";	
+				while ((line = rd.readLine()) != null) {
+					//System.out.println(line);
+					int returnCode = Integer.parseInt(line);
+					return returnCode;
+				}
+				
+				
+			}
+			
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+			
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return -100;
+	}	
+	
 	public static void main(String[] argv){
+//		User user = new User();
+//		user.setName("bob");
+//		user.setAge(1);
+//		user.setPassword("6547");
+//		String errorCode = UserClient.signup(user);
+//		//int errorCode = UserClient.login(user);
+//		System.out.println("errorcode : "+errorCode);
 		User user = new User();
-		user.setName("bob");
-		user.setAge(1);
-		user.setPassword("6547");
-		String errorCode = UserClient.signup(user);
-		//int errorCode = UserClient.login(user);
-		System.out.println("errorcode : "+errorCode);
+		user.setName("sam");
+		System.out.println(UserClient.userNameLookup(user));
+		
 	}
 }

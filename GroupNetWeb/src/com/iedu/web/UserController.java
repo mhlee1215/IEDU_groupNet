@@ -48,6 +48,22 @@ public class UserController {
 		return model;
     }
 	
+	@RequestMapping("/nameLookUp.do")
+    public @ResponseBody String nameLookUp(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
+		
+		pName = URLDecoder.decode(pName, "UTF-8");
+		
+		User pUser = new User();
+		pUser.setName(pName);
+		User user = userService.getUser(pUser);
+		
+		if(user != null)
+			return "1";
+		else
+			return "0";
+    }
+	
 	@RequestMapping("/login.do")
     public @ResponseBody String loginTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");

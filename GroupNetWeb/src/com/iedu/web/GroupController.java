@@ -44,12 +44,15 @@ public class GroupController {
 		//ModelAndView model = new ModelAndView("group_list");
 		
 		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
+		int viewerId = ServletRequestUtils.getIntParameter(request, "viewerId", 0);
+		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
 		//int qSize = 10;
 		
 		
 		Group qGroup = new Group();
 		qGroup.setOwnerId(ownerId);
-		
+		qGroup.setViewerId(viewerId);
+		qGroup.setStatus(pStatus);
 		
 		List<Group> groupList = groupService.readGroup(qGroup);
 		//model.addObject("groupList", groupList);
@@ -79,6 +82,8 @@ public class GroupController {
 			e1.printStackTrace();
 		}
 		
+		pStatus = "Active";
+		
 		Group pGroup = new Group();
 		//pGroup.setId(pId);
 		pGroup.setName(pName);
@@ -105,7 +110,7 @@ public class GroupController {
     }
 	
 	@RequestMapping("/updateGroup.do")
-    public ModelAndView updateGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public @ResponseBody String updateGroup(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
 		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 		String pDescription = ServletRequestUtils.getStringParameter(request, "description", "");
@@ -122,10 +127,9 @@ public class GroupController {
 		pGroup.setUrl(pUrl);
 
 		groupService.updateGroup(pGroup);
+			
 		
-		ModelAndView model = new ModelAndView("update_group");	
-		
-		return model;
+		return "1";
     }
 	
 	@RequestMapping("/deleteGroup.do")

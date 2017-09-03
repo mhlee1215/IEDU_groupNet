@@ -1,17 +1,21 @@
 package groupnet.iedu.com.groupnetandroid;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.iedu.domain.Group;
 
@@ -43,6 +48,9 @@ public class HomeFragment extends Fragment implements MainFragment {
 	private SwipeRefreshLayout swipeRefreshLayout;
 	private HomeFragmentAdapter adapter;
 	private HomeFragment homeFragment;
+	private int userId;
+	private View view;
+	private boolean hasChanged = false;
 
 	/**
 	 * Create a new instance of the fragment
@@ -58,8 +66,12 @@ public class HomeFragment extends Fragment implements MainFragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
+		userId = pref.getInt("USER_ID", -1);
+		Log.e("GroupNet", "HOME_FRAGMENT_USERID:"+userId);
+
 		homeFragment = this;
-		View view = inflater.inflate(R.layout.fragment_demo_list, container, false);
+		view = inflater.inflate(R.layout.fragment_demo_list, container, false);
 
 		swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swiperefresh);
 		swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -68,7 +80,7 @@ public class HomeFragment extends Fragment implements MainFragment {
 //				System.out.println("refresh!!");
 //				swipeRefreshLayout.setRefreshing(false);
 				ConnectionGroup cl = new ConnectionGroup(view, homeFragment);
-				cl.execute();
+				cl.execute(userId);
 			}
 		});
 
@@ -81,10 +93,30 @@ public class HomeFragment extends Fragment implements MainFragment {
 
 		//initDemoList(view);
 		ConnectionGroup cl = new ConnectionGroup(view, this);
-		cl.execute();
-
+		cl.execute(userId);
 		return view;
 
+	}
+
+	public void hasChanged(){
+		this.hasChanged = true;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		Log.e("GroupNet", "onResume!");
+		if(hasChanged || true){
+			ConnectionGroup cl = new ConnectionGroup(view, this);
+			cl.execute(userId);
+		}
+		hasChanged = false;
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Log.e("GroupNet", "onActivityResult!");
 	}
 
 	private ArrayList<GroupItem> getData() {
@@ -102,14 +134,20 @@ public class HomeFragment extends Fragment implements MainFragment {
 	 */
 	public void initDemoList(View view, List<Group> groupData) {
 		if(adapter == null) {
-			adapter = new HomeFragmentAdapter(groupData);
+			adapter = new HomeFragmentAdapter(groupData, this);
 			recyclerView.setAdapter(adapter);
 		}else{
-			adapter = new HomeFragmentAdapter(groupData);
+			adapter = new HomeFragmentAdapter(groupData, this);
 			recyclerView.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			swipeRefreshLayout.setRefreshing(false);
 		}
+	}
+
+
+	public void refreshGroup() {
+		ConnectionGroup cl = new ConnectionGroup(view, homeFragment);
+		cl.execute(userId);
 	}
 
 	/**

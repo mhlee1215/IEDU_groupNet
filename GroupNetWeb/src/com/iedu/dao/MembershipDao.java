@@ -21,16 +21,16 @@ public class MembershipDao extends SqlSessionDaoSupport{
 
 
 	@SuppressWarnings("unchecked")
-	public List<Membership> readMembership() {	
-		List<Membership> array = getSqlSession().selectList("MembershipSql.readMembershipList");
+	public List<Membership> readMembership(Membership m) {	
+		List<Membership> array = getSqlSession().selectList("MembershipSql.readMembershipList", m);
 		return array;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Membership> readMyMembership(Membership m) {	
-		List<Membership> array = getSqlSession().selectList("MembershipSql.readMyMembershipList", m);
-		return array;
-	}
+//	@SuppressWarnings("unchecked")
+//	public List<Membership> readMyMembership(Membership m) {	
+//		List<Membership> array = getSqlSession().selectList("MembershipSql.readMyMembershipList", m);
+//		return array;
+//	}
 
 	@SuppressWarnings("unchecked")
 	public List<Membership> readGroupMembership(Membership m) {	

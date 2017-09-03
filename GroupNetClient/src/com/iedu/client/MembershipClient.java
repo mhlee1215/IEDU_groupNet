@@ -165,7 +165,19 @@ public class MembershipClient {
 		//List<Membership> groupList = MembershipClient.readGroupMemberships();
 		//System.out.println("group size:"+groupList.size());
 
-		MembershipClient.Groupleave("777", "80");
+		MembershipClient.Groupjoin("69", "43");
+		MembershipClient.Groupjoin("69", "44");
+		MembershipClient.Groupjoin("69", "42");
+		
+		MembershipClient.Groupjoin("68", "43");
+		MembershipClient.Groupjoin("68", "44");
+		MembershipClient.Groupjoin("68", "42");
+		
+		MembershipClient.Groupjoin("67", "43");
+		MembershipClient.Groupjoin("67", "44");
+		//MembershipClient.Groupjoin("69", "42");
+		
+		//MembershipClient.Groupleave("69", "44");
 
 
 	}

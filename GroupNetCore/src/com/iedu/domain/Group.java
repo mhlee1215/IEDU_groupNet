@@ -8,7 +8,11 @@ public class Group {
 	String registration_date = "";
 	String url = "";
 	String url2 = "";
+	String ownerName = "";
 	int ownerId = 0;
+	int viewerId = 0;
+	String isJoin = "N";
+	String isFavorite = "N";
 	
 	int qSize = 10;
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
@@ -19,9 +23,45 @@ public class Group {
 	public String toString() {
 		return "{\"id\":\"" + id + "\", \"name\":\"" + name + "\", \"description\":\"" + description
 				+ "\", \"status\":\"" + status + "\", \"registration_date\":\"" + registration_date + "\", \"url\":\""
-				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerId\":\"" + ownerId + "\", \"qSize\":\"" + qSize + "\"}";
+				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerName\":\"" + ownerName + "\", \"ownerId\":\"" + ownerId
+				+ "\", \"viewerId\":\"" + viewerId + "\", \"isJoin\":\"" + isJoin + "\", \"isFavorite\":\"" + isFavorite
+				+ "\", \"qSize\":\"" + qSize + "\"}";
 	}
 	
+	
+	
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public int getViewerId() {
+		return viewerId;
+	}
+
+	public void setViewerId(int viewerId) {
+		this.viewerId = viewerId;
+	}
+
+	public String getIsJoin() {
+		return isJoin;
+	}
+
+	public void setIsJoin(String isJoin) {
+		this.isJoin = isJoin;
+	}
+
+	public String getIsFavorite() {
+		return isFavorite;
+	}
+
+	public void setIsFavorite(String isFavorite) {
+		this.isFavorite = isFavorite;
+	}
+
 	public int getOwnerId() {
 		return ownerId;
 	}

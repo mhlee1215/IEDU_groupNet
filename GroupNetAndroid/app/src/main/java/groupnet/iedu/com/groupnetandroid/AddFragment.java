@@ -109,7 +109,7 @@ public class AddFragment extends Fragment implements MainFragment {
 				cl.execute(groupName.getText().toString(), groupDesc.getText().toString(), uploadedImageId, userId);
 
 				((MainActivity)getActivity()).setTab(3);
-				
+
 			}});
 
 		return view;

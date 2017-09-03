@@ -31,14 +31,15 @@ import com.iedu.domain.GroupBin;
 
 public class GroupClient {
 	
-	public static List<Group> readGroups() {
-		Group group = null;
+	public static List<Group> readGroups(Group group) {
+		//Group group = null;
 
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<Group> groups = null;
 		
 		try{
-			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroup.do")
+			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroup.do"
+									+ "?ownerId="+group.getOwnerId()+"&viewerId="+group.getViewerId()+"&status="+group.getStatus())
 					.openStream();
 			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
 			Gson gson = new Gson();
@@ -105,11 +106,80 @@ public class GroupClient {
 		return 0;
 	}
 	
+	public static int updateGroup(Group g) {
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		
+		try {
+			g.setName(URLEncoder.encode(g.getName(), "UTF-8"));
+			g.setDescription(URLEncoder.encode(g.getDescription(), "UTF-8"));
+			g.setUrl(URLEncoder.encode(g.getUrl(), "UTF-8"));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+
+		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "updateGroup.do"
+				+ "?id="+g.getId()+"&name="+g.getName()+"&description="+g.getDescription()+"&url="+g.getUrl()+"&ownerId="+g.getOwnerId()
+				+ "&status="+g.getStatus());
+		//Similar to below. Check Env class
+		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
+		//		+ "?name="+name);
+		
+		System.out.println(httpget.getURI());
+		HttpResponse response;
+		try {
+			response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					System.out.println(line);
+				}
+			}
+			
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+			
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return 0;
+	}
+	
+	public static void deleteGroup(int groupId){
+		Group g = new Group();
+		g.setId(groupId);
+		g.setStatus("deleted");
+		updateGroup(g);
+	}
+	
+	public static void reActivateGroup(int groupId){
+		Group g = new Group();
+		g.setId(groupId);
+		g.setStatus("active");
+		updateGroup(g);
+	}
+	
 	public static void main(String[] argv){
-		GroupClient.addGroup("new_group_name123123", "deeddddd", "http://////.........", 10);
+		//GroupClient.addGroup("new_group_name123123", "deeddddd", "http://////.........", 10);
 		
-//		List<Group> groupList = GroupClient.readGroups();
-//		System.out.println("group size:"+groupList.size());
+//		Group g = new Group();
+//		g.setViewerId(69);
+//		List<Group> groupList = GroupClient.readGroups(g);
+//		System.out.println("group :"+groupList);
+		//System.out.println("group size:"+groupList.size());
 		
+		//deleteGroup(44);
+		reActivateGroup(44);
+
 	}
 }

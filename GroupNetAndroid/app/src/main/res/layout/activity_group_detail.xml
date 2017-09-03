@@ -11,9 +11,16 @@
         android:layout_weight="0.4"
         >
         <TextView
+            android:id="@+id/group_name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="GroupName"
+            android:textSize="12pt"/>
+        <TextView
+            android:id="@+id/owner_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Owner"
             android:textSize="12pt"/>
     </LinearLayout>
 
@@ -26,6 +33,7 @@
             android:layout_width="220dp"
             android:layout_height="220dp">
             <ImageView
+                android:id="@+id/image_viewer"
                 android:layout_width="220dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/image_1"/>
@@ -62,6 +70,7 @@
         android:layout_weight="0.4"
         android:paddingBottom="5dp">
         <TextView
+            android:id="@+id/group_desc"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Description:"
@@ -76,19 +85,29 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_weight="0.1"
+        android:layout_gravity="center"
         android:layout_height="60dp">
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="JOIN"
-            android:onClick="Join"/>
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/button_join"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="JOIN" />
+        <Button
+            android:id="@+id/button_leave"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="LEAVE" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"
+        android:text="DELETE" />
 
 </LinearLayout>

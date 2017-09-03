@@ -37,6 +37,11 @@ public class UserDao extends SqlSessionDaoSupport{
 		return user;
 	}
 	
+	public User getUser(User pUser) {	
+		User user = (User) getSqlSession().selectOne("UserSql.readUser", pUser);
+		return user;
+	}
+	
 	public void addUser(User user){
 		getSqlSession().insert("UserSql.addUser", user);
 	}

@@ -199,14 +199,18 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_create_account"
         android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:text="Confirm"
+<<<<<<< HEAD
         android:onClick="nextButton"
         android:layout_below="@id/profileEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>
+=======
+        />
+>>>>>>> 59e362f4e6ea9f2107e3596484c6e7c41bdaa802
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -11,9 +11,16 @@
 		<result column="ENROLLDATE" property="enrollDate" />
  	</resultMap>
 
-	<select id="readMembershipList" resultMap="Membership">
+	<select id="readMembershipList" resultMap="Membership" parameterType="com.iedu.domain.Membership">
  		SELECT ID, USERID, GROUPID, ENROLLDATE 
  		FROM membership
+ 		WHERE 1=1
+ 		<if test="userID != '' and userID != null">
+  			and userid=#{userID}
+  		</if>
+  		<if test="groupID != '' and groupID != null">
+  			and groupid=#{groupID}
+  		</if>
  	</select>
 
 	<insert id="addMembership" parameterType="com.iedu.domain.Membership">
