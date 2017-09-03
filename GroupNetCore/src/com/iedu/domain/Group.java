@@ -13,7 +13,20 @@ public class Group {
 	int viewerId = 0;
 	String isJoin = "N";
 	String isFavorite = "N";
+	String keyword;
 	
+	
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	int qSize = 10;
 	//{"${member.name()}":"${member.value}", "${otherMembers}"}
 	
@@ -25,7 +38,7 @@ public class Group {
 				+ "\", \"status\":\"" + status + "\", \"registration_date\":\"" + registration_date + "\", \"url\":\""
 				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerName\":\"" + ownerName + "\", \"ownerId\":\"" + ownerId
 				+ "\", \"viewerId\":\"" + viewerId + "\", \"isJoin\":\"" + isJoin + "\", \"isFavorite\":\"" + isFavorite
-				+ "\", \"qSize\":\"" + qSize + "\"}";
+				+ "\", \"keyword\":\"" + keyword + "\", \"qSize\":\"" + qSize + "\"}";
 	}
 	
 	
