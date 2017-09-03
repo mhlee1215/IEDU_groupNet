@@ -74,6 +74,15 @@
                         android:textColor="@color/textLabelColor"
                         android:textSize="8pt" />
 
+                    <TextView
+                        android:id="@+id/textView51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Members"
+                        android:textColor="@color/textLabelColor"
+                        android:textSize="7pt" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -131,26 +140,21 @@
     </LinearLayout>
 
 
-    <!--<GridView-->
-        <!--android:id="@+id/grou_gridView"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:layout_marginBottom="150dp"-->
-        <!--android:clickable="true"-->
-        <!--android:columnWidth="200dp"-->
-        <!--android:drawSelectorOnTop="true"-->
-        <!--android:focusable="true"-->
-        <!--android:gravity="center"-->
-        <!--android:numColumns="3"-->
-        <!--android:stretchMode="columnWidth"-->
-        <!--android:verticalSpacing="2dp"-->
-        <!--android:layout_weight="0.64" />-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_demo_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <GridView
+        android:id="@+id/grou_gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="150dp"
+        android:clickable="true"
+        android:columnWidth="200dp"
+        android:drawSelectorOnTop="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="2dp"
+        android:layout_weight="0.64" />
 
 
 </LinearLayout>
