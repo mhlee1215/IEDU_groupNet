@@ -10,7 +10,7 @@
         android:id="@+id/intro"
         android:text="Welcome!"
         android:textSize="15pt"
-        android:textColor="#/00000"
+        android:textColor="@color/black"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
@@ -24,7 +24,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:layout_below="@id/intro"/>
+        android:layout_below="@id/intro"
+        android:textColor="@color/grey"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/createUsername"
@@ -39,7 +40,8 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint=" UserName"
-            android:textSize="8pt" />
+            android:textSize="8pt"
+            android:textColor="@color/grey"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -54,7 +56,8 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint=" Password"
-            android:textSize="8pt" />
+            android:textSize="8pt"
+            android:textColor="@color/grey"/>
     </android.support.design.widget.TextInputLayout>
 
     <TextView
@@ -63,7 +66,8 @@
         android:layout_height="wrap_content"
         android:text="- At least one capital letter"
         android:layout_below="@id/createPassword"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/grey"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -71,7 +75,8 @@
         android:layout_height="wrap_content"
         android:text="- At least one lower case letter"
         android:layout_below="@id/textView"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/grey"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -79,7 +84,8 @@
         android:layout_height="wrap_content"
         android:text="- At least one number"
         android:layout_below="@id/textView2"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/grey"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/confirmPass"
@@ -93,7 +99,8 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint="Confirm Password"
-            android:textSize="8pt" />
+            android:textSize="8pt"
+            android:textColor="@color/grey"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -108,7 +115,8 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint="Email"
-            android:textSize="8pt" />
+            android:textSize="8pt"
+            android:textColor="@color/grey"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
