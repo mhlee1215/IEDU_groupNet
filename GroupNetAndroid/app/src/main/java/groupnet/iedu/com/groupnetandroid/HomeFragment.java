@@ -132,12 +132,12 @@ public class HomeFragment extends Fragment implements MainFragment {
 	/**
 	 * Init the fragment
 	 */
-	public void initDemoList(View view, List<Group> groupData) {
+	public void postExecute(View view, Object groupData) {
 		if(adapter == null) {
-			adapter = new HomeFragmentAdapter(groupData, this);
+			adapter = new HomeFragmentAdapter((List<Group>)groupData, this);
 			recyclerView.setAdapter(adapter);
 		}else{
-			adapter = new HomeFragmentAdapter(groupData, this);
+			adapter = new HomeFragmentAdapter((List<Group>)groupData, this);
 			recyclerView.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			swipeRefreshLayout.setRefreshing(false);

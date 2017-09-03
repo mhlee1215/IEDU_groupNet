@@ -76,9 +76,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         EditText userPassword = (EditText)findViewById(R.id.user_password);
         System.out.println(userPassword.getText());
 
+        EditText userEmail = (EditText)findViewById(R.id.user_email);
+        System.out.println(userEmail.getText());
+
         showLoading(true);
         ConnectionSignup cl = new ConnectionSignup(this);
-        cl.execute(userId.getText().toString(), userPassword.getText().toString());
+        cl.execute(userId.getText().toString(), userPassword.getText().toString(), userEmail.getText().toString());
 
 
     }

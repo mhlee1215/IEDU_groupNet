@@ -18,8 +18,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 
-import java.util.ArrayList;
+import com.iedu.domain.Group;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroup;
 import groupnet.iedu.com.groupnetandroid.samples.gridview.GridViewAdapter;
 import groupnet.iedu.com.groupnetandroid.samples.gridview.ImageItem;
 import groupnet.iedu.com.groupnetandroid.samples.tab.DemoAdapter;
@@ -34,8 +38,8 @@ public class GroupFragment extends Fragment implements MainFragment {
 	private FrameLayout fragmentContainer;
 	private RecyclerView recyclerView;
 	private RecyclerView.LayoutManager layoutManager;
-	private GridView gridView;
-	private GroupFragmentViewAdapter gridAdapter;
+	//private GridView gridView;
+	private GroupFragmentAdapter adapter;
 
 	/**
 	 * Create a new instance of the fragment
@@ -59,11 +63,22 @@ public class GroupFragment extends Fragment implements MainFragment {
 		View view = inflater.inflate(R.layout.fragment_group, container, false);
 
 
-		gridView = (GridView) view.findViewById(R.id.grou_gridView);
-		gridAdapter = new GroupFragmentViewAdapter(getActivity(), R.layout.group_fragment_item_layout, getData());
-		gridView.setAdapter(gridAdapter);
+		recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
+		recyclerView.setHasFixedSize(true);
+		layoutManager = new LinearLayoutManager(getActivity());
+		recyclerView.setLayoutManager(layoutManager);
 
+
+		//initDemoList(view);
+		ConnectionGroup cl = new ConnectionGroup(view, this);
+		cl.execute(userId);
 		return view;
+
+//		gridView = (GridView) view.findViewById(R.id.grou_gridView);
+//		gridAdapter = new GroupFragmentViewAdapter(getActivity(), R.layout.group_fragment_item_layout, getData());
+//		gridView.setAdapter(gridAdapter);
+
+		//return view;
 	}
 
 	// Prepare some dummy data for gridview
@@ -75,6 +90,20 @@ public class GroupFragment extends Fragment implements MainFragment {
 			imageItems.add(new ImageItem(bitmap, "Image#" + i));
 		}
 		return imageItems;
+	}
+
+
+
+	public void postExecute(View view, Object groupData) {
+		if(adapter == null) {
+			adapter = new GroupFragmentAdapter((List<Group>)groupData, this);
+			recyclerView.setAdapter(adapter);
+		}else{
+			adapter = new GroupFragmentAdapter((List<Group>)groupData, this);
+			recyclerView.setAdapter(adapter);
+			adapter.notifyDataSetChanged();
+			//swipeRefreshLayout.setRefreshing(false);
+		}
 	}
 
 

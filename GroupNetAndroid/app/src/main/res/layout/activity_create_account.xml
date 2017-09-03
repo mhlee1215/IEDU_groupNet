@@ -36,7 +36,7 @@
         android:layout_below="@id/intro2"
         >
         <EditText
-            android:id="@+id/userNameText"
+            android:id="@+id/user_id"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint=" UserName"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/createUsername">
         <EditText
-            android:id="@+id/passwordText"
+            android:id="@+id/user_password"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint=" Password"
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/confirmPass">
         <EditText
-            android:id="@+id/emailText"
+            android:id="@+id/user_email"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint="Email"

@@ -15,6 +15,7 @@ import java.util.List;
 
 import groupnet.iedu.com.groupnetandroid.HomeFragment;
 import groupnet.iedu.com.groupnetandroid.LoginPageActivity;
+import groupnet.iedu.com.groupnetandroid.MainFragment;
 
 /**
  * Created by mhlee on 7/21/17.
@@ -22,13 +23,13 @@ import groupnet.iedu.com.groupnetandroid.LoginPageActivity;
 
 public class ConnectionGroup extends AsyncTask {
 
-    private HomeFragment context;
+    private MainFragment context;
     //int returnCode;
     List<Group> groupList = null;
     View view;
 
     public ConnectionGroup(View view, Fragment fragment){
-        this.context = (HomeFragment)fragment;
+        this.context = (MainFragment)fragment;
         this.view = view;
     }
 
@@ -54,7 +55,7 @@ public class ConnectionGroup extends AsyncTask {
 
         //If login success
         if( groupList != null) {
-            context.initDemoList(view, groupList);
+            context.postExecute(view, groupList);
            // context.loginFail();
         }
 

@@ -79,6 +79,10 @@ public class ChatFragment extends Fragment implements MainFragment {
 		return view;
 	}
 
+	public void postExecute(View view, Object groupData) {
+
+	}
+
 
 	/**
 	 * Refresh

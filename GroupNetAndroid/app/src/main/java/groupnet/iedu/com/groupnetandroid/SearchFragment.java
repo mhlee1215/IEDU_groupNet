@@ -12,7 +12,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import com.iedu.domain.Group;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import groupnet.iedu.com.groupnetandroid.samples.tab.DemoAdapter;
 
@@ -40,6 +43,11 @@ public class SearchFragment extends Fragment implements MainFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_search, container, false);
 		return view;
+	}
+
+
+	public void postExecute(View view, Object groupData) {
+
 	}
 
 	/**

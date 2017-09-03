@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
 
 
+        bottomNavigation.setAccentColor(R.color.blue);
+
+        //bottomNavigation.setColoredModeColors(R.color.blue, R.color.black);
+
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_home_black, R.color.color_tab_1);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_add_black_24dp, R.color.color_tab_2);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_search_black_24dp, R.color.color_tab_3);

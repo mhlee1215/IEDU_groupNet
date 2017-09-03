@@ -31,6 +31,7 @@ public class ConnectionSignup extends AsyncTask {
             User user = new User();
             user.setName((String)arg0[0]); // user name
             user.setPassword((String)arg0[1]); // user password
+            user.setEmail((String)arg0[2]); // user password
             returnCode = UserClient.signup(user);
 
 

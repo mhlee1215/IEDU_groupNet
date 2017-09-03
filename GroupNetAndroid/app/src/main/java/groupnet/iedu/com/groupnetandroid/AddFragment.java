@@ -155,9 +155,6 @@ public class AddFragment extends Fragment implements MainFragment {
 
 	public void postAddGroup(){
 		Toast.makeText(getActivity(), "Group Added..", Toast.LENGTH_LONG).show();
-
-
-
 	}
 
 	public void showLoading(boolean visible){
@@ -165,6 +162,10 @@ public class AddFragment extends Fragment implements MainFragment {
 			loadingLayout.setVisibility(View.VISIBLE);
 		else
 			loadingLayout.setVisibility(View.GONE);
+	}
+
+	public void postExecute(View view, Object groupData) {
+
 	}
 
 	/**
