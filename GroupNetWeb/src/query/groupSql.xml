@@ -37,11 +37,30 @@
  			<if test="status != '' and status != null">
  			and g.STATUS = #{status}
  			</if>
- 			
- 			<if test="keyword != '' and keyword != null">
- 			and (g.NAME like '%${keyword}%' or g.DESCRIPTION like '%${keyword}%')
+		order by registration_date desc
+		limit #{qSize}
+ 	</select>
+ 	
+ 	<select id="searchGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
+ 		SELECT g.ID, g.NAME, g.DESCRIPTION, g.STATUS, g.REGISTRATION_DATE, g.URL, g.OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
+		FROM `group` g left outer join (
+		select userid, groupid from membership
+		 	<if test="viewerId > 0">
+ 			where userid = #{viewerId}
+ 			</if>
+		) m on g.ID = m.groupId
+		inner join `user` u on u.id = g.ownerid
+		WHERE 1=1
+			<if test="id > 0">
+ 			and id = #{id}
  			</if>
  			
+ 			<if test="ownerId > 0">
+ 			and ownerid = #{ownerId}
+ 			</if>
+ 			<if test="status != '' and status != null">
+ 			and g.STATUS = #{status}
+ 			</if>
 		order by registration_date desc
 		limit #{qSize}
  	</select>

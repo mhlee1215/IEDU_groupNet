@@ -55,6 +55,7 @@
             android:id="@+id/user_password"
             android:layout_width="350dp"
             android:layout_height="50dp"
+            android:inputType="textPassword"
             android:hint=" Password"
             android:textSize="8pt"
             android:textColor="@color/grey"/>
@@ -99,6 +100,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:hint="Confirm Password"
+            android:inputType="textPassword"
             android:textSize="8pt"
             android:textColor="@color/grey"/>
     </android.support.design.widget.TextInputLayout>
