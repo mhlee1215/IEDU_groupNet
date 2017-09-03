@@ -13,7 +13,6 @@ import com.iedu.domain.Message;
 import java.util.List;
 
 import groupnet.iedu.com.groupnetandroid.Utils.DateUtils;
-import groupnet.iedu.com.groupnetandroid.Utils.ImageUtils;
 
 public class ChatListAdapter extends RecyclerView.Adapter {
 

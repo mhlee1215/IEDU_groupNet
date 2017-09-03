@@ -56,9 +56,11 @@ public class GroupDetailActivity extends AppCompatActivity {
 //        //Receiving image byte
         byte[] byteArray = getIntent().getByteArrayExtra("image");
         //Convert from byte to bitmap
-        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        ImageView imageView = (ImageView) findViewById(R.id.image_viewer);
-        imageView.setImageBitmap(bitmap);
+        if(byteArray != null){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            ImageView imageView = (ImageView) findViewById(R.id.image_viewer);
+            imageView.setImageBitmap(bitmap);
+        }
 
 
         Button button_join = (Button)findViewById(R.id.button_join);

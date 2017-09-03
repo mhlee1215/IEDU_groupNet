@@ -1,7 +1,6 @@
 package groupnet.iedu.com.groupnetandroid.samples.dynamic_list;
 
 import android.app.ListActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;

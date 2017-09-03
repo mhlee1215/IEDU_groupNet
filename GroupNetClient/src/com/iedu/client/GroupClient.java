@@ -172,14 +172,14 @@ public class GroupClient {
 	public static void main(String[] argv){
 		//GroupClient.addGroup("new_group_name123123", "deeddddd", "http://////.........", 10);
 		
-//		Group g = new Group();
-//		g.setViewerId(69);
-//		List<Group> groupList = GroupClient.readGroups(g);
-//		System.out.println("group :"+groupList);
+		Group g = new Group();
+		g.setOwnerId(69);
+		List<Group> groupList = GroupClient.readGroups(g);
+		System.out.println("group :"+groupList);
 		//System.out.println("group size:"+groupList.size());
 		
 		//deleteGroup(44);
-		reActivateGroup(44);
+		//reActivateGroup(44);
 
 	}
 }

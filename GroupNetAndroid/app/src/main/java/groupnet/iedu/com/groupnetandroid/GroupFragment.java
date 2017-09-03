@@ -1,6 +1,9 @@
 package groupnet.iedu.com.groupnetandroid;
 
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,10 +16,15 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 
 import java.util.ArrayList;
 
+import groupnet.iedu.com.groupnetandroid.samples.gridview.GridViewAdapter;
+import groupnet.iedu.com.groupnetandroid.samples.gridview.ImageItem;
 import groupnet.iedu.com.groupnetandroid.samples.tab.DemoAdapter;
+
+import static groupnet.iedu.com.groupnetandroid.R.id.gridView;
 
 /**
  *
@@ -26,6 +34,8 @@ public class GroupFragment extends Fragment implements MainFragment {
 	private FrameLayout fragmentContainer;
 	private RecyclerView recyclerView;
 	private RecyclerView.LayoutManager layoutManager;
+	private GridView gridView;
+	private GroupFragmentViewAdapter gridAdapter;
 
 	/**
 	 * Create a new instance of the fragment
@@ -47,7 +57,24 @@ public class GroupFragment extends Fragment implements MainFragment {
         Log.e("GroupNet", "GROUP_FRAGMENT_USERID:"+userId);
 
 		View view = inflater.inflate(R.layout.fragment_group, container, false);
+
+
+		gridView = (GridView) view.findViewById(R.id.grou_gridView);
+		gridAdapter = new GroupFragmentViewAdapter(getActivity(), R.layout.group_fragment_item_layout, getData());
+		gridView.setAdapter(gridAdapter);
+
 		return view;
+	}
+
+	// Prepare some dummy data for gridview
+	private ArrayList<ImageItem> getData() {
+		final ArrayList<ImageItem> imageItems = new ArrayList<>();
+		TypedArray imgs = getResources().obtainTypedArray(R.array.image_ids);
+		for (int i = 0; i < imgs.length(); i++) {
+			Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imgs.getResourceId(i, -1));
+			imageItems.add(new ImageItem(bitmap, "Image#" + i));
+		}
+		return imageItems;
 	}
 
 
