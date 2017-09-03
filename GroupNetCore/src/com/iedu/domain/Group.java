@@ -13,7 +13,7 @@ public class Group {
 	int viewerId = 0;
 	String isJoin = "N";
 	String isFavorite = "N";
-	String keyword;
+	String keyword = "";
 	
 	
 	
