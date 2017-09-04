@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,7 +18,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.iedu.domain.Group;
 
 import java.util.ArrayList;
@@ -58,6 +63,7 @@ public class GroupFragment extends Fragment implements MainFragment {
 
         SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
         int userId = pref.getInt("USER_ID", -1);
+		String userName = pref.getString("USER_NAME", "");
         Log.e("GroupNet", "GROUP_FRAGMENT_USERID:"+userId);
 
 		View view = inflater.inflate(R.layout.fragment_group, container, false);
@@ -68,6 +74,23 @@ public class GroupFragment extends Fragment implements MainFragment {
 		layoutManager = new LinearLayoutManager(getActivity());
 		recyclerView.setLayoutManager(layoutManager);
 
+
+		ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
+		int color2 = generator.getColor(userName);
+
+		TextDrawable drawable = TextDrawable.builder()
+				.beginConfig()
+				.width(40)  // width in px
+				.height(40) // height in px
+				.endConfig()
+				.buildRoundRect(userName.substring(0, 1), color2, 30);
+
+		ImageView image = (ImageView) view.findViewById(R.id.image_view);
+		image.setImageDrawable(drawable);
+
+
+		TextView userIdView = (TextView)view.findViewById(R.id.user_id_view);
+		userIdView.setText(userName);
 
 		//initDemoList(view);
 		ConnectionGroup cl = new ConnectionGroup(view, this);

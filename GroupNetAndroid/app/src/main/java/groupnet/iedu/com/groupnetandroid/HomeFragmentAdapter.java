@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.iedu.domain.Group;
 
 import java.io.ByteArrayOutputStream;
@@ -54,6 +56,8 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 
 
 		public ImageView mImageView;
+		public ImageView mUserImageView;
+
 		public ViewHolder(View v) {
 			super(v);
 			mTitleView = (TextView) v.findViewById(R.id.GroupName);
@@ -62,6 +66,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 			mMyGroupMarkView = (TextView) v.findViewById(R.id.MyGroupMark);
 
 			mImageView = (ImageView) v.findViewById(R.id.layout_item_home_image);
+			mUserImageView = (ImageView) v.findViewById(R.id.image_view);
 
 			mBtnFavorite = (ImageButton) v.findViewById(R.id.button_group_favorite);
 			mBtnAdd = (ImageButton) v.findViewById(R.id.button_group_add);
@@ -96,6 +101,21 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		holder.mOwnerView.setText(mDataset.get(position).getOwnerName());
 		holder.mTitleView.setText(mDataset.get(position).getName());
 		holder.mDescView.setText(mDataset.get(position).getDescription());
+
+
+		String nameToDisplay = mDataset.get(position).getOwnerName();
+		ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
+		int color2 = generator.getColor(nameToDisplay);
+
+		TextDrawable drawable = TextDrawable.builder()
+				.beginConfig()
+				.width(40)  // width in px
+				.height(40) // height in px
+				.endConfig()
+				.buildRoundRect(nameToDisplay.substring(0, 1), color2, 30);
+
+		holder.mUserImageView.setImageDrawable(drawable);
+
 
 
 		holder.mImageView.setOnClickListener(new View.OnClickListener() {

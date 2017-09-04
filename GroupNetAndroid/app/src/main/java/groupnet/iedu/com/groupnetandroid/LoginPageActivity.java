@@ -16,6 +16,7 @@ import groupnet.iedu.com.groupnetandroid.samples.components.SampleActivity;
 
 public class LoginPageActivity extends AppCompatActivity {
     AVLoadingIndicatorView loadingMark;
+    EditText userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
     //public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
     public void loginButton (View view) {
-        EditText userId = (EditText)findViewById(R.id.user_id);
+        userId = (EditText)findViewById(R.id.user_id);
         System.out.println(userId.getText());
 
         EditText userPassword = (EditText)findViewById(R.id.user_password);
@@ -55,6 +56,7 @@ public class LoginPageActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("USER_ID", returnCode);
+        editor.putString("USER_NAME", userId.getText().toString());
         editor.commit();
 
 
