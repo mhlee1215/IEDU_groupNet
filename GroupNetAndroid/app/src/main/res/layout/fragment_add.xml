@@ -114,32 +114,43 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black" />
 
-            <ImageButton
-                android:layout_margin="20dp"
-                android:id="@+id/privateButton"
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:background="@drawable/circle"
-                android:src="@drawable/lock"
-                android:layout_below="@id/privacy"/>
+            <LinearLayout
+                android:id="@+id/privacy_button_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:layout_below="@id/privacy"
+                >
 
-            <ImageButton
-                android:layout_margin="20dp"
-                android:id="@+id/publicButton"
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:background="@drawable/circle"
-                android:cropToPadding="false"
-                android:src="@drawable/unlock"
-                android:layout_toRightOf="@id/privateButton"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/privacy"/>
+                <ImageButton
+                    android:id="@+id/privateButton"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/circle"
+                    android:src="@drawable/lock"
+                    />
+
+                <ImageButton
+                    android:id="@+id/publicButton"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/circle"
+                    android:src="@drawable/unlock"
+                    android:layout_toRightOf="@id/privateButton"
+                    />
+
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/add_group_desc"
-                android:layout_below="@id/privateButton"
+                android:layout_below="@id/privacy_button_layout"
                 android:text="Add Group Description"
                 android:textSize="10pt"
                 android:textColor="@color/black"
