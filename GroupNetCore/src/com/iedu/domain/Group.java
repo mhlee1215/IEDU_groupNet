@@ -15,8 +15,35 @@ public class Group {
 	String isFavorite = "N";
 	String keyword = "";
 	
+	String goal = "";
+	String access = "";
 	
 	
+	
+	public String getGoal() {
+		return goal;
+	}
+
+
+
+	public void setGoal(String goal) {
+		this.goal = goal;
+	}
+
+
+
+	public String getAccess() {
+		return access;
+	}
+
+
+
+	public void setAccess(String access) {
+		this.access = access;
+	}
+
+
+
 	public String getKeyword() {
 		return keyword;
 	}
@@ -38,7 +65,8 @@ public class Group {
 				+ "\", \"status\":\"" + status + "\", \"registration_date\":\"" + registration_date + "\", \"url\":\""
 				+ url + "\", \"url2\":\"" + url2 + "\", \"ownerName\":\"" + ownerName + "\", \"ownerId\":\"" + ownerId
 				+ "\", \"viewerId\":\"" + viewerId + "\", \"isJoin\":\"" + isJoin + "\", \"isFavorite\":\"" + isFavorite
-				+ "\", \"keyword\":\"" + keyword + "\", \"qSize\":\"" + qSize + "\"}";
+				+ "\", \"keyword\":\"" + keyword + "\", \"goal\":\"" + goal + "\", \"access\":\"" + access
+				+ "\", \"qSize\":\"" + qSize + "\"}";
 	}
 	
 	

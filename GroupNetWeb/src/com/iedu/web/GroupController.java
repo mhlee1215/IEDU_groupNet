@@ -47,6 +47,7 @@ public class GroupController {
 		int viewerId = ServletRequestUtils.getIntParameter(request, "viewerId", 0);
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
 		String pKeyword = ServletRequestUtils.getStringParameter(request, "keyword", "");
+		String pAccess = ServletRequestUtils.getStringParameter(request, "access", "");
 
 		//int qSize = 10;
 		
@@ -56,6 +57,7 @@ public class GroupController {
 		qGroup.setViewerId(viewerId);
 		qGroup.setStatus(pStatus);
 		qGroup.setKeyword(pKeyword);
+		qGroup.setAccess(pAccess);
 
 		List<Group> groupList = groupService.readGroup(qGroup);
 		//model.addObject("groupList", groupList);
@@ -74,11 +76,14 @@ public class GroupController {
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
 		//String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
 		String pUrl = ServletRequestUtils.getStringParameter(request, "url", "");
+		String pGoal = ServletRequestUtils.getStringParameter(request, "goal", "");
+		String pAccess = ServletRequestUtils.getStringParameter(request, "access", "");
 		int ownerId = ServletRequestUtils.getIntParameter(request, "ownerId", 0);
 
 		try {
 			pName = URLDecoder.decode(pName, "UTF-8");
 			pDescription = URLDecoder.decode(pDescription, "UTF-8");
+			pGoal = URLDecoder.decode(pGoal, "UTF-8");
 			pUrl = URLDecoder.decode(pUrl, "UTF-8");
 		} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
@@ -95,20 +100,13 @@ public class GroupController {
 		//pGroup.setRegistration_date(pRegistration_date);
 		pGroup.setUrl2(pUrl);
 		pGroup.setOwnerId(ownerId);
+		pGroup.setGoal(pGoal);
+		pGroup.setAccess(pAccess);
 		
 		System.out.println(">>>"+pGroup);
 
 		groupService.addGroup(pGroup);
 		
-//		ModelAndView model = new ModelAndView("add_group");	
-//		
-//		model.addObject("id", pId);
-//		model.addObject("name", pName);
-//		model.addObject("description", pDescription);
-//		model.addObject("status", pStatus);
-//		model.addObject("registration_date", pRegistration_date);
-//		model.addObject("url", pUrl);
-
 		return "added!";
     }
 	
@@ -120,6 +118,8 @@ public class GroupController {
 		String pStatus = ServletRequestUtils.getStringParameter(request, "status", "");
 		String pRegistration_date = ServletRequestUtils.getStringParameter(request, "registration_date", "");
 		String pUrl = ServletRequestUtils.getStringParameter(request, "url", "");
+		String pAccess = ServletRequestUtils.getStringParameter(request, "access", "");
+		String pGoal = ServletRequestUtils.getStringParameter(request, "goal", "");
 
 		Group pGroup = new Group();
 		pGroup.setId(pId);
@@ -128,6 +128,8 @@ public class GroupController {
 		pGroup.setStatus(pStatus);
 		pGroup.setRegistration_date(pRegistration_date);
 		pGroup.setUrl(pUrl);
+		pGroup.setAccess(pAccess);
+		pGroup.setGoal(pGoal);
 
 		groupService.updateGroup(pGroup);
 			
@@ -136,7 +138,7 @@ public class GroupController {
     }
 	
 	@RequestMapping("/deleteGroup.do")
-    public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public @ResponseBody String deleteUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		int pId = ServletRequestUtils.getIntParameter(request, "id", 0);
 //		String pName = ServletRequestUtils.getStringParameter(request, "name", "");
 //		String pPassword = ServletRequestUtils.getStringParameter(request, "password", "");
@@ -155,10 +157,7 @@ public class GroupController {
 //		pUser.setPhonenumber(pPhonenumber);
 
 		groupService.deleteGroup(pGroup);
-		
-		ModelAndView model = new ModelAndView("delete_group");	
-		
-		return model;
+		return "1";
     }
 	
 }

@@ -39,14 +39,17 @@ public class GroupClient {
 		
 		try{
 			InputStream in = new URL("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "readGroup.do"
-									+ "?ownerId="+group.getOwnerId()+"&viewerId="+group.getViewerId()+"&status="+group.getStatus()+"&keyword="+group.getKeyword())
+									+ "?ownerId="+group.getOwnerId()
+									+ "&viewerId="+group.getViewerId()
+									+ "&status="+group.getStatus()
+									+ "&access="+group.getAccess()
+									+ "&keyword="+group.getKeyword())
 					.openStream();
 			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
 			Gson gson = new Gson();
 			GroupBin userBin = gson.fromJson(reader,	GroupBin.class);
 			groups = (ArrayList<Group>) userBin.getGroups();
 
-			
 		}catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -58,7 +61,7 @@ public class GroupClient {
 		return groups;
 	}
 	
-	public static int addGroup(String name, String desc, String url, int ownerId) {
+	public static int addGroup(String name, String desc, String url, int ownerId, String goal, String access) {
 		
 		HttpClient httpclient = new DefaultHttpClient();
 		
@@ -66,6 +69,7 @@ public class GroupClient {
 			name = URLEncoder.encode(name, "UTF-8");
 			desc = URLEncoder.encode(desc, "UTF-8");
 			url = URLEncoder.encode(url, "UTF-8");
+			goal = URLEncoder.encode(goal, "UTF-8");
 		} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -73,10 +77,12 @@ public class GroupClient {
 		
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "addGroup.do"
-				+ "?name="+name+"&description="+desc+"&url="+url+"&ownerId="+ownerId);
-		//Similar to below. Check Env class
-		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
-		//		+ "?name="+name);
+				+ "?name="+name
+				+ "&description="+desc
+				+ "&url="+url
+				+ "&goal="+goal
+				+ "&access="+access
+				+ "&ownerId="+ownerId);
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;
@@ -121,11 +127,14 @@ public class GroupClient {
 		
 
 		HttpGet httpget = new HttpGet("http://"+Env.host_url+":"+Env.host_port+"/GroupNetWeb/" + "updateGroup.do"
-				+ "?id="+g.getId()+"&name="+g.getName()+"&description="+g.getDescription()+"&url="+g.getUrl()+"&ownerId="+g.getOwnerId()
+				+ "?id="+g.getId()
+				+ "&name="+g.getName()
+				+ "&description="+g.getDescription()
+				+ "&access="+g.getAccess()
+				+ "&goal="+g.getGoal()
+				+ "&url="+g.getUrl()
+				+ "&ownerId="+g.getOwnerId()
 				+ "&status="+g.getStatus());
-		//Similar to below. Check Env class
-		//HttpGet httpget = new HttpGet("http://localhost:8080/GroupNetWeb/" + "addGroup.do"
-		//		+ "?name="+name);
 		
 		System.out.println(httpget.getURI());
 		HttpResponse response;

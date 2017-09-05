@@ -14,11 +14,12 @@
 		<result column="OWNERID" property="ownerId" />
 		<result column="OWNERNAME" property="ownerName" />
 		<result column="ISJOIN" property="isJoin" />
-		
+		<result column="GOAL" property="goal" />
+		<result column="ACCESS" property="access" />
  	</resultMap>
 
 	<select id="readGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
- 		SELECT g.ID, g.NAME, g.DESCRIPTION, g.STATUS, g.REGISTRATION_DATE, g.URL, g.OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
+ 		SELECT g.ID, g.NAME, g.GOAL, g.DESCRIPTION, g.ACCESS, g.STATUS, g.REGISTRATION_DATE, g.URL, g.OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
 		FROM `group` g left outer join (
 		select userid, groupid from membership
 		 	<if test="viewerId > 0">
@@ -38,12 +39,16 @@
  			and g.STATUS = #{status}
  			</if>
  			<if test="keyword != '' and keyword != null">
- 			and (g.NAME like '%${keyword}%' or g.DESCRIPTION like '%${keyword}%')
+ 			and (g.NAME like '%${keyword}%' or g.DESCRIPTION like '%${keyword}%' or g.GOAL like '%${keyword}%')
+ 			</if>
+ 			<if test="access != '' and access != null">
+ 			and g.ACCESS = #{access}
  			</if>
 		order by registration_date desc
 		limit #{qSize}
  	</select>
  	
+ 	<!-- 
  	<select id="searchGroupList" resultMap="Group" parameterType = "com.iedu.domain.Group">
  		SELECT g.ID, g.NAME, g.DESCRIPTION, g.STATUS, g.REGISTRATION_DATE, g.URL, g.OWNERID, u.name as OWNERNAME, IF(m.userId is not null, 'Y', 'N') as ISJOIN
 		FROM `group` g left outer join (
@@ -67,7 +72,7 @@
 		order by registration_date desc
 		limit #{qSize}
  	</select>
- 	
+ 	 -->
  	<!-- <select id="readGroupListViewer" resultMap="Group" parameterType = "com.iedu.domain.Group">
  		SELECT ID, NAME, DESCRIPTION, STATUS,  REGISTRATION_DATE, URL, OWNERID
 		FROM `group`
@@ -84,8 +89,8 @@
  	
  	
  	<insert id="addGroup" parameterType = "com.iedu.domain.Group">
- 		INSERT INTO `group` (`name`, `description`, `status`, `registration_date`, `url`, `ownerid`) 
- 		VALUES (#{name}, #{description}, #{status}, now(), '${url2}', #{ownerId});
+ 		INSERT INTO `group` (`name`, `description`, `status`, `registration_date`, `url`, `ownerid`, `goal`, `access`) 
+ 		VALUES (#{name}, #{description}, #{status}, now(), '${url2}', #{ownerId}, #{goal}, #{access});
  	</insert>
  	
  	<update id="updateGroup" parameterType="com.iedu.domain.Group">
@@ -94,6 +99,9 @@
  			ID = ID
  			<if test="name != '' and name != null">
  			,name = #{name}
+ 			</if>
+ 			<if test="goal != '' and goal != null">
+ 			,goal = #{goal}
  			</if>
  			<if test="description != '' and description != null">
  			,description = #{description}
@@ -110,7 +118,9 @@
  			<if test="ownerId != '' and ownerId != null">
  			,ownerid = #{ownerId}
  			</if>
- 			 
+ 			<if test="access != '' and access != null">
+ 			,access = #{access}
+ 			</if>
  		WHERE 
  			ID = #{id}
  	</update>
