@@ -9,10 +9,14 @@ import com.mongodb.MongoClient;
 
 @Configuration
 public class SpringMongoConfig extends AbstractMongoConfiguration {
+	private static MongoClient client = null;
+	private static GridFsTemplate gridFsTemplate = null;
 	
 	@Bean
 	public GridFsTemplate gridFsTemplate() throws Exception {
-		return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
+		if(gridFsTemplate == null)
+			gridFsTemplate = new GridFsTemplate(mongoDbFactory(), mappingMongoConverter()); 
+		return gridFsTemplate;
 	}
 
 	@Override
@@ -23,6 +27,8 @@ public class SpringMongoConfig extends AbstractMongoConfiguration {
 	@Override
 	@Bean
 	public Mongo mongo() throws Exception {
-		return new MongoClient("127.0.0.1");
+		if(client == null)
+			client = new MongoClient("127.0.0.1"); 
+		return client;
 	}
 }
