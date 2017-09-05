@@ -30,7 +30,7 @@ import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroupJoin;
  */
 public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAdapter.ViewHolder> {
 
-	HomeFragment fragment;
+	SearchFragment fragment;
 	int userId;
 
 	private ArrayList<Group> mDataset = new ArrayList<>();
@@ -43,9 +43,9 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 		public TextView mDescView;
 		public TextView mMyGroupMarkView;
 
-		public ImageButton mBtnFavorite;
-		public ImageButton mBtnAdd;
-		public ImageButton mBtnRemove;
+//		public ImageButton mBtnFavorite;
+//		public ImageButton mBtnAdd;
+//		public ImageButton mBtnRemove;
 
 
 		public ImageView mImageView;
@@ -58,9 +58,9 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 
 			mImageView = (ImageView) v.findViewById(R.id.layout_item_home_image);
 
-			mBtnFavorite = (ImageButton) v.findViewById(R.id.button_group_favorite);
-			mBtnAdd = (ImageButton) v.findViewById(R.id.button_group_add);
-			mBtnRemove = (ImageButton) v.findViewById(R.id.button_group_remove);
+//			mBtnFavorite = (ImageButton) v.findViewById(R.id.button_group_favorite);
+//			mBtnAdd = (ImageButton) v.findViewById(R.id.button_group_add);
+//			mBtnRemove = (ImageButton) v.findViewById(R.id.button_group_remove);
 		}
 	}
 
@@ -68,7 +68,7 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 		//Toast.makeText(this, "post group join?", Toast.LENGTH_LONG).show();
 	}
 
-	public SearchFragmentAdapter(List<Group> dataset, HomeFragment fragment) {
+	public SearchFragmentAdapter(List<Group> dataset, SearchFragment fragment) {
 		this.fragment = fragment;
 
 		SharedPreferences pref = fragment.getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
@@ -81,7 +81,7 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_home, parent, false);
+		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_search, parent, false);
 		ViewHolder vh = new ViewHolder(v);
 		return vh;
 	}
@@ -120,44 +120,44 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 			}
 		});
 
-		holder.mBtnFavorite.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Log.e("GroupNet", "favorite selected");
-			}
-		});
+//		holder.mBtnFavorite.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View view) {
+//				Log.e("GroupNet", "favorite selected");
+//			}
+//		});
 
 
-		if("Y".equalsIgnoreCase(mDataset.get(position).getIsJoin())){
-			holder.mBtnRemove.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
-					//showLoading(true);
-					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
-					cl.execute(userId, mDataset.get(position).getId(), "leave");
-
-					holder.mBtnAdd.setVisibility(View.VISIBLE);
-					holder.mBtnRemove.setVisibility(View.GONE);
-				}
-			});
-			holder.mBtnAdd.setVisibility(View.GONE);
-
-		}else{
-			holder.mBtnAdd.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
-					//showLoading(true);
-					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
-					cl.execute(userId, mDataset.get(position).getId(), "join");
-
-					holder.mBtnRemove.setVisibility(View.VISIBLE);
-					holder.mBtnAdd.setVisibility(View.GONE);
-				}
-			});
-			holder.mBtnRemove.setVisibility(View.GONE);
-		}
+//		if("Y".equalsIgnoreCase(mDataset.get(position).getIsJoin())){
+//			holder.mBtnRemove.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View view) {
+////					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
+////					//showLoading(true);
+////					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
+////					cl.execute(userId, mDataset.get(position).getId(), "leave");
+////
+////					holder.mBtnAdd.setVisibility(View.VISIBLE);
+////					holder.mBtnRemove.setVisibility(View.GONE);
+//				}
+//			});
+//			holder.mBtnAdd.setVisibility(View.GONE);
+//
+//		}else{
+//			holder.mBtnAdd.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View view) {
+////					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
+////					//showLoading(true);
+////					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
+////					cl.execute(userId, mDataset.get(position).getId(), "join");
+////
+////					holder.mBtnRemove.setVisibility(View.VISIBLE);
+////					holder.mBtnAdd.setVisibility(View.GONE);
+//				}
+//			});
+//			holder.mBtnRemove.setVisibility(View.GONE);
+//		}
 
 
 

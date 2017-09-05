@@ -45,6 +45,7 @@ public class GroupFragment extends Fragment implements MainFragment {
 	private RecyclerView.LayoutManager layoutManager;
 	//private GridView gridView;
 	private GroupFragmentAdapter adapter;
+	private int userId;
 
 	/**
 	 * Create a new instance of the fragment
@@ -62,7 +63,7 @@ public class GroupFragment extends Fragment implements MainFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         SharedPreferences pref = getActivity().getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
-        int userId = pref.getInt("USER_ID", -1);
+        userId = pref.getInt("USER_ID", -1);
 		String userName = pref.getString("USER_NAME", "");
         Log.e("GroupNet", "GROUP_FRAGMENT_USERID:"+userId);
 
@@ -94,7 +95,7 @@ public class GroupFragment extends Fragment implements MainFragment {
 
 		//initDemoList(view);
 		ConnectionGroup cl = new ConnectionGroup(view, this);
-		cl.execute(userId);
+		cl.execute(userId, "", userId);
 		return view;
 
 //		gridView = (GridView) view.findViewById(R.id.grou_gridView);

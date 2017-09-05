@@ -33,8 +33,14 @@ public class ConnectionGroupAdd extends AsyncTask {
     protected Object doInBackground(Object... arg0) {
 
         try {
-            System.out.println(" add group called with "+(String)arg0[0]+", "+(String)arg0[1]+", "+(String)arg0[2]);
-            GroupClient.addGroup((String)arg0[0], (String)arg0[1], (String)arg0[2], (int)arg0[3]);
+            System.out.println(" add group called with "
+                          +(String)arg0[0]
+                    +", " +(String)arg0[1]
+                    +", " +(String)arg0[2]
+                    +", " +(int)arg0[3]
+                    +", " +(String)arg0[4]
+                    +", " +(String)arg0[5]);
+            GroupClient.addGroup((String)arg0[0], (String)arg0[1], (String)arg0[2], (int)arg0[3], (String)arg0[4], (String)arg0[5]);
 
 
         }catch(Exception e){

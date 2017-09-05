@@ -18,6 +18,8 @@ public class Group {
 	String goal = "";
 	String access = "";
 	
+	public static final String ACCESS_PUBLIC="public";
+	public static final String ACCESS_PRIVATE="private";
 	
 	
 	public String getGoal() {

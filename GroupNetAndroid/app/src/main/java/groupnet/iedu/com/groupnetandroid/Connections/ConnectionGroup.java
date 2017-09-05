@@ -39,8 +39,17 @@ public class ConnectionGroup extends AsyncTask {
 
         try {
             Group g = new Group();
-            g.setViewerId((int)arg0[0]);
             g.setStatus("active");
+
+            if(arg0.length > 0)
+                g.setViewerId((int)arg0[0]);
+            if(arg0.length > 1)
+                g.setAccess((String)arg0[1]);
+            if(arg0.length > 2)
+                g.setOwnerId((int)arg0[2]);
+            if(arg0.length > 3)
+                g.setKeyword((String)arg0[3]);
+
             groupList = GroupClient.readGroups(g);
 
         }catch(Exception e){

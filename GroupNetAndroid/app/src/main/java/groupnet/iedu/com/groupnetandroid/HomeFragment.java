@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment implements MainFragment {
 //				System.out.println("refresh!!");
 //				swipeRefreshLayout.setRefreshing(false);
 				ConnectionGroup cl = new ConnectionGroup(view, homeFragment);
-				cl.execute(userId);
+				cl.execute(userId, "public");
 			}
 		});
 
@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment implements MainFragment {
 
 		//initDemoList(view);
 		ConnectionGroup cl = new ConnectionGroup(view, this);
-		cl.execute(userId);
+		cl.execute(userId, "public");
 		return view;
 
 	}
@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment implements MainFragment {
 		Log.e("GroupNet", "onResume!");
 		if(hasChanged || true){
 			ConnectionGroup cl = new ConnectionGroup(view, this);
-			cl.execute(userId);
+			cl.execute(userId, "public");
 		}
 		hasChanged = false;
 	}

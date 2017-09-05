@@ -1,6 +1,5 @@
 package groupnet.iedu.com.groupnetandroid;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -9,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,23 +18,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.wang.avi.AVLoadingIndicatorView;
+import com.iedu.domain.Group;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
-import groupnet.iedu.com.groupnetandroid.Connections.ConnectionFileUpload;
 import groupnet.iedu.com.groupnetandroid.Connections.ConnectionFileUploadFragment;
-import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroup;
 import groupnet.iedu.com.groupnetandroid.Connections.ConnectionGroupAdd;
-import groupnet.iedu.com.groupnetandroid.Utils.FileFromBitmap;
 import groupnet.iedu.com.groupnetandroid.Utils.FileFromBitmapFragment;
-import groupnet.iedu.com.groupnetandroid.samples.tab.DemoAdapter;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -53,11 +47,21 @@ public class AddFragment extends Fragment implements MainFragment {
 	RelativeLayout loadingLayout;
 
 	EditText groupName;
+	EditText groupGoal;
 	EditText groupDesc;
+	EditText groupMember;
 
 	ImageView targetImage;
 	AddFragment addFragment = null;
 	String uploadedImageId = "";
+
+	ImageButton privateButton;
+	ImageButton publicButton;
+	View privateButtonMark;
+	View publicButtonMark;
+
+	String defaultGroupAccess = Group.ACCESS_PUBLIC;
+	String groupAccess = defaultGroupAccess;
 
 	/**
 	 * Create a new instance of the fragment
@@ -87,7 +91,34 @@ public class AddFragment extends Fragment implements MainFragment {
 		//showLoading(true);
 
 		groupName = (EditText)view.findViewById(R.id.group_name);
+		groupGoal = (EditText)view.findViewById(R.id.group_goal);
 		groupDesc = (EditText)view.findViewById(R.id.group_desc);
+		groupMember = (EditText)view.findViewById(R.id.group_member);
+
+		privateButtonMark = view.findViewById(R.id.privateButtonMark);
+		publicButtonMark = view.findViewById(R.id.publicButtonMark);
+
+		privateButton = (ImageButton)view.findViewById(R.id.privateButton);
+		privateButton.setOnClickListener(new Button.OnClickListener(){
+				@Override
+				public void onClick(View arg0) {
+					groupAccess = Group.ACCESS_PRIVATE;
+					refreshPrivacyButton();
+				}
+			}
+		);
+
+		publicButton = (ImageButton)view.findViewById(R.id.publicButton);
+		publicButton.setOnClickListener(new Button.OnClickListener(){
+				@Override
+				public void onClick(View arg0) {
+					groupAccess = Group.ACCESS_PUBLIC;
+					refreshPrivacyButton();
+				}
+			}
+		);
+
+
 
 		targetImage = (ImageView)view.findViewById(R.id.targetimage);
 		Button buttonLoadImage = (Button)view.findViewById(R.id.btn_loadimage);
@@ -106,7 +137,12 @@ public class AddFragment extends Fragment implements MainFragment {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				ConnectionGroupAdd cl = new ConnectionGroupAdd(view, addFragment);
-				cl.execute(groupName.getText().toString(), groupDesc.getText().toString(), uploadedImageId, userId);
+				cl.execute(groupName.getText().toString()
+						, groupDesc.getText().toString()
+						, uploadedImageId
+						, userId
+						, groupGoal.getText().toString()
+						, groupAccess);
 
 				((MainActivity)getActivity()).setTab(3);
 
@@ -153,7 +189,27 @@ public class AddFragment extends Fragment implements MainFragment {
 		Toast.makeText(getActivity(), "Upload Finished", Toast.LENGTH_LONG).show();
 	}
 
+	public void refreshPrivacyButton(){
+		if(Group.ACCESS_PRIVATE.equals(groupAccess)){
+			privateButtonMark.setVisibility(View.INVISIBLE);
+			publicButtonMark.setVisibility(View.VISIBLE);
+		}else if(Group.ACCESS_PUBLIC.equals(groupAccess)){
+			privateButtonMark.setVisibility(View.VISIBLE);
+			publicButtonMark.setVisibility(View.INVISIBLE);
+		}
+	}
+
 	public void postAddGroup(){
+
+
+		groupName.setText("");
+		groupGoal.setText("");
+		groupDesc.setText("");
+		groupMember.setText("");
+		groupAccess = defaultGroupAccess;
+		refreshPrivacyButton();
+
+
 		Toast.makeText(getActivity(), "Group Added..", Toast.LENGTH_LONG).show();
 	}
 

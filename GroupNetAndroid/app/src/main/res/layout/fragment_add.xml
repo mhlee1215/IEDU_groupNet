@@ -19,7 +19,7 @@
                 android:id="@+id/imageTop"
                 android:src="@drawable/add"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="3dp"/>
 
             <TextView
@@ -96,11 +96,46 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/addGroupNameTitle">
                 <EditText
-                    android:id="@+id/group_desc"
+                    android:id="@+id/group_member"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:hint="Enter Usernames"
                      />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/text_group_goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/group_member_layout"
+                android:text="Set Group Goal"
+                android:textSize="10pt"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@id/addGroupNameTitle"
+                />
+
+
+
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/group_goal_layout"
+                android:layout_below="@id/text_group_goal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/addGroupNameTitle">
+                <EditText
+                    android:id="@+id/group_goal"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Group goal"
+                    />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -109,10 +144,12 @@
                 android:id="@+id/privacy"
                 android:text="Privacy"
                 android:textSize="10pt"
-                android:layout_below="@id/group_member_layout"
-                android:layout_alignLeft="@id/group_member_layout"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/group_goal_layout"
+                android:layout_alignLeft="@id/group_goal_layout"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/black" />
+
 
             <LinearLayout
                 android:id="@+id/privacy_button_layout"
@@ -120,6 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@id/privacy"
                 >
 
@@ -140,7 +178,35 @@
                     android:src="@drawable/unlock"
                     android:layout_toRightOf="@id/privateButton"
                     />
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/privacy_button_layout_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/privacy"
+                >
+
+                <View
+                    android:id="@+id/privateButtonMark"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:visibility="invisible"
+                    android:background="@color/Transwhite"
+                    >
+                </View>
+
+                <View
+                    android:id="@+id/publicButtonMark"
+                    android:layout_width="65dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_height="65dp"
+                    android:background="@color/Transwhite"
+                    >
+                </View>
 
             </LinearLayout>
 
@@ -166,6 +232,7 @@
                 android:layout_alignLeft="@id/add_group_desc"
                 >
                 <EditText
+                    android:id="@+id/group_desc"
                     android:layout_width="350dp"
                     android:layout_height="150dp"
                     android:inputType="textMultiLine"
