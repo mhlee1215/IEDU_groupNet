@@ -71,16 +71,25 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (AHBottomNavigationViewPager) findViewById(R.id.view_pager);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
 
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(bottomNavigation.getCurrentItem() == 1){
+                    System.out.println("add?");
+                }
+            }
+        });
 
-        bottomNavigation.setAccentColor(R.color.blue);
+
+        //bottomNavigation.setAccentColor(android.R.color.holo_blue_bright);
 
         //bottomNavigation.setColoredModeColors(R.color.blue, R.color.black);
 
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_home_black, R.color.color_tab_1);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_add_black_24dp, R.color.color_tab_2);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_search_black_24dp, R.color.color_tab_3);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.tab_4, R.drawable.ic_group_black_24dp, R.color.color_tab_4);
-        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.tab_5, R.drawable.ic_chat_black_24dp, R.color.color_tab_5);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.tab_4, R.drawable.ic_chat_black_24dp, R.color.color_tab_4);
+        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.tab_5, R.drawable.ic_group_black_24dp, R.color.color_tab_5);
 
         bottomNavigationItems.add(item1);
         bottomNavigationItems.add(item2);

@@ -154,33 +154,33 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 
 
 		if("Y".equalsIgnoreCase(mDataset.get(position).getIsJoin())){
-			holder.mBtnRemove.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
-					//showLoading(true);
-					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
-					cl.execute(userId, mDataset.get(position).getId(), "leave");
-
-					holder.mBtnAdd.setVisibility(View.VISIBLE);
-					holder.mBtnRemove.setVisibility(View.GONE);
-				}
-			});
+//			holder.mBtnRemove.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View view) {
+//					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
+//					//showLoading(true);
+//					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
+//					cl.execute(userId, mDataset.get(position).getId(), "leave");
+//
+//					holder.mBtnAdd.setVisibility(View.VISIBLE);
+//					holder.mBtnRemove.setVisibility(View.GONE);
+//				}
+//			});
 			holder.mBtnAdd.setVisibility(View.GONE);
 
 		}else{
-			holder.mBtnAdd.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
-					//showLoading(true);
-					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
-					cl.execute(userId, mDataset.get(position).getId(), "join");
-
-					holder.mBtnRemove.setVisibility(View.VISIBLE);
-					holder.mBtnAdd.setVisibility(View.GONE);
-				}
-			});
+//			holder.mBtnAdd.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View view) {
+//					Log.e("GroupNet", "add selected"+mDataset.get(position).getId());
+//					//showLoading(true);
+//					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
+//					cl.execute(userId, mDataset.get(position).getId(), "join");
+//
+//					holder.mBtnRemove.setVisibility(View.VISIBLE);
+//					holder.mBtnAdd.setVisibility(View.GONE);
+//				}
+//			});
 			holder.mBtnRemove.setVisibility(View.GONE);
 		}
 

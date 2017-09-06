@@ -17,11 +17,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -61,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Irvine, California"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="0dp"
                         android:textSize="6pt"
                         />
                 </LinearLayout>
@@ -132,8 +132,21 @@
                     android:layout_alignParentRight="true"
                     android:textSize="4pt"
                     android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:textColor="@color/colorAccent"/>
+
+                <TextView
+                    android:id="@+id/MemberMark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="I'm \nMember"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/MyGroupMark"
+                    android:textSize="4pt"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    android:textColor="@color/colorAccent2"/>
 
 
             </RelativeLayout>

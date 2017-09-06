@@ -24,8 +24,8 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
 		fragments.add(HomeFragment.newInstance(0));
 		fragments.add(AddFragment.newInstance(1));
 		fragments.add(SearchFragment.newInstance(2));
-		fragments.add(GroupFragment.newInstance(3));
-		fragments.add(ChatFragment.newInstance(4));
+		fragments.add(ChatFragment.newInstance(3));
+		fragments.add(GroupFragment.newInstance(4));
 	}
 
 	public void resetItem(int i){

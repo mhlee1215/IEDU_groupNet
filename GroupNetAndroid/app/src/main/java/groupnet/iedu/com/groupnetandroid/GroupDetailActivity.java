@@ -81,6 +81,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                 }
             });
             button_join.setVisibility(View.GONE);
+            button_leave.setVisibility(View.VISIBLE);
         }else if("N".equalsIgnoreCase(isJoin)) {
             button_join.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -93,6 +94,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                     button_join.setVisibility(View.GONE);
                 }
             });
+            button_join.setVisibility(View.VISIBLE);
             button_leave.setVisibility(View.GONE);
         }
 

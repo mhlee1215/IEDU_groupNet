@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent2">#34d778</color>
 
     <color name="textLabelColor">#000000</color>
     <color name="black">#000000</color>
@@ -11,6 +12,8 @@
     <color name="blue">#00abea</color>
     <color name="white">#ffffff</color>
     <color name="Transwhite">#74ffffff</color>
+
+    <color name="button_blue">#00abea</color>
 
     <color name="color_tab_1">#455C65</color>
     <color name="color_tab_2">#00886A</color>

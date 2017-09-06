@@ -60,8 +60,8 @@
     <string name="tab_1">Home</string>
     <string name="tab_2">Add</string>
     <string name="tab_3">Search</string>
-    <string name="tab_4">Group</string>
-    <string name="tab_5">Chat</string>
+    <string name="tab_4">Chat</string>
+    <string name="tab_5">Profile</string>
 
     <string name="menu_1">Menu 1</string>
     <string name="menu_2">Menu 2</string>

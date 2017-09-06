@@ -16,8 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +49,10 @@ public class GroupFragment extends Fragment implements MainFragment {
 	private GroupFragmentAdapter adapter;
 	private int userId;
 
+	private Button btnEditProfile;
+	private ImageButton btnSetting;
+
+
 	/**
 	 * Create a new instance of the fragment
 	 */
@@ -69,6 +75,21 @@ public class GroupFragment extends Fragment implements MainFragment {
 
 		View view = inflater.inflate(R.layout.fragment_group, container, false);
 
+		btnEditProfile = (Button) view.findViewById(R.id.button_edit_profile);
+		btnEditProfile.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+			}
+		});
+
+		btnSetting = (ImageButton) view.findViewById(R.id.button_setting);
+		btnSetting.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+			}
+		});
 
 		recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
 		recyclerView.setHasFixedSize(true);

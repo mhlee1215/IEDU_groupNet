@@ -183,11 +183,12 @@ public class GroupFragmentAdapter extends RecyclerView.Adapter<GroupFragmentAdap
 					.execute("http://52.34.169.106:8080/GroupNetWeb/mediaDownloadWeb.do?path="+id, position + "");
 		}
 
-		if(userId == mDataset.get(position).getOwnerId() && userId > 0){
-			holder.mMyGroupMarkView.setVisibility(View.VISIBLE);
-		}else{
-			holder.mMyGroupMarkView.setVisibility(View.GONE);
-		}
+		holder.mMyGroupMarkView.setVisibility(View.GONE);
+//		if(userId == mDataset.get(position).getOwnerId() && userId > 0){
+//			holder.mMyGroupMarkView.setVisibility(View.VISIBLE);
+//		}else{
+//			holder.mMyGroupMarkView.setVisibility(View.GONE);
+//		}
 	}
 
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
