@@ -1,4 +1,5 @@
 package com.iedu.config;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
@@ -8,7 +9,7 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
 @Configuration
-public class SpringMongoConfig extends AbstractMongoConfiguration {
+public class SpringMongoConfig extends AbstractMongoConfiguration implements DisposableBean{
 	private static MongoClient client = null;
 	private static GridFsTemplate gridFsTemplate = null;
 	
@@ -31,4 +32,14 @@ public class SpringMongoConfig extends AbstractMongoConfiguration {
 			client = new MongoClient("127.0.0.1"); 
 		return client;
 	}
+	
+	/**
+     * close Mongo client to avoid memory leaks
+     */
+    @Override
+    public void destroy() {
+        System.out.println("Shutdown Mongo DB connection");
+        client.close();
+        System.out.println("Mongo DB connection shutdown completed");
+    }
 }
