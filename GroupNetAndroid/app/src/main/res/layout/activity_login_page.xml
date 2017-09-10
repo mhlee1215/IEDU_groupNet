@@ -8,19 +8,21 @@
     <ImageView
         android:id="@+id/logo_view"
         android:layout_marginTop="30dp"
-        android:layout_width= "match_parent"
-        android:layout_height="80dp"
+        android:layout_width= "100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo"/>
 
     <TextView
         android:id="@+id/logo_text_view"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo_view"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:text="Welcome to Groupnet"/>
 
     <Button
