@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.menu_toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
 
@@ -120,9 +121,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_about:
                 // location found
-
-//                Intent settingActivity = new Intent(context, SettingActivity.class);
-//                context.startActivity(settingActivity);
+                Intent aboutActivity = new Intent(context, AboutActivity.class);
+                context.startActivity(aboutActivity);
                 return true;
             case R.id.action_logout:
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">2Gather</string>
+    <string name="app_name">Gather</string>
     <string name="title_activity_login">LoginActivity</string>
 
     <string name="first_name">John</string>

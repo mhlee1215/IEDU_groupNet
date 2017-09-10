@@ -11,12 +11,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".samples.components.SampleActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -70,8 +70,12 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".samples.imageLoad.ImageLoadActivity"></activity>
-        <activity android:name=".MemberViewActivity"></activity>
+        <activity android:name=".samples.imageLoad.ImageLoadActivity" />
+        <activity android:name=".MemberViewActivity" />
+        <activity
+            android:name=".AboutActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>
