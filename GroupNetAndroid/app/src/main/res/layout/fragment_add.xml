@@ -420,7 +420,8 @@
         android:background="@color/loading_background"
         android:gravity="center"
         android:visibility="invisible"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/avloadingIndicatorView"

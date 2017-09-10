@@ -1,18 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Hello"
-        ></TextView>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <RelativeLayout android:id="@+id/fragment_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/aboutUsTitle"
+                android:text="About Us"
+                android:textSize="15pt"
+                android:textColor="@color/black"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/aboutUsDesc"
+                android:text="Gather is a social media application that provides coolege students new insights on plethora of colleges that are of interest or are attending"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/aboutUsTitle"
+                android:background="@drawable/border"
+                android:layout_marginTop="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/dark_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@id/aboutUsDesc"
+                android:id="@+id/aboutUsLine"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutUsLine"
+                android:id="@+id/member1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:id="@+id/nuree">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/nureePfp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/nuree"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp"
+                        android:layout_weight="5"
+                        />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/nureeDesc"
+                        android:text="Nuree Kang"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Organizer\ninuree@yahoo.com"
+                        android:textSize="5pt"
+                        android:gravity="center_horizontal"/>
+                </LinearLayout>
 
-</LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/taein"
+                    android:layout_toRightOf="@id/nuree">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/taeinPfp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/taein"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp"
+                        android:layout_weight="5"
+                        />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/taeinDesc"
+                        android:text="Taein Gu"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="App Development\nDesigner\ntaeingu@gmail.com"
+                        android:textSize="5pt"
+                        android:gravity="center_horizontal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/uvin"
+                    android:layout_toRightOf="@id/taein">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/uvinPfp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/uvin"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp"
+                        android:layout_weight="5"
+                        />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/uvinDesc"
+                        android:text="Uvin Ko"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="App Development"
+                        android:textSize="5pt"
+                        android:gravity="center_horizontal"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/member2"
+                android:layout_below="@id/member1">
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/kyle"
+                    android:gravity="center_horizontal">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/kylepfp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/kyle"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp"
+                        android:layout_weight="5"
+                        />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/kyleDesc"
+                        android:text="Kyle Kwon"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Database Management\nwhoruiamkyle02@gmail.com"
+                        android:textSize="5pt"
+                        android:gravity="center_horizontal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/austin"
+                    android:gravity="center_horizontal">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/austinpfp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/austen"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp"
+                        android:layout_weight="5"
+                        />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/austinDesc"
+                        android:text="Austin Suh"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Database Management\naustinsuh777@gmail.com"
+                        android:textSize="5pt"
+                        android:gravity="center_horizontal"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/loading_background_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loading_background"
+        android:gravity="center"
+        android:visibility="invisible"
+        >
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avloadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:indicator="BallGridPulse"
+            app:indicator_color="@color/colorPrimaryDark"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>
