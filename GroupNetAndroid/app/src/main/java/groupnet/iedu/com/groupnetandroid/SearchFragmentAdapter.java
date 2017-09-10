@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.iedu.domain.Group;
@@ -49,6 +50,7 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 
 
 		public ImageView mImageView;
+		public LinearLayout mResultLayout;
 		public ViewHolder(View v) {
 			super(v);
 			mTitleView = (TextView) v.findViewById(R.id.GroupName);
@@ -57,7 +59,7 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 			mMyGroupMarkView = (TextView) v.findViewById(R.id.MyGroupMark);
 
 			mImageView = (ImageView) v.findViewById(R.id.layout_item_home_image);
-
+			mResultLayout = (LinearLayout) v.findViewById(R.id.search_result_layout);
 //			mBtnFavorite = (ImageButton) v.findViewById(R.id.button_group_favorite);
 //			mBtnAdd = (ImageButton) v.findViewById(R.id.button_group_add);
 //			mBtnRemove = (ImageButton) v.findViewById(R.id.button_group_remove);
@@ -93,7 +95,7 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
 		holder.mDescView.setText(mDataset.get(position).getDescription());
 
 
-		holder.mImageView.setOnClickListener(new View.OnClickListener() {
+		holder.mResultLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(fragment.getActivity(), GroupDetailActivity.class);

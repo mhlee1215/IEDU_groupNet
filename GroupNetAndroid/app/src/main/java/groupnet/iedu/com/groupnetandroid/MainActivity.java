@@ -1,6 +1,8 @@
 package groupnet.iedu.com.groupnetandroid;
 
 import android.animation.Animator;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,10 +12,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -24,6 +31,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import groupnet.iedu.com.groupnetandroid.samples.connection.ConnectionSample;
@@ -31,6 +39,9 @@ import groupnet.iedu.com.groupnetandroid.MainViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String TAG = "GroupNet";
+
+    private Context context;
     private MainFragment currentFragment;
     private MainViewPagerAdapter adapter;
     private AHBottomNavigationAdapter navigationAdapter;
@@ -58,12 +69,121 @@ public class MainActivity extends AppCompatActivity {
         Log.e("GroupNet", "MAIN_ACTIVITY_USERID:"+userId);
         //System.out.println("MAIN_ACTIVITY_USERID:"+userId);
 
+        context = this;
+
         initUI();
     }
 
     public void setTab(int i){
         bottomNavigation.setCurrentItem(i);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_actionbar_options, menu);
+
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+//        // Assumes current activity is the searchable activity
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+//
+
+        if(menu.getClass().getSimpleName().equals("MenuBuilder")){
+            try{
+                Method m = menu.getClass().getDeclaredMethod(
+                        "setOptionalIconsVisible", Boolean.TYPE);
+                m.setAccessible(true);
+                m.invoke(menu, true);
+            }
+            catch(NoSuchMethodException e){
+                Log.e(TAG, "onMenuOpened", e);
+            }
+            catch(Exception e){
+                throw new RuntimeException(e);
+            }
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * On selecting action bar icons
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+
+            case R.id.action_setting:
+
+                return true;
+            case R.id.action_about:
+                // location found
+
+//                Intent settingActivity = new Intent(context, SettingActivity.class);
+//                context.startActivity(settingActivity);
+                return true;
+            case R.id.action_logout:
+
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Log out")
+                        .setMessage("Is that okay to logout?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SharedPreferences pref = getApplicationContext().getSharedPreferences("preferences", 0); // 0 - for private mode
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putInt("USER_ID", -1);
+                                editor.commit();
+
+                                Intent loginActivity = new Intent(context, LoginPageActivity.class);
+                                context.startActivity(loginActivity);
+                                //Stop the activity
+                                //YourClass.this.finish();
+                            }
+
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
+
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+//
+//    @Override
+//public boolean onCreateOptionsMenu(Menu menu) {
+//    // Inflate the menu items for use in the action bar
+//    MenuInflater inflater = getMenuInflater();
+//    inflater.inflate(R.menu.main_action_bar, menu);
+//
+//    // To show icons in the actionbar's overflow menu:
+//    // http://stackoverflow.com/questions/18374183/how-to-show-icons-in-overflow-menu-in-actionbar
+//    //if(featureId == Window.FEATURE_ACTION_BAR && menu != null){
+//    if(menu.getClass().getSimpleName().equals("MenuBuilder")){
+//        try{
+//            Method m = menu.getClass().getDeclaredMethod(
+//                    "setOptionalIconsVisible", Boolean.TYPE);
+//            m.setAccessible(true);
+//            m.invoke(menu, true);
+//        }
+//        catch(NoSuchMethodException e){
+//            Log.e(TAG, "onMenuOpened", e);
+//        }
+//        catch(Exception e){
+//            throw new RuntimeException(e);
+//        }
+//    }
+//    //}
+//
+//    return super.onCreateOptionsMenu(menu);
+//}
 
     private void initUI() {
 
