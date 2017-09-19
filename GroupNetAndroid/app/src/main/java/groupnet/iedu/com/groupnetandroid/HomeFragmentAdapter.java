@@ -211,7 +211,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 		if(userId == mDataset.get(position).getOwnerId() && userId > 0){
 			holder.mMyGroupMarkView.setVisibility(View.VISIBLE);
 		}else{
-			holder.mMyGroupMarkView.setVisibility(View.GONE);
+			holder.mMyGroupMarkView.setVisibility(View.INVISIBLE);
 		}
 	}
 

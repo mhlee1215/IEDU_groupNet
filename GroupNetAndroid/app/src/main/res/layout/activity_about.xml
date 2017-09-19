@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -165,13 +164,12 @@
                     android:orientation="vertical"
                     android:id="@+id/kyle"
                     android:gravity="center_horizontal">
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/kylepfp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:src="@drawable/kyle"
-                        app:civ_border_color="#FF000000"
-                        app:civ_border_width="0dp"
+                        android:background="@drawable/circle"
                         android:layout_weight="5"
                         />
                     <TextView

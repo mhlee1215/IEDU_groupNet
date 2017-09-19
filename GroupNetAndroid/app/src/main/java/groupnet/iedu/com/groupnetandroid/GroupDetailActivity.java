@@ -61,6 +61,9 @@ public class GroupDetailActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             CircleImageView imageView = (CircleImageView) findViewById(R.id.circle_image_view);
             imageView.setImageBitmap(bitmap);
+
+            ImageView detailView = (ImageView) findViewById(R.id.layout_item_detail_image);
+            detailView.setImageBitmap(bitmap);
         }
 
 

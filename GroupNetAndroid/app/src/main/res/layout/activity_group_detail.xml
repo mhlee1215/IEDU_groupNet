@@ -4,12 +4,41 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_image_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/image_1"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp" />
+
+        <TextView
+            android:id="@+id/group_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GroupName"
+            android:textSize="15pt" />
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="0.24"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
         <!--<ImageView-->
         <!--android:id="@+id/imageView2"-->
@@ -17,33 +46,11 @@
         <!--android:layout_height="171dp"-->
         <!--app:srcCompat="@drawable/image_1" />-->
 
-        <LinearLayout
-            android:layout_width="96dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="5dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circle_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginBottom="4dp"
-                android:src="@drawable/image_1"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="0dp" />
-            <TextView
-                android:id="@+id/group_name"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="0.05"
-                android:text="GroupName"
-                android:textSize="7pt" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -64,7 +71,7 @@
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10"
+                        android:text="54"
                         android:textStyle="bold"
                         android:textColor="@color/textLabelColor"
                         android:textSize="8pt" />
@@ -73,9 +80,9 @@
                         android:id="@+id/textView51"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Groups"
+                        android:text="Members"
                         android:textColor="@color/textLabelColor"
-                        android:textSize="5pt" />
+                        android:textSize="7pt" />
 
 
                 </LinearLayout>
@@ -91,7 +98,7 @@
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1000"
+                        android:text="4932"
                         android:textStyle="bold"
                         android:textColor="@color/textLabelColor"
                         android:textSize="8pt" />
@@ -100,7 +107,34 @@
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Followers"
+                        android:text="Likes"
+                        android:textColor="@color/textLabelColor"
+                        android:textSize="7pt" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="95.3 pts"
+                        android:textStyle="bold"
+                        android:textColor="@color/textLabelColor"
+                        android:textSize="8pt" />
+
+                    <TextView
+                        android:id="@+id/textView81"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Activity Score"
                         android:textColor="@color/textLabelColor"
                         android:textSize="7pt" />
 
@@ -108,61 +142,73 @@
 
         </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
 
-                <Button
-                    android:id="@+id/button_join"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:text="JOIN" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/button_leave"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:text="LEAVE" />
-
-                <Button
-                    android:id="@+id/button_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="31dp"
-                    android:background="@color/colorAccent"
-                    android:text="DELETE" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/group_desc"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:hint="Description:"
-                android:textSize="7pt"
-                android:layout_weight="0.33" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/layout_item_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/group_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="7pt"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_join"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_1"
+            android:text="JOIN" />
+
+        <Button
+            android:id="@+id/button_leave"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_2"
+            android:text="LEAVE" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/button_3"
+            android:text="DELETE" />
+
     </LinearLayout>
-    <GridView
-        android:id="@+id/grou_gridView"
-        android:layout_width="fill_parent"
-        android:layout_height="128dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="150dp"
-        android:clickable="true"
-        android:columnWidth="200dp"
-        android:drawSelectorOnTop="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:numColumns="3"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="2dp"
-        android:layout_weight="0.61" />
+
+    <!--<GridView-->
+        <!--android:id="@+id/grou_gridView"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="128dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="150dp"-->
+        <!--android:clickable="true"-->
+        <!--android:columnWidth="200dp"-->
+        <!--android:drawSelectorOnTop="true"-->
+        <!--android:focusable="true"-->
+        <!--android:gravity="center"-->
+        <!--android:numColumns="3"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:verticalSpacing="2dp"-->
+        <!--android:layout_weight="0.61" />-->
 </LinearLayout>

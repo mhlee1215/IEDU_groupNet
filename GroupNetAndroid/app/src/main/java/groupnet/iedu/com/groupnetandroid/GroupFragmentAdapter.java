@@ -137,7 +137,7 @@ public class GroupFragmentAdapter extends RecyclerView.Adapter<GroupFragmentAdap
 //					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
 //					cl.execute(userId, mDataset.get(position).getId(), "leave");
 
-					holder.mBtnAdd.setVisibility(View.VISIBLE);
+					holder.mBtnAdd.setVisibility(View.GONE);
 					holder.mBtnRemove.setVisibility(View.GONE);
 				}
 			});
@@ -152,7 +152,7 @@ public class GroupFragmentAdapter extends RecyclerView.Adapter<GroupFragmentAdap
 //					ConnectionGroupJoin cl = new ConnectionGroupJoin(view, fragment);
 //					cl.execute(userId, mDataset.get(position).getId(), "join");
 
-					holder.mBtnRemove.setVisibility(View.VISIBLE);
+					holder.mBtnRemove.setVisibility(View.GONE);
 					holder.mBtnAdd.setVisibility(View.GONE);
 				}
 			});

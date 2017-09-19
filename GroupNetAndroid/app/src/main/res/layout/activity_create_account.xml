@@ -124,8 +124,9 @@
     <Button
         android:id="@+id/button_create_account"
         android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="Confirm"
+        android:background="@drawable/button_1"
         android:layout_below="@id/profileEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"/>
