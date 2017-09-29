@@ -61,7 +61,7 @@
                         android:id="@+id/nureePfp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/nuree"
+                        android:src="@mipmap/nuree"
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="0dp"
                         android:layout_weight="5"
@@ -94,7 +94,7 @@
                         android:id="@+id/taeinPfp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/taein"
+                        android:src="@mipmap/taein"
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="0dp"
                         android:layout_weight="5"
@@ -128,7 +128,7 @@
                         android:id="@+id/uvinPfp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/uvin"
+                        android:src="@mipmap/uvin"
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="0dp"
                         android:layout_weight="5"
@@ -145,7 +145,7 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="App Development"
+                        android:text="App Development\nuvinko02@gmail.com"
                         android:textSize="5pt"
                         android:gravity="center_horizontal"/>
                 </LinearLayout>
@@ -164,12 +164,13 @@
                     android:orientation="vertical"
                     android:id="@+id/kyle"
                     android:gravity="center_horizontal">
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/kylepfp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/kyle"
-                        android:background="@drawable/circle"
+                        android:src="@mipmap/kyle"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp"
                         android:layout_weight="5"
                         />
                     <TextView
@@ -200,7 +201,7 @@
                         android:id="@+id/austinpfp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/austen"
+                        android:src="@mipmap/austen"
                         app:civ_border_color="#FF000000"
                         app:civ_border_width="0dp"
                         android:layout_weight="5"
